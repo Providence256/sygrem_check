@@ -227,7 +227,6 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                           TextFormField(
                             controller: _verificationCodeController,
                             style: const TextStyle(fontSize: 16),
-                            keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                               labelText: 'Verification Code',
                               hintText: 'Enter the code sent to your email',

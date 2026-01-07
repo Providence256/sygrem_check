@@ -21,10 +21,17 @@ QRCodeData _$QRCodeDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$QRCodeData {
-  String get type =>
-      throw _privateConstructorUsedError; // RECEIPT or DECLARATION
-  String get id => throw _privateConstructorUsedError;
-  int? get timestamp => throw _privateConstructorUsedError;
+  String get typeRedevance => throw _privateConstructorUsedError;
+  String get declarationNumero => throw _privateConstructorUsedError;
+  String get numero => throw _privateConstructorUsedError;
+  String get dateEmission => throw _privateConstructorUsedError;
+  String get navire => throw _privateConstructorUsedError;
+  String get numeroOmi => throw _privateConstructorUsedError;
+  String get numeroVoyage => throw _privateConstructorUsedError;
+  String get nomClient => throw _privateConstructorUsedError;
+  int get montant => throw _privateConstructorUsedError;
+  String get nzela => throw _privateConstructorUsedError;
+  int get retour => throw _privateConstructorUsedError;
 
   /// Serializes this QRCodeData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,7 +50,19 @@ abstract class $QRCodeDataCopyWith<$Res> {
     $Res Function(QRCodeData) then,
   ) = _$QRCodeDataCopyWithImpl<$Res, QRCodeData>;
   @useResult
-  $Res call({String type, String id, int? timestamp});
+  $Res call({
+    String typeRedevance,
+    String declarationNumero,
+    String numero,
+    String dateEmission,
+    String navire,
+    String numeroOmi,
+    String numeroVoyage,
+    String nomClient,
+    int montant,
+    String nzela,
+    int retour,
+  });
 }
 
 /// @nodoc
@@ -61,24 +80,64 @@ class _$QRCodeDataCopyWithImpl<$Res, $Val extends QRCodeData>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = null,
-    Object? id = null,
-    Object? timestamp = freezed,
+    Object? typeRedevance = null,
+    Object? declarationNumero = null,
+    Object? numero = null,
+    Object? dateEmission = null,
+    Object? navire = null,
+    Object? numeroOmi = null,
+    Object? numeroVoyage = null,
+    Object? nomClient = null,
+    Object? montant = null,
+    Object? nzela = null,
+    Object? retour = null,
   }) {
     return _then(
       _value.copyWith(
-            type: null == type
-                ? _value.type
-                : type // ignore: cast_nullable_to_non_nullable
+            typeRedevance: null == typeRedevance
+                ? _value.typeRedevance
+                : typeRedevance // ignore: cast_nullable_to_non_nullable
                       as String,
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
+            declarationNumero: null == declarationNumero
+                ? _value.declarationNumero
+                : declarationNumero // ignore: cast_nullable_to_non_nullable
                       as String,
-            timestamp: freezed == timestamp
-                ? _value.timestamp
-                : timestamp // ignore: cast_nullable_to_non_nullable
-                      as int?,
+            numero: null == numero
+                ? _value.numero
+                : numero // ignore: cast_nullable_to_non_nullable
+                      as String,
+            dateEmission: null == dateEmission
+                ? _value.dateEmission
+                : dateEmission // ignore: cast_nullable_to_non_nullable
+                      as String,
+            navire: null == navire
+                ? _value.navire
+                : navire // ignore: cast_nullable_to_non_nullable
+                      as String,
+            numeroOmi: null == numeroOmi
+                ? _value.numeroOmi
+                : numeroOmi // ignore: cast_nullable_to_non_nullable
+                      as String,
+            numeroVoyage: null == numeroVoyage
+                ? _value.numeroVoyage
+                : numeroVoyage // ignore: cast_nullable_to_non_nullable
+                      as String,
+            nomClient: null == nomClient
+                ? _value.nomClient
+                : nomClient // ignore: cast_nullable_to_non_nullable
+                      as String,
+            montant: null == montant
+                ? _value.montant
+                : montant // ignore: cast_nullable_to_non_nullable
+                      as int,
+            nzela: null == nzela
+                ? _value.nzela
+                : nzela // ignore: cast_nullable_to_non_nullable
+                      as String,
+            retour: null == retour
+                ? _value.retour
+                : retour // ignore: cast_nullable_to_non_nullable
+                      as int,
           )
           as $Val,
     );
@@ -94,7 +153,19 @@ abstract class _$$QRCodeDataImplCopyWith<$Res>
   ) = __$$QRCodeDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String type, String id, int? timestamp});
+  $Res call({
+    String typeRedevance,
+    String declarationNumero,
+    String numero,
+    String dateEmission,
+    String navire,
+    String numeroOmi,
+    String numeroVoyage,
+    String nomClient,
+    int montant,
+    String nzela,
+    int retour,
+  });
 }
 
 /// @nodoc
@@ -111,24 +182,64 @@ class __$$QRCodeDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = null,
-    Object? id = null,
-    Object? timestamp = freezed,
+    Object? typeRedevance = null,
+    Object? declarationNumero = null,
+    Object? numero = null,
+    Object? dateEmission = null,
+    Object? navire = null,
+    Object? numeroOmi = null,
+    Object? numeroVoyage = null,
+    Object? nomClient = null,
+    Object? montant = null,
+    Object? nzela = null,
+    Object? retour = null,
   }) {
     return _then(
       _$QRCodeDataImpl(
-        type: null == type
-            ? _value.type
-            : type // ignore: cast_nullable_to_non_nullable
+        typeRedevance: null == typeRedevance
+            ? _value.typeRedevance
+            : typeRedevance // ignore: cast_nullable_to_non_nullable
                   as String,
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
+        declarationNumero: null == declarationNumero
+            ? _value.declarationNumero
+            : declarationNumero // ignore: cast_nullable_to_non_nullable
                   as String,
-        timestamp: freezed == timestamp
-            ? _value.timestamp
-            : timestamp // ignore: cast_nullable_to_non_nullable
-                  as int?,
+        numero: null == numero
+            ? _value.numero
+            : numero // ignore: cast_nullable_to_non_nullable
+                  as String,
+        dateEmission: null == dateEmission
+            ? _value.dateEmission
+            : dateEmission // ignore: cast_nullable_to_non_nullable
+                  as String,
+        navire: null == navire
+            ? _value.navire
+            : navire // ignore: cast_nullable_to_non_nullable
+                  as String,
+        numeroOmi: null == numeroOmi
+            ? _value.numeroOmi
+            : numeroOmi // ignore: cast_nullable_to_non_nullable
+                  as String,
+        numeroVoyage: null == numeroVoyage
+            ? _value.numeroVoyage
+            : numeroVoyage // ignore: cast_nullable_to_non_nullable
+                  as String,
+        nomClient: null == nomClient
+            ? _value.nomClient
+            : nomClient // ignore: cast_nullable_to_non_nullable
+                  as String,
+        montant: null == montant
+            ? _value.montant
+            : montant // ignore: cast_nullable_to_non_nullable
+                  as int,
+        nzela: null == nzela
+            ? _value.nzela
+            : nzela // ignore: cast_nullable_to_non_nullable
+                  as String,
+        retour: null == retour
+            ? _value.retour
+            : retour // ignore: cast_nullable_to_non_nullable
+                  as int,
       ),
     );
   }
@@ -138,25 +249,48 @@ class __$$QRCodeDataImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$QRCodeDataImpl implements _QRCodeData {
   const _$QRCodeDataImpl({
-    required this.type,
-    required this.id,
-    this.timestamp,
+    required this.typeRedevance,
+    required this.declarationNumero,
+    required this.numero,
+    required this.dateEmission,
+    required this.navire,
+    required this.numeroOmi,
+    required this.numeroVoyage,
+    required this.nomClient,
+    required this.montant,
+    required this.nzela,
+    required this.retour,
   });
 
   factory _$QRCodeDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$QRCodeDataImplFromJson(json);
 
   @override
-  final String type;
-  // RECEIPT or DECLARATION
+  final String typeRedevance;
   @override
-  final String id;
+  final String declarationNumero;
   @override
-  final int? timestamp;
+  final String numero;
+  @override
+  final String dateEmission;
+  @override
+  final String navire;
+  @override
+  final String numeroOmi;
+  @override
+  final String numeroVoyage;
+  @override
+  final String nomClient;
+  @override
+  final int montant;
+  @override
+  final String nzela;
+  @override
+  final int retour;
 
   @override
   String toString() {
-    return 'QRCodeData(type: $type, id: $id, timestamp: $timestamp)';
+    return 'QRCodeData(typeRedevance: $typeRedevance, declarationNumero: $declarationNumero, numero: $numero, dateEmission: $dateEmission, navire: $navire, numeroOmi: $numeroOmi, numeroVoyage: $numeroVoyage, nomClient: $nomClient, montant: $montant, nzela: $nzela, retour: $retour)';
   }
 
   @override
@@ -164,15 +298,41 @@ class _$QRCodeDataImpl implements _QRCodeData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$QRCodeDataImpl &&
-            (identical(other.type, type) || other.type == type) &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.timestamp, timestamp) ||
-                other.timestamp == timestamp));
+            (identical(other.typeRedevance, typeRedevance) ||
+                other.typeRedevance == typeRedevance) &&
+            (identical(other.declarationNumero, declarationNumero) ||
+                other.declarationNumero == declarationNumero) &&
+            (identical(other.numero, numero) || other.numero == numero) &&
+            (identical(other.dateEmission, dateEmission) ||
+                other.dateEmission == dateEmission) &&
+            (identical(other.navire, navire) || other.navire == navire) &&
+            (identical(other.numeroOmi, numeroOmi) ||
+                other.numeroOmi == numeroOmi) &&
+            (identical(other.numeroVoyage, numeroVoyage) ||
+                other.numeroVoyage == numeroVoyage) &&
+            (identical(other.nomClient, nomClient) ||
+                other.nomClient == nomClient) &&
+            (identical(other.montant, montant) || other.montant == montant) &&
+            (identical(other.nzela, nzela) || other.nzela == nzela) &&
+            (identical(other.retour, retour) || other.retour == retour));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, type, id, timestamp);
+  int get hashCode => Object.hash(
+    runtimeType,
+    typeRedevance,
+    declarationNumero,
+    numero,
+    dateEmission,
+    navire,
+    numeroOmi,
+    numeroVoyage,
+    nomClient,
+    montant,
+    nzela,
+    retour,
+  );
 
   /// Create a copy of QRCodeData
   /// with the given fields replaced by the non-null parameter values.
@@ -190,26 +350,322 @@ class _$QRCodeDataImpl implements _QRCodeData {
 
 abstract class _QRCodeData implements QRCodeData {
   const factory _QRCodeData({
-    required final String type,
-    required final String id,
-    final int? timestamp,
+    required final String typeRedevance,
+    required final String declarationNumero,
+    required final String numero,
+    required final String dateEmission,
+    required final String navire,
+    required final String numeroOmi,
+    required final String numeroVoyage,
+    required final String nomClient,
+    required final int montant,
+    required final String nzela,
+    required final int retour,
   }) = _$QRCodeDataImpl;
 
   factory _QRCodeData.fromJson(Map<String, dynamic> json) =
       _$QRCodeDataImpl.fromJson;
 
   @override
-  String get type; // RECEIPT or DECLARATION
+  String get typeRedevance;
   @override
-  String get id;
+  String get declarationNumero;
   @override
-  int? get timestamp;
+  String get numero;
+  @override
+  String get dateEmission;
+  @override
+  String get navire;
+  @override
+  String get numeroOmi;
+  @override
+  String get numeroVoyage;
+  @override
+  String get nomClient;
+  @override
+  int get montant;
+  @override
+  String get nzela;
+  @override
+  int get retour;
 
   /// Create a copy of QRCodeData
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$QRCodeDataImplCopyWith<_$QRCodeDataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+SavedData _$SavedDataFromJson(Map<String, dynamic> json) {
+  return _SavedData.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SavedData {
+  String get typeRedevance => throw _privateConstructorUsedError;
+  String get numeroDeclaration => throw _privateConstructorUsedError;
+  String get numero => throw _privateConstructorUsedError;
+  String get navire => throw _privateConstructorUsedError;
+  String get scanUrl => throw _privateConstructorUsedError;
+  String get scanDate => throw _privateConstructorUsedError;
+
+  /// Serializes this SavedData to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of SavedData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $SavedDataCopyWith<SavedData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SavedDataCopyWith<$Res> {
+  factory $SavedDataCopyWith(SavedData value, $Res Function(SavedData) then) =
+      _$SavedDataCopyWithImpl<$Res, SavedData>;
+  @useResult
+  $Res call({
+    String typeRedevance,
+    String numeroDeclaration,
+    String numero,
+    String navire,
+    String scanUrl,
+    String scanDate,
+  });
+}
+
+/// @nodoc
+class _$SavedDataCopyWithImpl<$Res, $Val extends SavedData>
+    implements $SavedDataCopyWith<$Res> {
+  _$SavedDataCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of SavedData
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? typeRedevance = null,
+    Object? numeroDeclaration = null,
+    Object? numero = null,
+    Object? navire = null,
+    Object? scanUrl = null,
+    Object? scanDate = null,
+  }) {
+    return _then(
+      _value.copyWith(
+            typeRedevance: null == typeRedevance
+                ? _value.typeRedevance
+                : typeRedevance // ignore: cast_nullable_to_non_nullable
+                      as String,
+            numeroDeclaration: null == numeroDeclaration
+                ? _value.numeroDeclaration
+                : numeroDeclaration // ignore: cast_nullable_to_non_nullable
+                      as String,
+            numero: null == numero
+                ? _value.numero
+                : numero // ignore: cast_nullable_to_non_nullable
+                      as String,
+            navire: null == navire
+                ? _value.navire
+                : navire // ignore: cast_nullable_to_non_nullable
+                      as String,
+            scanUrl: null == scanUrl
+                ? _value.scanUrl
+                : scanUrl // ignore: cast_nullable_to_non_nullable
+                      as String,
+            scanDate: null == scanDate
+                ? _value.scanDate
+                : scanDate // ignore: cast_nullable_to_non_nullable
+                      as String,
+          )
+          as $Val,
+    );
+  }
+}
+
+/// @nodoc
+abstract class _$$SavedDataImplCopyWith<$Res>
+    implements $SavedDataCopyWith<$Res> {
+  factory _$$SavedDataImplCopyWith(
+    _$SavedDataImpl value,
+    $Res Function(_$SavedDataImpl) then,
+  ) = __$$SavedDataImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({
+    String typeRedevance,
+    String numeroDeclaration,
+    String numero,
+    String navire,
+    String scanUrl,
+    String scanDate,
+  });
+}
+
+/// @nodoc
+class __$$SavedDataImplCopyWithImpl<$Res>
+    extends _$SavedDataCopyWithImpl<$Res, _$SavedDataImpl>
+    implements _$$SavedDataImplCopyWith<$Res> {
+  __$$SavedDataImplCopyWithImpl(
+    _$SavedDataImpl _value,
+    $Res Function(_$SavedDataImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of SavedData
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? typeRedevance = null,
+    Object? numeroDeclaration = null,
+    Object? numero = null,
+    Object? navire = null,
+    Object? scanUrl = null,
+    Object? scanDate = null,
+  }) {
+    return _then(
+      _$SavedDataImpl(
+        typeRedevance: null == typeRedevance
+            ? _value.typeRedevance
+            : typeRedevance // ignore: cast_nullable_to_non_nullable
+                  as String,
+        numeroDeclaration: null == numeroDeclaration
+            ? _value.numeroDeclaration
+            : numeroDeclaration // ignore: cast_nullable_to_non_nullable
+                  as String,
+        numero: null == numero
+            ? _value.numero
+            : numero // ignore: cast_nullable_to_non_nullable
+                  as String,
+        navire: null == navire
+            ? _value.navire
+            : navire // ignore: cast_nullable_to_non_nullable
+                  as String,
+        scanUrl: null == scanUrl
+            ? _value.scanUrl
+            : scanUrl // ignore: cast_nullable_to_non_nullable
+                  as String,
+        scanDate: null == scanDate
+            ? _value.scanDate
+            : scanDate // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SavedDataImpl implements _SavedData {
+  const _$SavedDataImpl({
+    required this.typeRedevance,
+    required this.numeroDeclaration,
+    required this.numero,
+    required this.navire,
+    required this.scanUrl,
+    required this.scanDate,
+  });
+
+  factory _$SavedDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SavedDataImplFromJson(json);
+
+  @override
+  final String typeRedevance;
+  @override
+  final String numeroDeclaration;
+  @override
+  final String numero;
+  @override
+  final String navire;
+  @override
+  final String scanUrl;
+  @override
+  final String scanDate;
+
+  @override
+  String toString() {
+    return 'SavedData(typeRedevance: $typeRedevance, numeroDeclaration: $numeroDeclaration, numero: $numero, navire: $navire, scanUrl: $scanUrl, scanDate: $scanDate)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SavedDataImpl &&
+            (identical(other.typeRedevance, typeRedevance) ||
+                other.typeRedevance == typeRedevance) &&
+            (identical(other.numeroDeclaration, numeroDeclaration) ||
+                other.numeroDeclaration == numeroDeclaration) &&
+            (identical(other.numero, numero) || other.numero == numero) &&
+            (identical(other.navire, navire) || other.navire == navire) &&
+            (identical(other.scanUrl, scanUrl) || other.scanUrl == scanUrl) &&
+            (identical(other.scanDate, scanDate) ||
+                other.scanDate == scanDate));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+    runtimeType,
+    typeRedevance,
+    numeroDeclaration,
+    numero,
+    navire,
+    scanUrl,
+    scanDate,
+  );
+
+  /// Create a copy of SavedData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SavedDataImplCopyWith<_$SavedDataImpl> get copyWith =>
+      __$$SavedDataImplCopyWithImpl<_$SavedDataImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SavedDataImplToJson(this);
+  }
+}
+
+abstract class _SavedData implements SavedData {
+  const factory _SavedData({
+    required final String typeRedevance,
+    required final String numeroDeclaration,
+    required final String numero,
+    required final String navire,
+    required final String scanUrl,
+    required final String scanDate,
+  }) = _$SavedDataImpl;
+
+  factory _SavedData.fromJson(Map<String, dynamic> json) =
+      _$SavedDataImpl.fromJson;
+
+  @override
+  String get typeRedevance;
+  @override
+  String get numeroDeclaration;
+  @override
+  String get numero;
+  @override
+  String get navire;
+  @override
+  String get scanUrl;
+  @override
+  String get scanDate;
+
+  /// Create a copy of SavedData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SavedDataImplCopyWith<_$SavedDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

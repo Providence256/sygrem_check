@@ -20,7 +20,7 @@ class AppTheme {
     ),
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.white,
-      foregroundColor: AppColors.secondaryTextColor,
+      foregroundColor: Colors.black,
       elevation: 0,
       titleTextStyle: TextStyle(
         fontSize: 18,

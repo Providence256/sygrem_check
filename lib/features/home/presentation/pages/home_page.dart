@@ -78,7 +78,7 @@ class HomePage extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Hello, $userName! 👋',
+                userName,
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -86,56 +86,64 @@ class HomePage extends ConsumerWidget {
               ),
               const SizedBox(height: 4),
               Text(
-                'Ready to scan?',
+                'Prêt à scanner?',
                 style: TextStyle(fontSize: 14, color: Colors.grey[600]),
               ),
             ],
           ),
-          IconButton(
-            icon: Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.red.withValues(alpha: 0.1),
-                shape: BoxShape.circle,
-              ),
-              child: const Icon(Icons.logout, color: Colors.red),
-            ),
-            onPressed: () async {
-              final confirm = await showDialog<bool>(
-                context: context,
-                builder: (context) => AlertDialog(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  title: const Text('Logout'),
-                  content: const Text('Are you sure you want to logout?'),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(context, false),
-                      child: const Text('Cancel'),
-                    ),
-                    ElevatedButton(
-                      onPressed: () => Navigator.pop(context, true),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red,
-                      ),
-                      child: const Text('Logout'),
-                    ),
-                  ],
-                ),
-              );
+          // IconButton(
+          //   icon: Container(
+          //     padding: const EdgeInsets.all(8),
+          //     decoration: BoxDecoration(
+          //       color: Colors.red.withValues(alpha: 0.1),
+          //       shape: BoxShape.circle,
+          //     ),
+          //     child: const Icon(Icons.logout, color: Colors.red),
+          //   ),
+          //   onPressed: () async {
+          //     final confirm = await showDialog<bool>(
+          //       context: context,
+          //       builder: (context) => AlertDialog(
+          //         shape: RoundedRectangleBorder(
+          //           borderRadius: BorderRadius.circular(16),
+          //         ),
+          //         title: const Text('Se Déconnecter'),
+          //         content: const Text(
+          //           'Êtes-vous sûr de vouloir vous déconnecter ?',
+          //         ),
+          //         actions: [
+          //           TextButton(
+          //             onPressed: () => Navigator.pop(context, false),
+          //             child: const Text('Annuler'),
+          //           ),
+          //           ElevatedButton(
+          //             onPressed: () => Navigator.pop(context, true),
+          //             style: ElevatedButton.styleFrom(
+          //               backgroundColor: Colors.red,
+          //             ),
+          //             child: const Text(
+          //               'Déconnecter',
+          //               style: TextStyle(
+          //                 fontSize: 14,
+          //                 fontWeight: FontWeight.bold,
+          //               ),
+          //             ),
+          //           ),
+          //         ],
+          //       ),
+          //     );
 
-              if (confirm == true) {
-                await ref.read(authNotifierProvider.notifier).logout();
-                if (context.mounted) {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const LoginPage()),
-                  );
-                }
-              }
-            },
-          ),
+          //     if (confirm == true) {
+          //       await ref.read(authNotifierProvider.notifier).logout();
+          //       if (context.mounted) {
+          //         Navigator.pushReplacement(
+          //           context,
+          //           MaterialPageRoute(builder: (context) => const LoginPage()),
+          //         );
+          //       }
+          //     }
+          //   },
+          // ),
         ],
       ),
     );
@@ -154,7 +162,7 @@ class HomePage extends ConsumerWidget {
 
   Widget _buildWelcomeText(BuildContext context, String userName) {
     return Text(
-      'Welcome!',
+      'Bienvenue!',
       style: Theme.of(context).textTheme.headlineMedium?.copyWith(
         fontWeight: FontWeight.bold,
         color: AppColors.primaryColor,
@@ -164,7 +172,7 @@ class HomePage extends ConsumerWidget {
 
   Widget _buildSubtitleText() {
     return Text(
-      'Scan QR codes for receipts and declarations',
+      'Scannez les codes QR pour vérifier les attestations et les déclarations.',
       style: TextStyle(fontSize: 16, color: Colors.grey[600]),
       textAlign: TextAlign.center,
     );
@@ -206,7 +214,7 @@ class HomePage extends ConsumerWidget {
             const Icon(Icons.qr_code_scanner, size: 32),
             const SizedBox(width: 12),
             const Text(
-              'Scan QR Code',
+              'Scanner Code QR',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ],

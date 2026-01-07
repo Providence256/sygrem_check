@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qr_scanner/features/auth/presentation/auth_provider.dart';
 import 'package:qr_scanner/features/auth/presentation/pages/login_page.dart';
-import 'package:qr_scanner/features/home/presentation/pages/home_page.dart';
+import 'package:qr_scanner/main_home_screen.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
@@ -57,8 +57,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) =>
-              isLoggedIn ? const HomePage() : const LoginPage(),
+          builder: (context) => !isLoggedIn ? MainHomeScreen() : LoginPage(),
         ),
       );
     }

@@ -77,25 +77,20 @@ class DocumentRepository {
 
   Future<Result<QRCodeData>> parseQRCode(String qrCodeString) async {
     try {
-      // Parse QR code format: TYPE|ID|TIMESTAMP
-      final parts = qrCodeString.split('|');
-
-      if (parts.length < 2) {
-        return const Result.failure('Invalid QR code format');
-      }
-
-      final type = parts[0];
-      final id = parts[1];
-      final timestamp = parts.length > 2 ? int.tryParse(parts[2]) : null;
-
-      if (type != AppConstants.typeReceipt &&
-          type != AppConstants.typeDeclaration) {
-        return const Result.failure('Unknown document type');
-      }
-
-      return Result.success(
-        QRCodeData(type: type, id: id, timestamp: timestamp),
+      final response = await _dioClient.get(
+        AppConstants.getQrcodeEndpoint,
+        queryParameters: {"id": qrCodeString},
       );
+
+      if (response.statusCode == 200) {
+        final data = response.data as Map<String, dynamic>;
+
+        final qrData = QRCodeData.fromJson(data);
+
+        return Result.success(qrData);
+      } else {
+        return const Result.failure('Failed to decrypt QR code');
+      }
     } catch (e) {
       return Result.failure('Failed to parse QR code: ${e.toString()}');
     }

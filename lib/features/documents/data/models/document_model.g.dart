@@ -8,16 +8,52 @@ part of 'document_model.dart';
 
 _$QRCodeDataImpl _$$QRCodeDataImplFromJson(Map<String, dynamic> json) =>
     _$QRCodeDataImpl(
-      type: json['type'] as String,
-      id: json['id'] as String,
-      timestamp: (json['timestamp'] as num?)?.toInt(),
+      typeRedevance: json['typeRedevance'] as String,
+      declarationNumero: json['declarationNumero'] as String,
+      numero: json['numero'] as String,
+      dateEmission: json['dateEmission'] as String,
+      navire: json['navire'] as String,
+      numeroOmi: json['numeroOmi'] as String,
+      numeroVoyage: json['numeroVoyage'] as String,
+      nomClient: json['nomClient'] as String,
+      montant: (json['montant'] as num).toInt(),
+      nzela: json['nzela'] as String,
+      retour: (json['retour'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$QRCodeDataImplToJson(_$QRCodeDataImpl instance) =>
     <String, dynamic>{
-      'type': instance.type,
-      'id': instance.id,
-      'timestamp': instance.timestamp,
+      'typeRedevance': instance.typeRedevance,
+      'declarationNumero': instance.declarationNumero,
+      'numero': instance.numero,
+      'dateEmission': instance.dateEmission,
+      'navire': instance.navire,
+      'numeroOmi': instance.numeroOmi,
+      'numeroVoyage': instance.numeroVoyage,
+      'nomClient': instance.nomClient,
+      'montant': instance.montant,
+      'nzela': instance.nzela,
+      'retour': instance.retour,
+    };
+
+_$SavedDataImpl _$$SavedDataImplFromJson(Map<String, dynamic> json) =>
+    _$SavedDataImpl(
+      typeRedevance: json['typeRedevance'] as String,
+      numeroDeclaration: json['numeroDeclaration'] as String,
+      numero: json['numero'] as String,
+      navire: json['navire'] as String,
+      scanUrl: json['scanUrl'] as String,
+      scanDate: json['scanDate'] as String,
+    );
+
+Map<String, dynamic> _$$SavedDataImplToJson(_$SavedDataImpl instance) =>
+    <String, dynamic>{
+      'typeRedevance': instance.typeRedevance,
+      'numeroDeclaration': instance.numeroDeclaration,
+      'numero': instance.numero,
+      'navire': instance.navire,
+      'scanUrl': instance.scanUrl,
+      'scanDate': instance.scanDate,
     };
 
 _$ReceiptDataImpl _$$ReceiptDataImplFromJson(Map<String, dynamic> json) =>

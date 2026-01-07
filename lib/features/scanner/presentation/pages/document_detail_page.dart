@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:qr_scanner/features/scanner/presentation/pages/widgets/detail_row_container.dart';
+import 'package:qr_scanner/features/documents/data/models/document_model.dart';
+import 'package:qr_scanner/features/scanner/presentation/pages/widgets/attestation_container.dart';
+import 'package:qr_scanner/features/scanner/presentation/pages/widgets/declaration_container.dart';
 
 class DocumentDetailPage extends ConsumerWidget {
-  final dynamic document;
+  final QRCodeData document;
   final bool isReceipt;
 
   const DocumentDetailPage({
@@ -16,7 +18,10 @@ class DocumentDetailPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Détails du Reçu'),
+        title: const Text(
+          'Détails du Reçu',
+          style: TextStyle(color: Colors.black),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.share),
@@ -63,7 +68,7 @@ class DocumentDetailPage extends ConsumerWidget {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'N° REC-2025-BF67}',
+                    document.declarationNumero,
                     style: const TextStyle(fontSize: 16, color: Colors.white70),
                   ),
                 ],
@@ -71,99 +76,9 @@ class DocumentDetailPage extends ConsumerWidget {
             ),
 
             // Corps du reçu
-            Container(
-              margin: const EdgeInsets.all(16),
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.1),
-                    blurRadius: 10,
-                    spreadRadius: 2,
-                  ),
-                ],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Informations du magasin
-                  Center(
-                    child: Column(
-                      children: [
-                        Text(
-                          'FACTURE DECLARATION',
-                          style: const TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(height: 4),
-                      ],
-                    ),
-                  ),
-
-                  const SizedBox(height: 24),
-                  Divider(color: Colors.grey.withValues(alpha: 0.5)),
-                  const SizedBox(height: 16),
-
-                  DetailRowContainer(
-                    title: 'Numero Facture:',
-                    subTitle: '00000xx000x0x0x0x',
-                  ),
-
-                  const SizedBox(height: 8),
-
-                  DetailRowContainer(
-                    title: 'Numero Déclaration',
-                    subTitle: 'N/A',
-                  ),
-
-                  DetailRowContainer(title: 'Navire', subTitle: 'Test navire'),
-                  const SizedBox(height: 8),
-                  DetailRowContainer(title: 'Numero OMI', subTitle: '0002'),
-                  const SizedBox(height: 8),
-                  DetailRowContainer(
-                    title: 'Numero voyage',
-                    subTitle: 'Xxxxxxxx-xxx',
-                  ),
-                  const SizedBox(height: 8),
-                  DetailRowContainer(
-                    title: 'Client',
-                    subTitle: 'Xxxxxx - xxxxxx - xxxxxx',
-                  ),
-
-                  const SizedBox(height: 16),
-                  Divider(color: Colors.grey.withValues(alpha: 0.5)),
-                  const SizedBox(height: 16),
-
-                  // Total
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'TOTAL:',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        '360\$',
-                        style: const TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.green,
-                        ),
-                      ),
-                    ],
-                  ),
-
-                  Divider(color: Colors.grey.withValues(alpha: 0.5)),
-                ],
-              ),
-            ),
+            document.typeRedevance == "FMR"
+                ? DeclarationContainer(document: document)
+                : AttestationContainer(),
 
             // Boutons d'action
             Padding(

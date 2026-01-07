@@ -6,13 +6,36 @@ part 'document_model.g.dart';
 @freezed
 class QRCodeData with _$QRCodeData {
   const factory QRCodeData({
-    required String type, // RECEIPT or DECLARATION
-    required String id,
-    int? timestamp,
+    required String typeRedevance,
+    required String declarationNumero,
+    required String numero,
+    required String dateEmission,
+    required String navire,
+    required String numeroOmi,
+    required String numeroVoyage,
+    required String nomClient,
+    required int montant,
+    required String nzela,
+    required int retour,
   }) = _QRCodeData;
 
   factory QRCodeData.fromJson(Map<String, dynamic> json) =>
       _$QRCodeDataFromJson(json);
+}
+
+@freezed
+class SavedData with _$SavedData {
+  const factory SavedData({
+    required String typeRedevance,
+    required String numeroDeclaration,
+    required String numero,
+    required String navire,
+    required String scanUrl,
+    required String scanDate,
+  }) = _SavedData;
+
+  factory SavedData.fromJson(Map<String, dynamic> json) =>
+      _$SavedDataFromJson(json);
 }
 
 @freezed

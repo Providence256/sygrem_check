@@ -2,15 +2,17 @@ class AppConstants {
   AppConstants._();
 
   // API
-  static const String baseUrl = 'https://africansm-formation.com/';
+  static const String baseUrl = 'https://www.africansm-formation.com/';
   static const Duration timeoutDuration = Duration(seconds: 30);
 
   // Endpoints
-  static const String loginEndpoint = 'utilisateur/connecter';
+  static const String loginEndpoint = 'sygremcheck/connecter';
   static const String generateCodeEndpoint = 'auth/generate-code';
   static const String verifyCodeEndpoint = 'auth/verify-code';
   static const String receiptEndpoint = 'receipt';
   static const String declarationEndpoint = 'declaration';
+
+  static const String getQrcodeEndpoint = 'api/sygremcheck/recupererfacture';
 
   // Storage Keys
   static const String authTokenKey = 'auth_token';
