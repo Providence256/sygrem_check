@@ -8,15 +8,23 @@ class QRCodeData with _$QRCodeData {
   const factory QRCodeData({
     required String typeRedevance,
     required String declarationNumero,
-    required String numero,
     required String dateEmission,
     required String navire,
     required String numeroOmi,
     required String numeroVoyage,
     required String nomClient,
-    required int montant,
     required String nzela,
+
     required int retour,
+
+    String? numero,
+    int? montant,
+
+    String? agentMaritime,
+    String? refLot,
+    String? portEmbarquement,
+    String? portDebarquement,
+    int? poidsDeclare,
   }) = _QRCodeData;
 
   factory QRCodeData.fromJson(Map<String, dynamic> json) =>
@@ -36,26 +44,6 @@ class SavedData with _$SavedData {
 
   factory SavedData.fromJson(Map<String, dynamic> json) =>
       _$SavedDataFromJson(json);
-}
-
-@freezed
-class ReceiptData with _$ReceiptData {
-  const factory ReceiptData({
-    required String id,
-    required String receiptNumber,
-    required String storeName,
-    required String storeAddress,
-    required DateTime date,
-    required List<ReceiptItem> items,
-    required double subtotal,
-    required double tax,
-    required double total,
-    required String paymentMethod,
-    String? pdfUrl,
-  }) = _ReceiptData;
-
-  factory ReceiptData.fromJson(Map<String, dynamic> json) =>
-      _$ReceiptDataFromJson(json);
 }
 
 @freezed

@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:qr_scanner/core/constants/app_colors.dart';
-import 'package:qr_scanner/features/documents/data/models/document_model.dart';
+import 'package:qr_scanner/features/documents/data/repository/document_repository.dart';
 import 'package:qr_scanner/features/scanner/presentation/pages/document_detail_page.dart';
 import 'package:qr_scanner/features/scanner/presentation/scanner_provider.dart';
 
 class QRScannerPage extends ConsumerStatefulWidget {
-  const QRScannerPage({super.key});
+  const QRScannerPage({super.key, required this.typeFacture});
+  final TypeFacture typeFacture;
 
   @override
   ConsumerState<QRScannerPage> createState() => _QRScannerPageState();
@@ -39,7 +40,7 @@ class _QRScannerPageState extends ConsumerState<QRScannerPage> {
 
     final result = await ref
         .read(scannerNotifierProvider.notifier)
-        .processQRCode(code);
+        .processQRCode(code, widget.typeFacture);
 
     if (!mounted) return;
 
@@ -50,7 +51,7 @@ class _QRScannerPageState extends ConsumerState<QRScannerPage> {
           MaterialPageRoute(
             builder: (context) => DocumentDetailPage(
               document: data,
-              isReceipt: data is ReceiptData,
+              typeFacture: widget.typeFacture,
             ),
           ),
         ).then((_) {
@@ -100,7 +101,7 @@ class _QRScannerPageState extends ConsumerState<QRScannerPage> {
         title: const Text('Scan QR Code'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.info_outline),
+            icon: const Icon(Icons.info_outline, color: Colors.white),
             onPressed: () {
               showDialog(
                 context: context,

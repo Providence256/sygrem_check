@@ -4,6 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:qr_scanner/core/constants/app_colors.dart';
 import 'package:qr_scanner/features/auth/presentation/auth_provider.dart';
 import 'package:qr_scanner/features/auth/presentation/pages/login_page.dart';
+import 'package:qr_scanner/features/documents/data/repository/document_repository.dart';
 import 'package:qr_scanner/features/scanner/presentation/pages/scanner_page.dart';
 
 class HomePage extends ConsumerWidget {
@@ -11,8 +12,8 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final authState = ref.watch(authNotifierProvider);
-    final userName = authState.value?.user.name ?? 'User';
+    final authState = ref.watch(userInfoProvider);
+    final userName = authState?.email ?? 'user';
 
     return Scaffold(
       body: Container(
@@ -53,8 +54,32 @@ class HomePage extends ConsumerWidget {
                         ),
                         const SizedBox(height: 48),
                         _buildScanButton(
-                          context,
-                        ).animate().fadeIn(delay: 400.ms).slideY(begin: 0.2),
+                          context: context,
+                          title: 'Scanner déclaration',
+                          color: AppColors.primaryColor,
+                          onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const QRScannerPage(
+                                typeFacture: TypeFacture.declaration,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 15),
+                        _buildScanButton(
+                          context: context,
+                          title: 'Scanner Attestation',
+                          color: AppColors.secondaryColor,
+                          onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const QRScannerPage(
+                                typeFacture: TypeFacture.attestation,
+                              ),
+                            ),
+                          ),
+                        ),
                         const SizedBox(height: 24),
                       ],
                     ),
@@ -79,71 +104,68 @@ class HomePage extends ConsumerWidget {
             children: [
               Text(
                 userName,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
-                  fontSize: 20,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 4),
-              Text(
-                'Prêt à scanner?',
-                style: TextStyle(fontSize: 14, color: Colors.grey[600]),
-              ),
             ],
           ),
-          // IconButton(
-          //   icon: Container(
-          //     padding: const EdgeInsets.all(8),
-          //     decoration: BoxDecoration(
-          //       color: Colors.red.withValues(alpha: 0.1),
-          //       shape: BoxShape.circle,
-          //     ),
-          //     child: const Icon(Icons.logout, color: Colors.red),
-          //   ),
-          //   onPressed: () async {
-          //     final confirm = await showDialog<bool>(
-          //       context: context,
-          //       builder: (context) => AlertDialog(
-          //         shape: RoundedRectangleBorder(
-          //           borderRadius: BorderRadius.circular(16),
-          //         ),
-          //         title: const Text('Se Déconnecter'),
-          //         content: const Text(
-          //           'Êtes-vous sûr de vouloir vous déconnecter ?',
-          //         ),
-          //         actions: [
-          //           TextButton(
-          //             onPressed: () => Navigator.pop(context, false),
-          //             child: const Text('Annuler'),
-          //           ),
-          //           ElevatedButton(
-          //             onPressed: () => Navigator.pop(context, true),
-          //             style: ElevatedButton.styleFrom(
-          //               backgroundColor: Colors.red,
-          //             ),
-          //             child: const Text(
-          //               'Déconnecter',
-          //               style: TextStyle(
-          //                 fontSize: 14,
-          //                 fontWeight: FontWeight.bold,
-          //               ),
-          //             ),
-          //           ),
-          //         ],
-          //       ),
-          //     );
+          IconButton(
+            icon: Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.red.withValues(alpha: 0.1),
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(Icons.logout, color: Colors.red),
+            ),
+            onPressed: () async {
+              final confirm = await showDialog<bool>(
+                context: context,
+                builder: (context) => AlertDialog(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  title: const Text('Se Déconnecter'),
+                  content: const Text(
+                    'Êtes-vous sûr de vouloir vous déconnecter ?',
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context, false),
+                      child: const Text('Annuler'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () => Navigator.pop(context, true),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                      ),
+                      child: const Text(
+                        'Déconnecter',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
 
-          //     if (confirm == true) {
-          //       await ref.read(authNotifierProvider.notifier).logout();
-          //       if (context.mounted) {
-          //         Navigator.pushReplacement(
-          //           context,
-          //           MaterialPageRoute(builder: (context) => const LoginPage()),
-          //         );
-          //       }
-          //     }
-          //   },
-          // ),
+              if (confirm == true) {
+                await ref.read(authNotifierProvider.notifier).logout();
+                if (context.mounted) {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LoginPage()),
+                  );
+                }
+              }
+            },
+          ),
         ],
       ),
     );
@@ -178,12 +200,17 @@ class HomePage extends ConsumerWidget {
     );
   }
 
-  Widget _buildScanButton(BuildContext context) {
+  Widget _buildScanButton({
+    required BuildContext context,
+    required String title,
+    required VoidCallback onPressed,
+    required Color color,
+  }) {
     return Container(
       width: double.infinity,
-      height: 70,
+      height: 60,
       decoration: BoxDecoration(
-        color: AppColors.primaryColor,
+        color: color,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -195,12 +222,7 @@ class HomePage extends ConsumerWidget {
         ],
       ),
       child: ElevatedButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const QRScannerPage()),
-          );
-        },
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
@@ -213,9 +235,9 @@ class HomePage extends ConsumerWidget {
           children: [
             const Icon(Icons.qr_code_scanner, size: 32),
             const SizedBox(width: 12),
-            const Text(
-              'Scanner Code QR',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            Text(
+              title,
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ],
         ),

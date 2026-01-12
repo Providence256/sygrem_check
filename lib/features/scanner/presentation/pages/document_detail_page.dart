@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qr_scanner/features/documents/data/models/document_model.dart';
+import 'package:qr_scanner/features/documents/data/repository/document_repository.dart';
+import 'package:qr_scanner/features/scanner/presentation/pages/pdf_viewer_page.dart';
 import 'package:qr_scanner/features/scanner/presentation/pages/widgets/attestation_container.dart';
 import 'package:qr_scanner/features/scanner/presentation/pages/widgets/declaration_container.dart';
 
 class DocumentDetailPage extends ConsumerWidget {
-  final QRCodeData document;
-  final bool isReceipt;
-
   const DocumentDetailPage({
     super.key,
     required this.document,
-    required this.isReceipt,
+    required this.typeFacture,
   });
+
+  final QRCodeData document;
+  final TypeFacture typeFacture;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -26,7 +28,6 @@ class DocumentDetailPage extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.share),
             onPressed: () {
-              // Logique de partage ici
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text('Fonctionnalité de partage à venir'),
@@ -76,9 +77,9 @@ class DocumentDetailPage extends ConsumerWidget {
             ),
 
             // Corps du reçu
-            document.typeRedevance == "FMR"
+            typeFacture == TypeFacture.declaration
                 ? DeclarationContainer(document: document)
-                : AttestationContainer(),
+                : AttestationContainer(document: document),
 
             // Boutons d'action
             Padding(
@@ -90,10 +91,11 @@ class DocumentDetailPage extends ConsumerWidget {
                     height: 50,
                     child: ElevatedButton.icon(
                       onPressed: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Reçu sauvegardé avec succès'),
-                            backgroundColor: Colors.green,
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                PDFViewerPage(documentId: document.nzela),
                           ),
                         );
                       },

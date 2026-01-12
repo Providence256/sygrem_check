@@ -239,7 +239,7 @@ VerifyCodeRequest _$VerifyCodeRequestFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$VerifyCodeRequest {
   String get email => throw _privateConstructorUsedError;
-  String get code => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
 
   /// Serializes this VerifyCodeRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -258,7 +258,7 @@ abstract class $VerifyCodeRequestCopyWith<$Res> {
     $Res Function(VerifyCodeRequest) then,
   ) = _$VerifyCodeRequestCopyWithImpl<$Res, VerifyCodeRequest>;
   @useResult
-  $Res call({String email, String code});
+  $Res call({String email, String password});
 }
 
 /// @nodoc
@@ -275,16 +275,16 @@ class _$VerifyCodeRequestCopyWithImpl<$Res, $Val extends VerifyCodeRequest>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? email = null, Object? code = null}) {
+  $Res call({Object? email = null, Object? password = null}) {
     return _then(
       _value.copyWith(
             email: null == email
                 ? _value.email
                 : email // ignore: cast_nullable_to_non_nullable
                       as String,
-            code: null == code
-                ? _value.code
-                : code // ignore: cast_nullable_to_non_nullable
+            password: null == password
+                ? _value.password
+                : password // ignore: cast_nullable_to_non_nullable
                       as String,
           )
           as $Val,
@@ -301,7 +301,7 @@ abstract class _$$VerifyCodeRequestImplCopyWith<$Res>
   ) = __$$VerifyCodeRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String email, String code});
+  $Res call({String email, String password});
 }
 
 /// @nodoc
@@ -317,16 +317,16 @@ class __$$VerifyCodeRequestImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? email = null, Object? code = null}) {
+  $Res call({Object? email = null, Object? password = null}) {
     return _then(
       _$VerifyCodeRequestImpl(
         email: null == email
             ? _value.email
             : email // ignore: cast_nullable_to_non_nullable
                   as String,
-        code: null == code
-            ? _value.code
-            : code // ignore: cast_nullable_to_non_nullable
+        password: null == password
+            ? _value.password
+            : password // ignore: cast_nullable_to_non_nullable
                   as String,
       ),
     );
@@ -336,7 +336,7 @@ class __$$VerifyCodeRequestImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$VerifyCodeRequestImpl implements _VerifyCodeRequest {
-  const _$VerifyCodeRequestImpl({required this.email, required this.code});
+  const _$VerifyCodeRequestImpl({required this.email, required this.password});
 
   factory _$VerifyCodeRequestImpl.fromJson(Map<String, dynamic> json) =>
       _$$VerifyCodeRequestImplFromJson(json);
@@ -344,11 +344,11 @@ class _$VerifyCodeRequestImpl implements _VerifyCodeRequest {
   @override
   final String email;
   @override
-  final String code;
+  final String password;
 
   @override
   String toString() {
-    return 'VerifyCodeRequest(email: $email, code: $code)';
+    return 'VerifyCodeRequest(email: $email, password: $password)';
   }
 
   @override
@@ -357,12 +357,13 @@ class _$VerifyCodeRequestImpl implements _VerifyCodeRequest {
         (other.runtimeType == runtimeType &&
             other is _$VerifyCodeRequestImpl &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.code, code) || other.code == code));
+            (identical(other.password, password) ||
+                other.password == password));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, email, code);
+  int get hashCode => Object.hash(runtimeType, email, password);
 
   /// Create a copy of VerifyCodeRequest
   /// with the given fields replaced by the non-null parameter values.
@@ -384,7 +385,7 @@ class _$VerifyCodeRequestImpl implements _VerifyCodeRequest {
 abstract class _VerifyCodeRequest implements VerifyCodeRequest {
   const factory _VerifyCodeRequest({
     required final String email,
-    required final String code,
+    required final String password,
   }) = _$VerifyCodeRequestImpl;
 
   factory _VerifyCodeRequest.fromJson(Map<String, dynamic> json) =
@@ -393,7 +394,7 @@ abstract class _VerifyCodeRequest implements VerifyCodeRequest {
   @override
   String get email;
   @override
-  String get code;
+  String get password;
 
   /// Create a copy of VerifyCodeRequest
   /// with the given fields replaced by the non-null parameter values.
@@ -403,227 +404,16 @@ abstract class _VerifyCodeRequest implements VerifyCodeRequest {
       throw _privateConstructorUsedError;
 }
 
-AuthResponse _$AuthResponseFromJson(Map<String, dynamic> json) {
-  return _AuthResponse.fromJson(json);
-}
-
-/// @nodoc
-mixin _$AuthResponse {
-  String get token => throw _privateConstructorUsedError;
-  UserData get user => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
-
-  /// Serializes this AuthResponse to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of AuthResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $AuthResponseCopyWith<AuthResponse> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $AuthResponseCopyWith<$Res> {
-  factory $AuthResponseCopyWith(
-    AuthResponse value,
-    $Res Function(AuthResponse) then,
-  ) = _$AuthResponseCopyWithImpl<$Res, AuthResponse>;
-  @useResult
-  $Res call({String token, UserData user, String message});
-
-  $UserDataCopyWith<$Res> get user;
-}
-
-/// @nodoc
-class _$AuthResponseCopyWithImpl<$Res, $Val extends AuthResponse>
-    implements $AuthResponseCopyWith<$Res> {
-  _$AuthResponseCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of AuthResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? token = null,
-    Object? user = null,
-    Object? message = null,
-  }) {
-    return _then(
-      _value.copyWith(
-            token: null == token
-                ? _value.token
-                : token // ignore: cast_nullable_to_non_nullable
-                      as String,
-            user: null == user
-                ? _value.user
-                : user // ignore: cast_nullable_to_non_nullable
-                      as UserData,
-            message: null == message
-                ? _value.message
-                : message // ignore: cast_nullable_to_non_nullable
-                      as String,
-          )
-          as $Val,
-    );
-  }
-
-  /// Create a copy of AuthResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserDataCopyWith<$Res> get user {
-    return $UserDataCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$AuthResponseImplCopyWith<$Res>
-    implements $AuthResponseCopyWith<$Res> {
-  factory _$$AuthResponseImplCopyWith(
-    _$AuthResponseImpl value,
-    $Res Function(_$AuthResponseImpl) then,
-  ) = __$$AuthResponseImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String token, UserData user, String message});
-
-  @override
-  $UserDataCopyWith<$Res> get user;
-}
-
-/// @nodoc
-class __$$AuthResponseImplCopyWithImpl<$Res>
-    extends _$AuthResponseCopyWithImpl<$Res, _$AuthResponseImpl>
-    implements _$$AuthResponseImplCopyWith<$Res> {
-  __$$AuthResponseImplCopyWithImpl(
-    _$AuthResponseImpl _value,
-    $Res Function(_$AuthResponseImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of AuthResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? token = null,
-    Object? user = null,
-    Object? message = null,
-  }) {
-    return _then(
-      _$AuthResponseImpl(
-        token: null == token
-            ? _value.token
-            : token // ignore: cast_nullable_to_non_nullable
-                  as String,
-        user: null == user
-            ? _value.user
-            : user // ignore: cast_nullable_to_non_nullable
-                  as UserData,
-        message: null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$AuthResponseImpl implements _AuthResponse {
-  const _$AuthResponseImpl({
-    required this.token,
-    required this.user,
-    this.message = '',
-  });
-
-  factory _$AuthResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AuthResponseImplFromJson(json);
-
-  @override
-  final String token;
-  @override
-  final UserData user;
-  @override
-  @JsonKey()
-  final String message;
-
-  @override
-  String toString() {
-    return 'AuthResponse(token: $token, user: $user, message: $message)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AuthResponseImpl &&
-            (identical(other.token, token) || other.token == token) &&
-            (identical(other.user, user) || other.user == user) &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, token, user, message);
-
-  /// Create a copy of AuthResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AuthResponseImplCopyWith<_$AuthResponseImpl> get copyWith =>
-      __$$AuthResponseImplCopyWithImpl<_$AuthResponseImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AuthResponseImplToJson(this);
-  }
-}
-
-abstract class _AuthResponse implements AuthResponse {
-  const factory _AuthResponse({
-    required final String token,
-    required final UserData user,
-    final String message,
-  }) = _$AuthResponseImpl;
-
-  factory _AuthResponse.fromJson(Map<String, dynamic> json) =
-      _$AuthResponseImpl.fromJson;
-
-  @override
-  String get token;
-  @override
-  UserData get user;
-  @override
-  String get message;
-
-  /// Create a copy of AuthResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AuthResponseImplCopyWith<_$AuthResponseImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
 UserData _$UserDataFromJson(Map<String, dynamic> json) {
   return _UserData.fromJson(json);
 }
 
 /// @nodoc
 mixin _$UserData {
-  String get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String? get avatar => throw _privateConstructorUsedError;
+  String get role => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
+  DateTime get expiresAt => throw _privateConstructorUsedError;
 
   /// Serializes this UserData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -640,7 +430,7 @@ abstract class $UserDataCopyWith<$Res> {
   factory $UserDataCopyWith(UserData value, $Res Function(UserData) then) =
       _$UserDataCopyWithImpl<$Res, UserData>;
   @useResult
-  $Res call({String id, String email, String name, String? avatar});
+  $Res call({String email, String role, String userId, DateTime expiresAt});
 }
 
 /// @nodoc
@@ -658,29 +448,29 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? email = null,
-    Object? name = null,
-    Object? avatar = freezed,
+    Object? role = null,
+    Object? userId = null,
+    Object? expiresAt = null,
   }) {
     return _then(
       _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
             email: null == email
                 ? _value.email
                 : email // ignore: cast_nullable_to_non_nullable
                       as String,
-            name: null == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
+            role: null == role
+                ? _value.role
+                : role // ignore: cast_nullable_to_non_nullable
                       as String,
-            avatar: freezed == avatar
-                ? _value.avatar
-                : avatar // ignore: cast_nullable_to_non_nullable
-                      as String?,
+            userId: null == userId
+                ? _value.userId
+                : userId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            expiresAt: null == expiresAt
+                ? _value.expiresAt
+                : expiresAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
           )
           as $Val,
     );
@@ -696,7 +486,7 @@ abstract class _$$UserDataImplCopyWith<$Res>
   ) = __$$UserDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String email, String name, String? avatar});
+  $Res call({String email, String role, String userId, DateTime expiresAt});
 }
 
 /// @nodoc
@@ -713,29 +503,29 @@ class __$$UserDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? email = null,
-    Object? name = null,
-    Object? avatar = freezed,
+    Object? role = null,
+    Object? userId = null,
+    Object? expiresAt = null,
   }) {
     return _then(
       _$UserDataImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
         email: null == email
             ? _value.email
             : email // ignore: cast_nullable_to_non_nullable
                   as String,
-        name: null == name
-            ? _value.name
-            : name // ignore: cast_nullable_to_non_nullable
+        role: null == role
+            ? _value.role
+            : role // ignore: cast_nullable_to_non_nullable
                   as String,
-        avatar: freezed == avatar
-            ? _value.avatar
-            : avatar // ignore: cast_nullable_to_non_nullable
-                  as String?,
+        userId: null == userId
+            ? _value.userId
+            : userId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        expiresAt: null == expiresAt
+            ? _value.expiresAt
+            : expiresAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
       ),
     );
   }
@@ -745,27 +535,27 @@ class __$$UserDataImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserDataImpl implements _UserData {
   const _$UserDataImpl({
-    required this.id,
     required this.email,
-    required this.name,
-    this.avatar,
+    required this.role,
+    required this.userId,
+    required this.expiresAt,
   });
 
   factory _$UserDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserDataImplFromJson(json);
 
   @override
-  final String id;
-  @override
   final String email;
   @override
-  final String name;
+  final String role;
   @override
-  final String? avatar;
+  final String userId;
+  @override
+  final DateTime expiresAt;
 
   @override
   String toString() {
-    return 'UserData(id: $id, email: $email, name: $name, avatar: $avatar)';
+    return 'UserData(email: $email, role: $role, userId: $userId, expiresAt: $expiresAt)';
   }
 
   @override
@@ -773,15 +563,16 @@ class _$UserDataImpl implements _UserData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserDataImpl &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.avatar, avatar) || other.avatar == avatar));
+            (identical(other.role, role) || other.role == role) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.expiresAt, expiresAt) ||
+                other.expiresAt == expiresAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, email, name, avatar);
+  int get hashCode => Object.hash(runtimeType, email, role, userId, expiresAt);
 
   /// Create a copy of UserData
   /// with the given fields replaced by the non-null parameter values.
@@ -799,23 +590,23 @@ class _$UserDataImpl implements _UserData {
 
 abstract class _UserData implements UserData {
   const factory _UserData({
-    required final String id,
     required final String email,
-    required final String name,
-    final String? avatar,
+    required final String role,
+    required final String userId,
+    required final DateTime expiresAt,
   }) = _$UserDataImpl;
 
   factory _UserData.fromJson(Map<String, dynamic> json) =
       _$UserDataImpl.fromJson;
 
   @override
-  String get id;
-  @override
   String get email;
   @override
-  String get name;
+  String get role;
   @override
-  String? get avatar;
+  String get userId;
+  @override
+  DateTime get expiresAt;
 
   /// Create a copy of UserData
   /// with the given fields replaced by the non-null parameter values.

@@ -10,27 +10,24 @@ final documentRepositoryProvider = Provider<DocumentRepository>((ref) {
   return DocumentRepository(ref.read(dioClientProvider));
 });
 
+enum TypeFacture {
+  declaration,
+  attestation;
+
+  String get endPoint {
+    switch (this) {
+      case TypeFacture.declaration:
+        return AppConstants.getDeclarationQrcodeEndpoint;
+      case TypeFacture.attestation:
+        return AppConstants.getAttestationQrcodeEndpoint;
+    }
+  }
+}
+
 class DocumentRepository {
   final DioClient _dioClient;
 
   DocumentRepository(this._dioClient);
-
-  Future<Result<ReceiptData>> getReceiptById(String id) async {
-    try {
-      final response = await _dioClient.get(
-        '${AppConstants.receiptEndpoint}/$id',
-      );
-
-      return Result.success(ReceiptData.fromJson(response.data['data']));
-    } on DioException catch (e) {
-      return Result.failure(
-        e.response?.data['message'] ?? 'Failed to fetch receipt',
-        code: e.response?.statusCode.toString(),
-      );
-    } catch (e) {
-      return Result.failure('An unexpected error occurred');
-    }
-  }
 
   Future<Result<DeclarationData>> getDeclarationById(String id) async {
     try {
@@ -50,13 +47,13 @@ class DocumentRepository {
   }
 
   Future<Result<String>> downloadPDF(
-    String pdfUrl,
-    String filename,
+    String id,
     void Function(int, int)? onProgress,
   ) async {
     try {
+      final pdfUrl = AppConstants.getpdfdocument;
       final directory = await getApplicationDocumentsDirectory();
-      final savePath = '${directory.path}/$filename';
+      final savePath = '${directory.path}/$id';
 
       await _dioClient.download(
         pdfUrl,
@@ -75,10 +72,13 @@ class DocumentRepository {
     }
   }
 
-  Future<Result<QRCodeData>> parseQRCode(String qrCodeString) async {
+  Future<Result<QRCodeData>> parseQRCode(
+    String qrCodeString,
+    TypeFacture typeFacture,
+  ) async {
     try {
       final response = await _dioClient.get(
-        AppConstants.getQrcodeEndpoint,
+        typeFacture.endPoint,
         queryParameters: {"id": qrCodeString},
       );
 

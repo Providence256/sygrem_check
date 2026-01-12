@@ -26,41 +26,27 @@ _$VerifyCodeRequestImpl _$$VerifyCodeRequestImplFromJson(
   Map<String, dynamic> json,
 ) => _$VerifyCodeRequestImpl(
   email: json['email'] as String,
-  code: json['code'] as String,
+  password: json['password'] as String,
 );
 
 Map<String, dynamic> _$$VerifyCodeRequestImplToJson(
   _$VerifyCodeRequestImpl instance,
-) => <String, dynamic>{'email': instance.email, 'code': instance.code};
-
-_$AuthResponseImpl _$$AuthResponseImplFromJson(Map<String, dynamic> json) =>
-    _$AuthResponseImpl(
-      token: json['token'] as String,
-      user: UserData.fromJson(json['user'] as Map<String, dynamic>),
-      message: json['message'] as String? ?? '',
-    );
-
-Map<String, dynamic> _$$AuthResponseImplToJson(_$AuthResponseImpl instance) =>
-    <String, dynamic>{
-      'token': instance.token,
-      'user': instance.user,
-      'message': instance.message,
-    };
+) => <String, dynamic>{'email': instance.email, 'password': instance.password};
 
 _$UserDataImpl _$$UserDataImplFromJson(Map<String, dynamic> json) =>
     _$UserDataImpl(
-      id: json['id'] as String,
       email: json['email'] as String,
-      name: json['name'] as String,
-      avatar: json['avatar'] as String?,
+      role: json['role'] as String,
+      userId: json['userId'] as String,
+      expiresAt: DateTime.parse(json['expiresAt'] as String),
     );
 
 Map<String, dynamic> _$$UserDataImplToJson(_$UserDataImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'email': instance.email,
-      'name': instance.name,
-      'avatar': instance.avatar,
+      'role': instance.role,
+      'userId': instance.userId,
+      'expiresAt': instance.expiresAt.toIso8601String(),
     };
 
 _$GenerateCodeResponseImpl _$$GenerateCodeResponseImplFromJson(

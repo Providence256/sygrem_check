@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:qr_scanner/core/constants/app_colors.dart';
 import 'package:qr_scanner/features/auth/presentation/auth_provider.dart';
-import 'package:qr_scanner/features/home/presentation/pages/home_page.dart';
+import 'package:qr_scanner/main_home_screen.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});
@@ -40,14 +40,14 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
     final result = await ref
         .read(authNotifierProvider.notifier)
-        .generateCode(_emailController.text);
+        .login(_emailController.text, _passwordController.text, '');
 
     setState(() => _isGeneratingCode = false);
 
     result.when(
       success: (data) {
         setState(() => _isCodeSent = true);
-        _showSnackBar(data.message);
+        _showSnackBar('check your mail box to get the code');
       },
       failure: (message, _) {
         setState(() => _isCodeSent = true);
@@ -72,7 +72,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
       success: (data) {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const HomePage()),
+          MaterialPageRoute(builder: (context) => const MainHomeScreen()),
         );
       },
       failure: (message, _) {

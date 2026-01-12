@@ -30,8 +30,6 @@ class DioClient {
         final client = HttpClient();
         client.badCertificateCallback =
             (X509Certificate cert, String host, int port) {
-              // Print certificate info if you want:
-              print("⚠️ WARNING: Accepting bad certificate from $host");
               return true; // Accept ANY certificate
             };
         return client;

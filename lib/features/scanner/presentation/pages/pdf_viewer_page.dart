@@ -4,10 +4,9 @@ import 'package:qr_scanner/core/constants/app_colors.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class PDFViewerPage extends ConsumerStatefulWidget {
-  final String pdfUrl;
-  final String title;
+  final String documentId;
 
-  const PDFViewerPage({super.key, required this.pdfUrl, required this.title});
+  const PDFViewerPage({super.key, required this.documentId});
 
   @override
   ConsumerState<PDFViewerPage> createState() => _PDFViewerPageState();
@@ -32,7 +31,6 @@ class _PDFViewerPageState extends ConsumerState<PDFViewerPage> {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(widget.title, style: const TextStyle(fontSize: 16)),
             if (_totalPages > 0)
               Text(
                 'Page $_currentPage of $_totalPages',
@@ -97,7 +95,7 @@ class _PDFViewerPageState extends ConsumerState<PDFViewerPage> {
       body: Stack(
         children: [
           SfPdfViewer.network(
-            widget.pdfUrl,
+            widget.documentId,
             controller: _pdfController,
             onDocumentLoaded: (PdfDocumentLoadedDetails details) {
               setState(() {

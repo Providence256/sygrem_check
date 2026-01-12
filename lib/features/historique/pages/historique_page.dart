@@ -4,8 +4,6 @@ import 'package:qr_scanner/common/app_header.dart';
 import 'package:qr_scanner/core/constants/app_colors.dart';
 import 'package:qr_scanner/core/storage/database_helper.dart';
 import 'package:qr_scanner/features/documents/data/models/document_model.dart';
-import 'package:qr_scanner/features/scanner/presentation/pages/document_detail_page.dart';
-import 'package:qr_scanner/features/scanner/presentation/scanner_provider.dart';
 
 class HistoriquePage extends StatefulWidget {
   const HistoriquePage({super.key});
@@ -184,30 +182,7 @@ class HistoryCard extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.remove_red_eye_outlined),
             color: Colors.black54,
-            onPressed: () async {
-              final notifier = ref.read(scannerNotifierProvider.notifier);
-              final result = await notifier.processQRCode(file.scanUrl);
-
-              result.when(
-                success: (data) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => DocumentDetailPage(
-                        document: data,
-                        isReceipt: data is ReceiptData,
-                      ),
-                    ),
-                  );
-                },
-                failure: (message, _) {
-                  ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(SnackBar(content: Text(message)));
-                },
-                loading: () => Center(child: CircularProgressIndicator()),
-              );
-            },
+            onPressed: () {},
           ),
         ],
       ),

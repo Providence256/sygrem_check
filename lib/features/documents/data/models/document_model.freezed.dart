@@ -23,15 +23,20 @@ QRCodeData _$QRCodeDataFromJson(Map<String, dynamic> json) {
 mixin _$QRCodeData {
   String get typeRedevance => throw _privateConstructorUsedError;
   String get declarationNumero => throw _privateConstructorUsedError;
-  String get numero => throw _privateConstructorUsedError;
   String get dateEmission => throw _privateConstructorUsedError;
   String get navire => throw _privateConstructorUsedError;
   String get numeroOmi => throw _privateConstructorUsedError;
   String get numeroVoyage => throw _privateConstructorUsedError;
   String get nomClient => throw _privateConstructorUsedError;
-  int get montant => throw _privateConstructorUsedError;
   String get nzela => throw _privateConstructorUsedError;
   int get retour => throw _privateConstructorUsedError;
+  String? get numero => throw _privateConstructorUsedError;
+  int? get montant => throw _privateConstructorUsedError;
+  String? get agentMaritime => throw _privateConstructorUsedError;
+  String? get refLot => throw _privateConstructorUsedError;
+  String? get portEmbarquement => throw _privateConstructorUsedError;
+  String? get portDebarquement => throw _privateConstructorUsedError;
+  int? get poidsDeclare => throw _privateConstructorUsedError;
 
   /// Serializes this QRCodeData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -53,15 +58,20 @@ abstract class $QRCodeDataCopyWith<$Res> {
   $Res call({
     String typeRedevance,
     String declarationNumero,
-    String numero,
     String dateEmission,
     String navire,
     String numeroOmi,
     String numeroVoyage,
     String nomClient,
-    int montant,
     String nzela,
     int retour,
+    String? numero,
+    int? montant,
+    String? agentMaritime,
+    String? refLot,
+    String? portEmbarquement,
+    String? portDebarquement,
+    int? poidsDeclare,
   });
 }
 
@@ -82,15 +92,20 @@ class _$QRCodeDataCopyWithImpl<$Res, $Val extends QRCodeData>
   $Res call({
     Object? typeRedevance = null,
     Object? declarationNumero = null,
-    Object? numero = null,
     Object? dateEmission = null,
     Object? navire = null,
     Object? numeroOmi = null,
     Object? numeroVoyage = null,
     Object? nomClient = null,
-    Object? montant = null,
     Object? nzela = null,
     Object? retour = null,
+    Object? numero = freezed,
+    Object? montant = freezed,
+    Object? agentMaritime = freezed,
+    Object? refLot = freezed,
+    Object? portEmbarquement = freezed,
+    Object? portDebarquement = freezed,
+    Object? poidsDeclare = freezed,
   }) {
     return _then(
       _value.copyWith(
@@ -101,10 +116,6 @@ class _$QRCodeDataCopyWithImpl<$Res, $Val extends QRCodeData>
             declarationNumero: null == declarationNumero
                 ? _value.declarationNumero
                 : declarationNumero // ignore: cast_nullable_to_non_nullable
-                      as String,
-            numero: null == numero
-                ? _value.numero
-                : numero // ignore: cast_nullable_to_non_nullable
                       as String,
             dateEmission: null == dateEmission
                 ? _value.dateEmission
@@ -126,10 +137,6 @@ class _$QRCodeDataCopyWithImpl<$Res, $Val extends QRCodeData>
                 ? _value.nomClient
                 : nomClient // ignore: cast_nullable_to_non_nullable
                       as String,
-            montant: null == montant
-                ? _value.montant
-                : montant // ignore: cast_nullable_to_non_nullable
-                      as int,
             nzela: null == nzela
                 ? _value.nzela
                 : nzela // ignore: cast_nullable_to_non_nullable
@@ -138,6 +145,34 @@ class _$QRCodeDataCopyWithImpl<$Res, $Val extends QRCodeData>
                 ? _value.retour
                 : retour // ignore: cast_nullable_to_non_nullable
                       as int,
+            numero: freezed == numero
+                ? _value.numero
+                : numero // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            montant: freezed == montant
+                ? _value.montant
+                : montant // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            agentMaritime: freezed == agentMaritime
+                ? _value.agentMaritime
+                : agentMaritime // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            refLot: freezed == refLot
+                ? _value.refLot
+                : refLot // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            portEmbarquement: freezed == portEmbarquement
+                ? _value.portEmbarquement
+                : portEmbarquement // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            portDebarquement: freezed == portDebarquement
+                ? _value.portDebarquement
+                : portDebarquement // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            poidsDeclare: freezed == poidsDeclare
+                ? _value.poidsDeclare
+                : poidsDeclare // ignore: cast_nullable_to_non_nullable
+                      as int?,
           )
           as $Val,
     );
@@ -156,15 +191,20 @@ abstract class _$$QRCodeDataImplCopyWith<$Res>
   $Res call({
     String typeRedevance,
     String declarationNumero,
-    String numero,
     String dateEmission,
     String navire,
     String numeroOmi,
     String numeroVoyage,
     String nomClient,
-    int montant,
     String nzela,
     int retour,
+    String? numero,
+    int? montant,
+    String? agentMaritime,
+    String? refLot,
+    String? portEmbarquement,
+    String? portDebarquement,
+    int? poidsDeclare,
   });
 }
 
@@ -184,15 +224,20 @@ class __$$QRCodeDataImplCopyWithImpl<$Res>
   $Res call({
     Object? typeRedevance = null,
     Object? declarationNumero = null,
-    Object? numero = null,
     Object? dateEmission = null,
     Object? navire = null,
     Object? numeroOmi = null,
     Object? numeroVoyage = null,
     Object? nomClient = null,
-    Object? montant = null,
     Object? nzela = null,
     Object? retour = null,
+    Object? numero = freezed,
+    Object? montant = freezed,
+    Object? agentMaritime = freezed,
+    Object? refLot = freezed,
+    Object? portEmbarquement = freezed,
+    Object? portDebarquement = freezed,
+    Object? poidsDeclare = freezed,
   }) {
     return _then(
       _$QRCodeDataImpl(
@@ -203,10 +248,6 @@ class __$$QRCodeDataImplCopyWithImpl<$Res>
         declarationNumero: null == declarationNumero
             ? _value.declarationNumero
             : declarationNumero // ignore: cast_nullable_to_non_nullable
-                  as String,
-        numero: null == numero
-            ? _value.numero
-            : numero // ignore: cast_nullable_to_non_nullable
                   as String,
         dateEmission: null == dateEmission
             ? _value.dateEmission
@@ -228,10 +269,6 @@ class __$$QRCodeDataImplCopyWithImpl<$Res>
             ? _value.nomClient
             : nomClient // ignore: cast_nullable_to_non_nullable
                   as String,
-        montant: null == montant
-            ? _value.montant
-            : montant // ignore: cast_nullable_to_non_nullable
-                  as int,
         nzela: null == nzela
             ? _value.nzela
             : nzela // ignore: cast_nullable_to_non_nullable
@@ -240,6 +277,34 @@ class __$$QRCodeDataImplCopyWithImpl<$Res>
             ? _value.retour
             : retour // ignore: cast_nullable_to_non_nullable
                   as int,
+        numero: freezed == numero
+            ? _value.numero
+            : numero // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        montant: freezed == montant
+            ? _value.montant
+            : montant // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        agentMaritime: freezed == agentMaritime
+            ? _value.agentMaritime
+            : agentMaritime // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        refLot: freezed == refLot
+            ? _value.refLot
+            : refLot // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        portEmbarquement: freezed == portEmbarquement
+            ? _value.portEmbarquement
+            : portEmbarquement // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        portDebarquement: freezed == portDebarquement
+            ? _value.portDebarquement
+            : portDebarquement // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        poidsDeclare: freezed == poidsDeclare
+            ? _value.poidsDeclare
+            : poidsDeclare // ignore: cast_nullable_to_non_nullable
+                  as int?,
       ),
     );
   }
@@ -251,15 +316,20 @@ class _$QRCodeDataImpl implements _QRCodeData {
   const _$QRCodeDataImpl({
     required this.typeRedevance,
     required this.declarationNumero,
-    required this.numero,
     required this.dateEmission,
     required this.navire,
     required this.numeroOmi,
     required this.numeroVoyage,
     required this.nomClient,
-    required this.montant,
     required this.nzela,
     required this.retour,
+    this.numero,
+    this.montant,
+    this.agentMaritime,
+    this.refLot,
+    this.portEmbarquement,
+    this.portDebarquement,
+    this.poidsDeclare,
   });
 
   factory _$QRCodeDataImpl.fromJson(Map<String, dynamic> json) =>
@@ -269,8 +339,6 @@ class _$QRCodeDataImpl implements _QRCodeData {
   final String typeRedevance;
   @override
   final String declarationNumero;
-  @override
-  final String numero;
   @override
   final String dateEmission;
   @override
@@ -282,15 +350,27 @@ class _$QRCodeDataImpl implements _QRCodeData {
   @override
   final String nomClient;
   @override
-  final int montant;
-  @override
   final String nzela;
   @override
   final int retour;
+  @override
+  final String? numero;
+  @override
+  final int? montant;
+  @override
+  final String? agentMaritime;
+  @override
+  final String? refLot;
+  @override
+  final String? portEmbarquement;
+  @override
+  final String? portDebarquement;
+  @override
+  final int? poidsDeclare;
 
   @override
   String toString() {
-    return 'QRCodeData(typeRedevance: $typeRedevance, declarationNumero: $declarationNumero, numero: $numero, dateEmission: $dateEmission, navire: $navire, numeroOmi: $numeroOmi, numeroVoyage: $numeroVoyage, nomClient: $nomClient, montant: $montant, nzela: $nzela, retour: $retour)';
+    return 'QRCodeData(typeRedevance: $typeRedevance, declarationNumero: $declarationNumero, dateEmission: $dateEmission, navire: $navire, numeroOmi: $numeroOmi, numeroVoyage: $numeroVoyage, nomClient: $nomClient, nzela: $nzela, retour: $retour, numero: $numero, montant: $montant, agentMaritime: $agentMaritime, refLot: $refLot, portEmbarquement: $portEmbarquement, portDebarquement: $portDebarquement, poidsDeclare: $poidsDeclare)';
   }
 
   @override
@@ -302,7 +382,6 @@ class _$QRCodeDataImpl implements _QRCodeData {
                 other.typeRedevance == typeRedevance) &&
             (identical(other.declarationNumero, declarationNumero) ||
                 other.declarationNumero == declarationNumero) &&
-            (identical(other.numero, numero) || other.numero == numero) &&
             (identical(other.dateEmission, dateEmission) ||
                 other.dateEmission == dateEmission) &&
             (identical(other.navire, navire) || other.navire == navire) &&
@@ -312,9 +391,19 @@ class _$QRCodeDataImpl implements _QRCodeData {
                 other.numeroVoyage == numeroVoyage) &&
             (identical(other.nomClient, nomClient) ||
                 other.nomClient == nomClient) &&
-            (identical(other.montant, montant) || other.montant == montant) &&
             (identical(other.nzela, nzela) || other.nzela == nzela) &&
-            (identical(other.retour, retour) || other.retour == retour));
+            (identical(other.retour, retour) || other.retour == retour) &&
+            (identical(other.numero, numero) || other.numero == numero) &&
+            (identical(other.montant, montant) || other.montant == montant) &&
+            (identical(other.agentMaritime, agentMaritime) ||
+                other.agentMaritime == agentMaritime) &&
+            (identical(other.refLot, refLot) || other.refLot == refLot) &&
+            (identical(other.portEmbarquement, portEmbarquement) ||
+                other.portEmbarquement == portEmbarquement) &&
+            (identical(other.portDebarquement, portDebarquement) ||
+                other.portDebarquement == portDebarquement) &&
+            (identical(other.poidsDeclare, poidsDeclare) ||
+                other.poidsDeclare == poidsDeclare));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -323,15 +412,20 @@ class _$QRCodeDataImpl implements _QRCodeData {
     runtimeType,
     typeRedevance,
     declarationNumero,
-    numero,
     dateEmission,
     navire,
     numeroOmi,
     numeroVoyage,
     nomClient,
-    montant,
     nzela,
     retour,
+    numero,
+    montant,
+    agentMaritime,
+    refLot,
+    portEmbarquement,
+    portDebarquement,
+    poidsDeclare,
   );
 
   /// Create a copy of QRCodeData
@@ -352,15 +446,20 @@ abstract class _QRCodeData implements QRCodeData {
   const factory _QRCodeData({
     required final String typeRedevance,
     required final String declarationNumero,
-    required final String numero,
     required final String dateEmission,
     required final String navire,
     required final String numeroOmi,
     required final String numeroVoyage,
     required final String nomClient,
-    required final int montant,
     required final String nzela,
     required final int retour,
+    final String? numero,
+    final int? montant,
+    final String? agentMaritime,
+    final String? refLot,
+    final String? portEmbarquement,
+    final String? portDebarquement,
+    final int? poidsDeclare,
   }) = _$QRCodeDataImpl;
 
   factory _QRCodeData.fromJson(Map<String, dynamic> json) =
@@ -370,8 +469,6 @@ abstract class _QRCodeData implements QRCodeData {
   String get typeRedevance;
   @override
   String get declarationNumero;
-  @override
-  String get numero;
   @override
   String get dateEmission;
   @override
@@ -383,11 +480,23 @@ abstract class _QRCodeData implements QRCodeData {
   @override
   String get nomClient;
   @override
-  int get montant;
-  @override
   String get nzela;
   @override
   int get retour;
+  @override
+  String? get numero;
+  @override
+  int? get montant;
+  @override
+  String? get agentMaritime;
+  @override
+  String? get refLot;
+  @override
+  String? get portEmbarquement;
+  @override
+  String? get portDebarquement;
+  @override
+  int? get poidsDeclare;
 
   /// Create a copy of QRCodeData
   /// with the given fields replaced by the non-null parameter values.
@@ -666,393 +775,6 @@ abstract class _SavedData implements SavedData {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SavedDataImplCopyWith<_$SavedDataImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-ReceiptData _$ReceiptDataFromJson(Map<String, dynamic> json) {
-  return _ReceiptData.fromJson(json);
-}
-
-/// @nodoc
-mixin _$ReceiptData {
-  String get id => throw _privateConstructorUsedError;
-  String get receiptNumber => throw _privateConstructorUsedError;
-  String get storeName => throw _privateConstructorUsedError;
-  String get storeAddress => throw _privateConstructorUsedError;
-  DateTime get date => throw _privateConstructorUsedError;
-  List<ReceiptItem> get items => throw _privateConstructorUsedError;
-  double get subtotal => throw _privateConstructorUsedError;
-  double get tax => throw _privateConstructorUsedError;
-  double get total => throw _privateConstructorUsedError;
-  String get paymentMethod => throw _privateConstructorUsedError;
-  String? get pdfUrl => throw _privateConstructorUsedError;
-
-  /// Serializes this ReceiptData to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ReceiptData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ReceiptDataCopyWith<ReceiptData> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ReceiptDataCopyWith<$Res> {
-  factory $ReceiptDataCopyWith(
-    ReceiptData value,
-    $Res Function(ReceiptData) then,
-  ) = _$ReceiptDataCopyWithImpl<$Res, ReceiptData>;
-  @useResult
-  $Res call({
-    String id,
-    String receiptNumber,
-    String storeName,
-    String storeAddress,
-    DateTime date,
-    List<ReceiptItem> items,
-    double subtotal,
-    double tax,
-    double total,
-    String paymentMethod,
-    String? pdfUrl,
-  });
-}
-
-/// @nodoc
-class _$ReceiptDataCopyWithImpl<$Res, $Val extends ReceiptData>
-    implements $ReceiptDataCopyWith<$Res> {
-  _$ReceiptDataCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of ReceiptData
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? receiptNumber = null,
-    Object? storeName = null,
-    Object? storeAddress = null,
-    Object? date = null,
-    Object? items = null,
-    Object? subtotal = null,
-    Object? tax = null,
-    Object? total = null,
-    Object? paymentMethod = null,
-    Object? pdfUrl = freezed,
-  }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            receiptNumber: null == receiptNumber
-                ? _value.receiptNumber
-                : receiptNumber // ignore: cast_nullable_to_non_nullable
-                      as String,
-            storeName: null == storeName
-                ? _value.storeName
-                : storeName // ignore: cast_nullable_to_non_nullable
-                      as String,
-            storeAddress: null == storeAddress
-                ? _value.storeAddress
-                : storeAddress // ignore: cast_nullable_to_non_nullable
-                      as String,
-            date: null == date
-                ? _value.date
-                : date // ignore: cast_nullable_to_non_nullable
-                      as DateTime,
-            items: null == items
-                ? _value.items
-                : items // ignore: cast_nullable_to_non_nullable
-                      as List<ReceiptItem>,
-            subtotal: null == subtotal
-                ? _value.subtotal
-                : subtotal // ignore: cast_nullable_to_non_nullable
-                      as double,
-            tax: null == tax
-                ? _value.tax
-                : tax // ignore: cast_nullable_to_non_nullable
-                      as double,
-            total: null == total
-                ? _value.total
-                : total // ignore: cast_nullable_to_non_nullable
-                      as double,
-            paymentMethod: null == paymentMethod
-                ? _value.paymentMethod
-                : paymentMethod // ignore: cast_nullable_to_non_nullable
-                      as String,
-            pdfUrl: freezed == pdfUrl
-                ? _value.pdfUrl
-                : pdfUrl // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
-  }
-}
-
-/// @nodoc
-abstract class _$$ReceiptDataImplCopyWith<$Res>
-    implements $ReceiptDataCopyWith<$Res> {
-  factory _$$ReceiptDataImplCopyWith(
-    _$ReceiptDataImpl value,
-    $Res Function(_$ReceiptDataImpl) then,
-  ) = __$$ReceiptDataImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({
-    String id,
-    String receiptNumber,
-    String storeName,
-    String storeAddress,
-    DateTime date,
-    List<ReceiptItem> items,
-    double subtotal,
-    double tax,
-    double total,
-    String paymentMethod,
-    String? pdfUrl,
-  });
-}
-
-/// @nodoc
-class __$$ReceiptDataImplCopyWithImpl<$Res>
-    extends _$ReceiptDataCopyWithImpl<$Res, _$ReceiptDataImpl>
-    implements _$$ReceiptDataImplCopyWith<$Res> {
-  __$$ReceiptDataImplCopyWithImpl(
-    _$ReceiptDataImpl _value,
-    $Res Function(_$ReceiptDataImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of ReceiptData
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? receiptNumber = null,
-    Object? storeName = null,
-    Object? storeAddress = null,
-    Object? date = null,
-    Object? items = null,
-    Object? subtotal = null,
-    Object? tax = null,
-    Object? total = null,
-    Object? paymentMethod = null,
-    Object? pdfUrl = freezed,
-  }) {
-    return _then(
-      _$ReceiptDataImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        receiptNumber: null == receiptNumber
-            ? _value.receiptNumber
-            : receiptNumber // ignore: cast_nullable_to_non_nullable
-                  as String,
-        storeName: null == storeName
-            ? _value.storeName
-            : storeName // ignore: cast_nullable_to_non_nullable
-                  as String,
-        storeAddress: null == storeAddress
-            ? _value.storeAddress
-            : storeAddress // ignore: cast_nullable_to_non_nullable
-                  as String,
-        date: null == date
-            ? _value.date
-            : date // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
-        items: null == items
-            ? _value._items
-            : items // ignore: cast_nullable_to_non_nullable
-                  as List<ReceiptItem>,
-        subtotal: null == subtotal
-            ? _value.subtotal
-            : subtotal // ignore: cast_nullable_to_non_nullable
-                  as double,
-        tax: null == tax
-            ? _value.tax
-            : tax // ignore: cast_nullable_to_non_nullable
-                  as double,
-        total: null == total
-            ? _value.total
-            : total // ignore: cast_nullable_to_non_nullable
-                  as double,
-        paymentMethod: null == paymentMethod
-            ? _value.paymentMethod
-            : paymentMethod // ignore: cast_nullable_to_non_nullable
-                  as String,
-        pdfUrl: freezed == pdfUrl
-            ? _value.pdfUrl
-            : pdfUrl // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$ReceiptDataImpl implements _ReceiptData {
-  const _$ReceiptDataImpl({
-    required this.id,
-    required this.receiptNumber,
-    required this.storeName,
-    required this.storeAddress,
-    required this.date,
-    required final List<ReceiptItem> items,
-    required this.subtotal,
-    required this.tax,
-    required this.total,
-    required this.paymentMethod,
-    this.pdfUrl,
-  }) : _items = items;
-
-  factory _$ReceiptDataImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ReceiptDataImplFromJson(json);
-
-  @override
-  final String id;
-  @override
-  final String receiptNumber;
-  @override
-  final String storeName;
-  @override
-  final String storeAddress;
-  @override
-  final DateTime date;
-  final List<ReceiptItem> _items;
-  @override
-  List<ReceiptItem> get items {
-    if (_items is EqualUnmodifiableListView) return _items;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_items);
-  }
-
-  @override
-  final double subtotal;
-  @override
-  final double tax;
-  @override
-  final double total;
-  @override
-  final String paymentMethod;
-  @override
-  final String? pdfUrl;
-
-  @override
-  String toString() {
-    return 'ReceiptData(id: $id, receiptNumber: $receiptNumber, storeName: $storeName, storeAddress: $storeAddress, date: $date, items: $items, subtotal: $subtotal, tax: $tax, total: $total, paymentMethod: $paymentMethod, pdfUrl: $pdfUrl)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ReceiptDataImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.receiptNumber, receiptNumber) ||
-                other.receiptNumber == receiptNumber) &&
-            (identical(other.storeName, storeName) ||
-                other.storeName == storeName) &&
-            (identical(other.storeAddress, storeAddress) ||
-                other.storeAddress == storeAddress) &&
-            (identical(other.date, date) || other.date == date) &&
-            const DeepCollectionEquality().equals(other._items, _items) &&
-            (identical(other.subtotal, subtotal) ||
-                other.subtotal == subtotal) &&
-            (identical(other.tax, tax) || other.tax == tax) &&
-            (identical(other.total, total) || other.total == total) &&
-            (identical(other.paymentMethod, paymentMethod) ||
-                other.paymentMethod == paymentMethod) &&
-            (identical(other.pdfUrl, pdfUrl) || other.pdfUrl == pdfUrl));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    receiptNumber,
-    storeName,
-    storeAddress,
-    date,
-    const DeepCollectionEquality().hash(_items),
-    subtotal,
-    tax,
-    total,
-    paymentMethod,
-    pdfUrl,
-  );
-
-  /// Create a copy of ReceiptData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ReceiptDataImplCopyWith<_$ReceiptDataImpl> get copyWith =>
-      __$$ReceiptDataImplCopyWithImpl<_$ReceiptDataImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ReceiptDataImplToJson(this);
-  }
-}
-
-abstract class _ReceiptData implements ReceiptData {
-  const factory _ReceiptData({
-    required final String id,
-    required final String receiptNumber,
-    required final String storeName,
-    required final String storeAddress,
-    required final DateTime date,
-    required final List<ReceiptItem> items,
-    required final double subtotal,
-    required final double tax,
-    required final double total,
-    required final String paymentMethod,
-    final String? pdfUrl,
-  }) = _$ReceiptDataImpl;
-
-  factory _ReceiptData.fromJson(Map<String, dynamic> json) =
-      _$ReceiptDataImpl.fromJson;
-
-  @override
-  String get id;
-  @override
-  String get receiptNumber;
-  @override
-  String get storeName;
-  @override
-  String get storeAddress;
-  @override
-  DateTime get date;
-  @override
-  List<ReceiptItem> get items;
-  @override
-  double get subtotal;
-  @override
-  double get tax;
-  @override
-  double get total;
-  @override
-  String get paymentMethod;
-  @override
-  String? get pdfUrl;
-
-  /// Create a copy of ReceiptData
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ReceiptDataImplCopyWith<_$ReceiptDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

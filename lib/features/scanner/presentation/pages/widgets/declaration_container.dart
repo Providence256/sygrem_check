@@ -47,7 +47,7 @@ class DeclarationContainer extends StatelessWidget {
 
           DetailRowContainer(
             title: 'Numero Facture:',
-            subTitle: document.numero,
+            subTitle: document.numero!,
           ),
 
           const SizedBox(height: 8),

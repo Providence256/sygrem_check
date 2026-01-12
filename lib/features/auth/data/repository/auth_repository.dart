@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qr_scanner/core/constants/app_constants.dart';
@@ -5,6 +7,7 @@ import 'package:qr_scanner/core/network/dio_client.dart';
 import 'package:qr_scanner/core/storage/secure_storage_service.dart';
 import 'package:qr_scanner/core/utils/result.dart';
 import 'package:qr_scanner/features/auth/data/models/auth_models.dart';
+import 'package:qr_scanner/features/auth/data/models/auth_response.dart';
 
 final authRepositoryProvider = Provider<AuthRepository>((ref) {
   return AuthRepository(
@@ -20,12 +23,12 @@ class AuthRepository {
   AuthRepository(this._dioClient, this._storage);
 
   Future<Result<GenerateCodeResponse>> generateVerificationCode(
-    String email,
+    VerifyCodeRequest request,
   ) async {
     try {
       final response = await _dioClient.post(
         AppConstants.loginEndpoint,
-        data: {'email': email},
+        data: request.toJson(),
       );
 
       return Result.success(
@@ -48,11 +51,17 @@ class AuthRepository {
         data: request.toJson(),
       );
 
-      final authResponse = AuthResponse.fromJson(response.data['data']);
+      final authResponse = AuthResponse.fromJson(
+        response.data as Map<String, dynamic>,
+      );
 
-      // Save token and user data
-      await _storage.write(AppConstants.authTokenKey, authResponse.token);
+      // save token and user data
+      await _storage.write(AppConstants.authTokenKey, authResponse.codeJwt);
       await _storage.write(AppConstants.isLoggedInKey, 'true');
+      await _storage.write(
+        AppConstants.authResponseKey,
+        jsonEncode(authResponse.toJson()),
+      );
 
       return Result.success(authResponse);
     } on DioException catch (e) {
@@ -75,7 +84,7 @@ class AuthRepository {
       final authResponse = AuthResponse.fromJson(response.data['data']);
 
       // Save token and user data
-      await _storage.write(AppConstants.authTokenKey, authResponse.token);
+      await _storage.write(AppConstants.authTokenKey, authResponse.codeJwt);
       await _storage.write(AppConstants.isLoggedInKey, 'true');
 
       return Result.success(authResponse);
@@ -101,5 +110,19 @@ class AuthRepository {
 
   Future<String?> getToken() async {
     return await _storage.read(AppConstants.authTokenKey);
+  }
+
+  Future<AuthResponse?> getPersistedAuthResponse() async {
+    try {
+      final authResponseJson = await _storage.read(
+        AppConstants.authResponseKey,
+      );
+      if (authResponseJson != null) {
+        return AuthResponse.fromJson(jsonDecode(authResponseJson));
+      }
+      return null;
+    } catch (e) {
+      return null;
+    }
   }
 }

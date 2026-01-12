@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:qr_scanner/features/documents/data/models/document_model.dart';
 import 'package:qr_scanner/features/scanner/presentation/pages/widgets/detail_row_container.dart';
 
 class AttestationContainer extends StatelessWidget {
-  const AttestationContainer({super.key});
+  const AttestationContainer({super.key, required this.document});
+  final QRCodeData document;
 
   @override
   Widget build(BuildContext context) {
@@ -43,58 +45,49 @@ class AttestationContainer extends StatelessWidget {
           Divider(color: Colors.grey.withValues(alpha: 0.5)),
           const SizedBox(height: 16),
 
-          DetailRowContainer(title: 'Numero:', subTitle: '00000xx000x0x0x0x'),
+          DetailRowContainer(
+            title: 'Numero:',
+            subTitle: document.declarationNumero,
+          ),
 
           const SizedBox(height: 8),
 
-          DetailRowContainer(title: 'Agent Maritime:', subTitle: 'N/A'),
+          DetailRowContainer(
+            title: 'Agent Maritime:',
+            subTitle: document.agentMaritime!,
+          ),
 
-          DetailRowContainer(title: 'Navire:', subTitle: 'Test navire'),
+          DetailRowContainer(title: 'Navire:', subTitle: document.navire),
           const SizedBox(height: 8),
-          DetailRowContainer(title: 'Numero OMI:', subTitle: '0002'),
+          DetailRowContainer(
+            title: 'Numero OMI:',
+            subTitle: document.numeroOmi,
+          ),
           const SizedBox(height: 8),
-          DetailRowContainer(title: 'Numero voyage:', subTitle: 'Xxxxxxxx-xxx'),
+          DetailRowContainer(
+            title: 'Numero Lot:',
+            subTitle: document.numeroVoyage,
+          ),
           const SizedBox(height: 8),
           DetailRowContainer(
             title: 'Port Embarquement:',
-            subTitle: 'Xxxxxxxx-xxx',
+            subTitle: document.portEmbarquement!,
           ),
           const SizedBox(height: 8),
           DetailRowContainer(
-            title: 'Port Dechargement:',
-            subTitle: 'Xxxxxxxx-xxx',
+            title: 'Port Debarquement:',
+            subTitle: document.portDebarquement!,
           ),
-          const SizedBox(height: 8),
-          DetailRowContainer(title: 'Poids Déclaré', subTitle: 'Xxxxxxxx-xxx'),
           const SizedBox(height: 8),
           DetailRowContainer(
-            title: 'Date Validation:',
-            subTitle: 'Xxxxxx - xxxxxx - xxxxxx',
+            title: 'Poids Déclaré',
+            subTitle: '${document.poidsDeclare}',
           ),
-
-          const SizedBox(height: 16),
-          Divider(color: Colors.grey.withValues(alpha: 0.5)),
-          const SizedBox(height: 16),
-          // Total
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                'TOTAL:',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                '740\$',
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.green,
-                ),
-              ),
-            ],
+          const SizedBox(height: 8),
+          DetailRowContainer(
+            title: 'Date Emission:',
+            subTitle: document.dateEmission,
           ),
-
-          Divider(color: Colors.grey.withValues(alpha: 0.5)),
         ],
       ),
     );

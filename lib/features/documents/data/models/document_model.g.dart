@@ -10,30 +10,40 @@ _$QRCodeDataImpl _$$QRCodeDataImplFromJson(Map<String, dynamic> json) =>
     _$QRCodeDataImpl(
       typeRedevance: json['typeRedevance'] as String,
       declarationNumero: json['declarationNumero'] as String,
-      numero: json['numero'] as String,
       dateEmission: json['dateEmission'] as String,
       navire: json['navire'] as String,
       numeroOmi: json['numeroOmi'] as String,
       numeroVoyage: json['numeroVoyage'] as String,
       nomClient: json['nomClient'] as String,
-      montant: (json['montant'] as num).toInt(),
       nzela: json['nzela'] as String,
       retour: (json['retour'] as num).toInt(),
+      numero: json['numero'] as String?,
+      montant: (json['montant'] as num?)?.toInt(),
+      agentMaritime: json['agentMaritime'] as String?,
+      refLot: json['refLot'] as String?,
+      portEmbarquement: json['portEmbarquement'] as String?,
+      portDebarquement: json['portDebarquement'] as String?,
+      poidsDeclare: (json['poidsDeclare'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$QRCodeDataImplToJson(_$QRCodeDataImpl instance) =>
     <String, dynamic>{
       'typeRedevance': instance.typeRedevance,
       'declarationNumero': instance.declarationNumero,
-      'numero': instance.numero,
       'dateEmission': instance.dateEmission,
       'navire': instance.navire,
       'numeroOmi': instance.numeroOmi,
       'numeroVoyage': instance.numeroVoyage,
       'nomClient': instance.nomClient,
-      'montant': instance.montant,
       'nzela': instance.nzela,
       'retour': instance.retour,
+      'numero': instance.numero,
+      'montant': instance.montant,
+      'agentMaritime': instance.agentMaritime,
+      'refLot': instance.refLot,
+      'portEmbarquement': instance.portEmbarquement,
+      'portDebarquement': instance.portDebarquement,
+      'poidsDeclare': instance.poidsDeclare,
     };
 
 _$SavedDataImpl _$$SavedDataImplFromJson(Map<String, dynamic> json) =>
@@ -54,38 +64,6 @@ Map<String, dynamic> _$$SavedDataImplToJson(_$SavedDataImpl instance) =>
       'navire': instance.navire,
       'scanUrl': instance.scanUrl,
       'scanDate': instance.scanDate,
-    };
-
-_$ReceiptDataImpl _$$ReceiptDataImplFromJson(Map<String, dynamic> json) =>
-    _$ReceiptDataImpl(
-      id: json['id'] as String,
-      receiptNumber: json['receiptNumber'] as String,
-      storeName: json['storeName'] as String,
-      storeAddress: json['storeAddress'] as String,
-      date: DateTime.parse(json['date'] as String),
-      items: (json['items'] as List<dynamic>)
-          .map((e) => ReceiptItem.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      subtotal: (json['subtotal'] as num).toDouble(),
-      tax: (json['tax'] as num).toDouble(),
-      total: (json['total'] as num).toDouble(),
-      paymentMethod: json['paymentMethod'] as String,
-      pdfUrl: json['pdfUrl'] as String?,
-    );
-
-Map<String, dynamic> _$$ReceiptDataImplToJson(_$ReceiptDataImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'receiptNumber': instance.receiptNumber,
-      'storeName': instance.storeName,
-      'storeAddress': instance.storeAddress,
-      'date': instance.date.toIso8601String(),
-      'items': instance.items,
-      'subtotal': instance.subtotal,
-      'tax': instance.tax,
-      'total': instance.total,
-      'paymentMethod': instance.paymentMethod,
-      'pdfUrl': instance.pdfUrl,
     };
 
 _$ReceiptItemImpl _$$ReceiptItemImplFromJson(Map<String, dynamic> json) =>

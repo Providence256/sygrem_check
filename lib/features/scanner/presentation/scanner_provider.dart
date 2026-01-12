@@ -14,18 +14,24 @@ class ScannerNotifier extends StateNotifier<AsyncValue<dynamic>> {
 
   ScannerNotifier(this._repository) : super(const AsyncValue.data(null));
 
-  Future<Result<dynamic>> processQRCode(String qrCodeString) async {
+  Future<Result<dynamic>> processQRCode(
+    String qrCodeString,
+    TypeFacture typeFacture,
+  ) async {
     state = const AsyncValue.loading();
 
     // Parse QR code
-    final parseResult = await _repository.parseQRCode(qrCodeString);
+    final parseResult = await _repository.parseQRCode(
+      qrCodeString,
+      typeFacture,
+    );
 
     return parseResult.when(
       success: (data) async {
         final dataToSave = SavedData(
           typeRedevance: data.typeRedevance,
           numeroDeclaration: data.declarationNumero,
-          numero: data.numero,
+          numero: data.numeroVoyage,
           navire: data.navire,
           scanUrl: qrCodeString,
           scanDate: DateTime.now().toIso8601String(),

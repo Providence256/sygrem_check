@@ -20,7 +20,7 @@ class LoginRequest with _$LoginRequest {
 class VerifyCodeRequest with _$VerifyCodeRequest {
   const factory VerifyCodeRequest({
     required String email,
-    required String code,
+    required String password,
   }) = _VerifyCodeRequest;
 
   factory VerifyCodeRequest.fromJson(Map<String, dynamic> json) =>
@@ -28,24 +28,12 @@ class VerifyCodeRequest with _$VerifyCodeRequest {
 }
 
 @freezed
-class AuthResponse with _$AuthResponse {
-  const factory AuthResponse({
-    required String token,
-    required UserData user,
-    @Default('') String message,
-  }) = _AuthResponse;
-
-  factory AuthResponse.fromJson(Map<String, dynamic> json) =>
-      _$AuthResponseFromJson(json);
-}
-
-@freezed
 class UserData with _$UserData {
   const factory UserData({
-    required String id,
     required String email,
-    required String name,
-    String? avatar,
+    required String role,
+    required String userId,
+    required DateTime expiresAt,
   }) = _UserData;
 
   factory UserData.fromJson(Map<String, dynamic> json) =>
