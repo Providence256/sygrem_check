@@ -28,7 +28,7 @@ class DatabaseHelper {
     await db.execute('''
       CREATE TABLE historique(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        typeRedevance TEXT,
+        typeFacture TEXT,
         numeroDeclaration TEXT,
         numero TEXT,
         navire TEXT,

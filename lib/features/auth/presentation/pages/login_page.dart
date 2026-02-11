@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:qr_scanner/core/constants/app_colors.dart';
+import 'package:qr_scanner/core/constants/app_constants.dart';
 import 'package:qr_scanner/features/auth/presentation/auth_provider.dart';
 import 'package:qr_scanner/main_home_screen.dart';
 
@@ -32,7 +33,13 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
   Future<void> _generateCode() async {
     if (_emailController.text.isEmpty || !_emailController.text.contains('@')) {
-      _showSnackBar('Please enter a valid email', isError: true);
+      _showSnackBar('Entrer un email valide', isError: true);
+      return;
+    }
+
+    if (_passwordController.text.isEmpty ||
+        _passwordController.text.length < 6) {
+      _showSnackBar('Entrer un mot de passe valide', isError: true);
       return;
     }
 
@@ -46,12 +53,22 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
     result.when(
       success: (data) {
-        setState(() => _isCodeSent = true);
-        _showSnackBar('check your mail box to get the code');
+        if (data.codeEstEnvoye == true) {
+          setState(() => _isCodeSent = true);
+          _showSnackBar(
+            'Code envoyé ! Consultez votre boîte mail.',
+            isSuccess: true,
+          );
+        } else {
+          _showSnackBar(
+            'Identifiants incorrects. Vérifiez votre email et mot de passe.',
+            isError: true,
+            isWarning: true,
+          );
+        }
       },
       failure: (message, _) {
-        setState(() => _isCodeSent = true);
-        _showSnackBar(message, isError: false);
+        _showSnackBar(message, isError: true);
       },
       loading: () {},
     );
@@ -59,6 +76,11 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
   Future<void> _login() async {
     if (!_formKey.currentState!.validate()) return;
+
+    if (_verificationCodeController.text.isEmpty) {
+      _showSnackBar('Veuillez entrer le code de vérification', isError: true);
+      return;
+    }
 
     final result = await ref
         .read(authNotifierProvider.notifier)
@@ -70,6 +92,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
     result.when(
       success: (data) {
+        _showSnackBar('Connexion réussie !', isSuccess: true);
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const MainHomeScreen()),
@@ -82,13 +105,42 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     );
   }
 
-  void _showSnackBar(String message, {bool isError = false}) {
+  void _showSnackBar(
+    String message, {
+    bool isError = false,
+    bool isSuccess = false,
+    bool isWarning = false,
+  }) {
+    Color backgroundColor;
+    IconData icon;
+
+    if (isSuccess) {
+      backgroundColor = Colors.green;
+      icon = Icons.check_circle_outline;
+    } else if (isWarning) {
+      backgroundColor = Colors.orange;
+      icon = Icons.warning_amber_rounded;
+    } else if (isError) {
+      backgroundColor = Colors.red;
+      icon = Icons.error_outline;
+    } else {
+      backgroundColor = Colors.blue;
+      icon = Icons.info_outline;
+    }
+
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(message),
-        backgroundColor: isError ? Colors.red : Colors.green,
+        content: Row(
+          children: [
+            Icon(icon, color: Colors.white),
+            const SizedBox(width: 12),
+            Expanded(child: Text(message)),
+          ],
+        ),
+        backgroundColor: backgroundColor,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        duration: const Duration(seconds: 4),
       ),
     );
   }
@@ -100,7 +152,13 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
     return Scaffold(
       body: Container(
+        height: double.infinity,
+        width: double.infinity,
         decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(AppConstants.logImg),
+            fit: BoxFit.fill,
+          ),
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -120,61 +178,47 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // Logo and Title
-                    Container(
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: AppColors.primaryColor.withValues(alpha: 0.1),
-                        shape: BoxShape.circle,
-                      ),
-                      child: Icon(
-                        Icons.qr_code_scanner,
-                        size: 80,
-                        color: AppColors.primaryColor,
-                      ),
-                    ).animate().scale(
-                      duration: 600.ms,
-                      curve: Curves.elasticOut,
+                    Text(
+                      'Bienvenue',
+                      style: Theme.of(context).textTheme.headlineLarge
+                          ?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 50,
+                            color: Colors.white,
+                            shadows: [
+                              Shadow(
+                                color: Colors.black.withValues(alpha: 0.3),
+                                offset: const Offset(0, 2),
+                                blurRadius: 8,
+                              ),
+                            ],
+                          ),
+                    ),
+                    Text(
+                      _isCodeSent
+                          ? 'Entrez votre code de vérification'
+                          : 'Connectez-vous pour Continuer',
+                      style: TextStyle(fontSize: 16, color: Colors.grey[700]),
                     ),
 
                     const SizedBox(height: 24),
-
-                    Text(
-                      'Welcome Back',
-                      style: Theme.of(context).textTheme.headlineMedium
-                          ?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.primaryColor,
-                          ),
-                    ).animate().fadeIn(duration: 400.ms).slideY(begin: -0.2),
-
-                    const SizedBox(height: 8),
-
-                    Text(
-                      'Sign in to continue',
-                      style: TextStyle(fontSize: 16, color: Colors.grey[600]),
-                    ).animate().fadeIn(delay: 200.ms, duration: 400.ms),
-
-                    const SizedBox(height: 40),
 
                     // Email Field
                     TextFormField(
                       controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
-                      style: const TextStyle(fontSize: 16),
-                      decoration: InputDecoration(
+                      style: const TextStyle(fontSize: 16, color: Colors.black),
+                      decoration: const InputDecoration(
                         labelText: 'Email',
-                        hintText: 'Enter your email',
-                        prefixIcon: const Icon(Icons.email_outlined),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
+                        hintText: 'Entrer votre email',
+                        prefixIcon: Icon(Icons.email_outlined),
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter your email';
+                          return 'Entrer votre email';
                         }
                         if (!value.contains('@')) {
-                          return 'Please enter a valid email';
+                          return 'Entrer un email valide';
                         }
                         return null;
                       },
@@ -186,14 +230,11 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     TextFormField(
                       controller: _passwordController,
                       obscureText: _obscurePassword,
-                      style: const TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 16, color: Colors.black),
                       decoration: InputDecoration(
-                        labelText: 'Password',
-                        hintText: 'Enter your password',
+                        labelText: 'Mot de Passe',
+                        hintText: 'Entrer votre mot de passe',
                         prefixIcon: const Icon(Icons.lock_outline),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
                         suffixIcon: IconButton(
                           icon: Icon(
                             _obscurePassword
@@ -209,10 +250,10 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter your password';
+                          return 'Entrer votre mot de passe';
                         }
                         if (value.length < 6) {
-                          return 'Password must be at least 6 characters';
+                          return 'Le mot de passe doit contenir au moins 6 caractères';
                         }
                         return null;
                       },
@@ -226,20 +267,18 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                         children: [
                           TextFormField(
                             controller: _verificationCodeController,
-                            style: const TextStyle(fontSize: 16),
-                            decoration: InputDecoration(
-                              labelText: 'Verification Code',
-                              hintText: 'Enter the code sent to your email',
-                              prefixIcon: const Icon(
-                                Icons.verified_user_outlined,
-                              ),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
+                            style: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.black,
+                            ),
+                            decoration: const InputDecoration(
+                              labelText: 'Code de Vérification',
+                              hintText: 'Saisissez le code reçu par mail',
+                              prefixIcon: Icon(Icons.verified_user_outlined),
                             ),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return 'Please enter verification code';
+                                return 'Entrer votre code de vérification';
                               }
                               return null;
                             },
@@ -254,7 +293,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     if (!_isCodeSent)
                       SizedBox(
                         width: double.infinity,
-                        height: 56,
+                        height: 50,
                         child: ElevatedButton.icon(
                           onPressed: _isGeneratingCode ? null : _generateCode,
                           icon: _isGeneratingCode
@@ -268,7 +307,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                                 )
                               : const Icon(Icons.send_outlined),
                           label: Text(
-                            _isGeneratingCode ? 'Sending...' : 'Generate Code',
+                            _isGeneratingCode
+                                ? 'Envoi en cours...'
+                                : 'Générer Code',
                             style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
@@ -289,7 +330,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                         children: [
                           SizedBox(
                             width: double.infinity,
-                            height: 56,
+                            height: 50,
                             child: ElevatedButton.icon(
                               onPressed: isLoading ? null : _login,
                               icon: isLoading
@@ -303,7 +344,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                                     )
                                   : const Icon(Icons.login),
                               label: Text(
-                                isLoading ? 'Signing in...' : 'Sign In',
+                                isLoading ? 'Connexion...' : 'Se connecter',
                                 style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
@@ -327,27 +368,29 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                               });
                             },
                             icon: const Icon(Icons.arrow_back),
-                            label: const Text('Change email or password'),
+                            label: const Text('Régénérer le code'),
                           ).animate().fadeIn(delay: 200.ms),
                         ],
                       ),
-                    SizedBox(height: 20),
+
+                    const SizedBox(height: 20),
+
+                    // Quick access for users who already have code
                     if (!_isCodeSent)
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Do you have your secret code ?'),
+                          const Text('Vous avez déjà un code ?'),
                           TextButton(
                             onPressed: () {
                               setState(() {
                                 _isCodeSent = true;
-                                _verificationCodeController.clear();
                               });
                             },
-                            child: Text(
-                              'Sign In',
+                            child: const Text(
+                              'Se connecter',
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize: 16,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),

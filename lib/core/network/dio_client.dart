@@ -30,7 +30,7 @@ class DioClient {
         final client = HttpClient();
         client.badCertificateCallback =
             (X509Certificate cert, String host, int port) {
-              return true; // Accept ANY certificate
+              return true;
             };
         return client;
       },
@@ -54,6 +54,18 @@ class DioClient {
     Map<String, dynamic>? queryParameters,
   }) async {
     return await _dio.get(path, queryParameters: queryParameters);
+  }
+
+  Future<Response> getPdf(
+    String path, {
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+  }) async {
+    return await _dio.get(
+      path,
+      queryParameters: queryParameters,
+      options: options,
+    );
   }
 
   Future<Response> post(String path, {dynamic data}) async {

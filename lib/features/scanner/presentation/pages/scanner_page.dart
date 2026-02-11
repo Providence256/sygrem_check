@@ -60,7 +60,7 @@ class _QRScannerPageState extends ConsumerState<QRScannerPage> {
         });
       },
       failure: (message, _) {
-        _showErrorDialog(message);
+        _showErrorDialog('identifiant invalide.');
         setState(() => _isProcessing = false);
         _controller.start();
       },
@@ -77,7 +77,7 @@ class _QRScannerPageState extends ConsumerState<QRScannerPage> {
           children: [
             Icon(Icons.error_outline, color: Colors.red, size: 28),
             const SizedBox(width: 12),
-            const Text('Scan Error'),
+            const Text('Erreur de Scan'),
           ],
         ),
         content: Text(message),
@@ -97,6 +97,10 @@ class _QRScannerPageState extends ConsumerState<QRScannerPage> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+        ),
         elevation: 0,
         title: const Text('Scan QR Code'),
         actions: [

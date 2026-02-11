@@ -72,7 +72,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Theme.of(context).primaryColor,
+              Theme.of(context).colorScheme.primary,
               Theme.of(context).colorScheme.secondary,
             ],
           ),
@@ -99,7 +99,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
                   ),
                   const SizedBox(height: 24),
                   const Text(
-                    'QR Scanner',
+                    'Sygrem Check',
                     style: TextStyle(
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
@@ -108,7 +108,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
                   ),
                   const SizedBox(height: 8),
                   const Text(
-                    'Scan, Verify, Access',
+                    'Scanner, Verifier',
                     style: TextStyle(fontSize: 16, color: Colors.white70),
                   ),
                   const SizedBox(height: 48),

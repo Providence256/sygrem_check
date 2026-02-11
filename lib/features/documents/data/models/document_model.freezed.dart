@@ -512,7 +512,7 @@ SavedData _$SavedDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SavedData {
-  String get typeRedevance => throw _privateConstructorUsedError;
+  TypeFacture get typeFacture => throw _privateConstructorUsedError;
   String get numeroDeclaration => throw _privateConstructorUsedError;
   String get numero => throw _privateConstructorUsedError;
   String get navire => throw _privateConstructorUsedError;
@@ -535,7 +535,7 @@ abstract class $SavedDataCopyWith<$Res> {
       _$SavedDataCopyWithImpl<$Res, SavedData>;
   @useResult
   $Res call({
-    String typeRedevance,
+    TypeFacture typeFacture,
     String numeroDeclaration,
     String numero,
     String navire,
@@ -559,7 +559,7 @@ class _$SavedDataCopyWithImpl<$Res, $Val extends SavedData>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? typeRedevance = null,
+    Object? typeFacture = null,
     Object? numeroDeclaration = null,
     Object? numero = null,
     Object? navire = null,
@@ -568,10 +568,10 @@ class _$SavedDataCopyWithImpl<$Res, $Val extends SavedData>
   }) {
     return _then(
       _value.copyWith(
-            typeRedevance: null == typeRedevance
-                ? _value.typeRedevance
-                : typeRedevance // ignore: cast_nullable_to_non_nullable
-                      as String,
+            typeFacture: null == typeFacture
+                ? _value.typeFacture
+                : typeFacture // ignore: cast_nullable_to_non_nullable
+                      as TypeFacture,
             numeroDeclaration: null == numeroDeclaration
                 ? _value.numeroDeclaration
                 : numeroDeclaration // ignore: cast_nullable_to_non_nullable
@@ -608,7 +608,7 @@ abstract class _$$SavedDataImplCopyWith<$Res>
   @override
   @useResult
   $Res call({
-    String typeRedevance,
+    TypeFacture typeFacture,
     String numeroDeclaration,
     String numero,
     String navire,
@@ -631,7 +631,7 @@ class __$$SavedDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? typeRedevance = null,
+    Object? typeFacture = null,
     Object? numeroDeclaration = null,
     Object? numero = null,
     Object? navire = null,
@@ -640,10 +640,10 @@ class __$$SavedDataImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$SavedDataImpl(
-        typeRedevance: null == typeRedevance
-            ? _value.typeRedevance
-            : typeRedevance // ignore: cast_nullable_to_non_nullable
-                  as String,
+        typeFacture: null == typeFacture
+            ? _value.typeFacture
+            : typeFacture // ignore: cast_nullable_to_non_nullable
+                  as TypeFacture,
         numeroDeclaration: null == numeroDeclaration
             ? _value.numeroDeclaration
             : numeroDeclaration // ignore: cast_nullable_to_non_nullable
@@ -673,7 +673,7 @@ class __$$SavedDataImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$SavedDataImpl implements _SavedData {
   const _$SavedDataImpl({
-    required this.typeRedevance,
+    required this.typeFacture,
     required this.numeroDeclaration,
     required this.numero,
     required this.navire,
@@ -685,7 +685,7 @@ class _$SavedDataImpl implements _SavedData {
       _$$SavedDataImplFromJson(json);
 
   @override
-  final String typeRedevance;
+  final TypeFacture typeFacture;
   @override
   final String numeroDeclaration;
   @override
@@ -699,7 +699,7 @@ class _$SavedDataImpl implements _SavedData {
 
   @override
   String toString() {
-    return 'SavedData(typeRedevance: $typeRedevance, numeroDeclaration: $numeroDeclaration, numero: $numero, navire: $navire, scanUrl: $scanUrl, scanDate: $scanDate)';
+    return 'SavedData(typeFacture: $typeFacture, numeroDeclaration: $numeroDeclaration, numero: $numero, navire: $navire, scanUrl: $scanUrl, scanDate: $scanDate)';
   }
 
   @override
@@ -707,8 +707,8 @@ class _$SavedDataImpl implements _SavedData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SavedDataImpl &&
-            (identical(other.typeRedevance, typeRedevance) ||
-                other.typeRedevance == typeRedevance) &&
+            (identical(other.typeFacture, typeFacture) ||
+                other.typeFacture == typeFacture) &&
             (identical(other.numeroDeclaration, numeroDeclaration) ||
                 other.numeroDeclaration == numeroDeclaration) &&
             (identical(other.numero, numero) || other.numero == numero) &&
@@ -722,7 +722,7 @@ class _$SavedDataImpl implements _SavedData {
   @override
   int get hashCode => Object.hash(
     runtimeType,
-    typeRedevance,
+    typeFacture,
     numeroDeclaration,
     numero,
     navire,
@@ -746,7 +746,7 @@ class _$SavedDataImpl implements _SavedData {
 
 abstract class _SavedData implements SavedData {
   const factory _SavedData({
-    required final String typeRedevance,
+    required final TypeFacture typeFacture,
     required final String numeroDeclaration,
     required final String numero,
     required final String navire,
@@ -758,7 +758,7 @@ abstract class _SavedData implements SavedData {
       _$SavedDataImpl.fromJson;
 
   @override
-  String get typeRedevance;
+  TypeFacture get typeFacture;
   @override
   String get numeroDeclaration;
   @override

@@ -119,3 +119,22 @@ final userInfoProvider = Provider<UserInfo?>((ref) {
     orElse: () => null,
   );
 });
+
+final userNameProvider = Provider<String?>((ref) {
+  final authState = ref.watch(authNotifierProvider);
+
+  return authState.maybeWhen(
+    data: (auth) {
+      final fullName = auth?.utilisateurAuthentifie.nom;
+
+      if (fullName == null || fullName.trim().isEmpty) {
+        return null;
+      }
+
+      final parts = fullName.trim().split(RegExp(r'\s+'));
+
+      return parts.first;
+    },
+    orElse: () => null,
+  );
+});

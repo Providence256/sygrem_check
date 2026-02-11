@@ -20,9 +20,9 @@ class DocumentDetailPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Détails du Reçu',
-          style: TextStyle(color: Colors.black),
+        title: Text(
+          'Détails',
+          style: TextStyle(color: Theme.of(context).colorScheme.onSurface),
         ),
         actions: [
           IconButton(
@@ -38,6 +38,7 @@ class DocumentDetailPage extends ConsumerWidget {
         ],
       ),
       body: SingleChildScrollView(
+        padding: EdgeInsets.all(16),
         child: Column(
           children: [
             // En-tête avec statut validé
@@ -50,6 +51,7 @@ class DocumentDetailPage extends ConsumerWidget {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
+                borderRadius: BorderRadius.circular(10),
               ),
               child: Column(
                 children: [
@@ -59,8 +61,10 @@ class DocumentDetailPage extends ConsumerWidget {
                     color: Colors.white,
                   ),
                   const SizedBox(height: 12),
-                  const Text(
-                    'Reçu Validé',
+                  Text(
+                    typeFacture == TypeFacture.attestation
+                        ? 'Attestation Validée'
+                        : 'Facture Validée',
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
@@ -82,51 +86,36 @@ class DocumentDetailPage extends ConsumerWidget {
                 : AttestationContainer(document: document),
 
             // Boutons d'action
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  SizedBox(
-                    width: double.infinity,
-                    height: 50,
-                    child: ElevatedButton.icon(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                PDFViewerPage(documentId: document.nzela),
-                          ),
-                        );
-                      },
-                      icon: const Icon(Icons.file_copy),
-                      label: Text(
-                        'Voir document',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
+            Column(
+              children: [
+                SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              PDFViewerPage(documentId: document.nzela),
                         ),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green,
-                        foregroundColor: Colors.white,
+                      );
+                    },
+                    icon: const Icon(Icons.file_copy),
+                    label: Text(
+                      'Voir document',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 12),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 50,
-                    child: OutlinedButton.icon(
-                      onPressed: () {
-                        Navigator.popUntil(context, (route) => route.isFirst);
-                      },
-                      icon: const Icon(Icons.home),
-                      label: const Text('Retour à l\'accueil'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      foregroundColor: Colors.white,
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),

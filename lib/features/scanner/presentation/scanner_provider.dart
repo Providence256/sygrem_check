@@ -29,7 +29,7 @@ class ScannerNotifier extends StateNotifier<AsyncValue<dynamic>> {
     return parseResult.when(
       success: (data) async {
         final dataToSave = SavedData(
-          typeRedevance: data.typeRedevance,
+          typeFacture: typeFacture,
           numeroDeclaration: data.declarationNumero,
           numero: data.numeroVoyage,
           navire: data.navire,

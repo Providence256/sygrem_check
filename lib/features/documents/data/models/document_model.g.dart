@@ -48,7 +48,7 @@ Map<String, dynamic> _$$QRCodeDataImplToJson(_$QRCodeDataImpl instance) =>
 
 _$SavedDataImpl _$$SavedDataImplFromJson(Map<String, dynamic> json) =>
     _$SavedDataImpl(
-      typeRedevance: json['typeRedevance'] as String,
+      typeFacture: $enumDecode(_$TypeFactureEnumMap, json['typeFacture']),
       numeroDeclaration: json['numeroDeclaration'] as String,
       numero: json['numero'] as String,
       navire: json['navire'] as String,
@@ -58,13 +58,18 @@ _$SavedDataImpl _$$SavedDataImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$SavedDataImplToJson(_$SavedDataImpl instance) =>
     <String, dynamic>{
-      'typeRedevance': instance.typeRedevance,
+      'typeFacture': _$TypeFactureEnumMap[instance.typeFacture]!,
       'numeroDeclaration': instance.numeroDeclaration,
       'numero': instance.numero,
       'navire': instance.navire,
       'scanUrl': instance.scanUrl,
       'scanDate': instance.scanDate,
     };
+
+const _$TypeFactureEnumMap = {
+  TypeFacture.declaration: 'declaration',
+  TypeFacture.attestation: 'attestation',
+};
 
 _$ReceiptItemImpl _$$ReceiptItemImplFromJson(Map<String, dynamic> json) =>
     _$ReceiptItemImpl(

@@ -2,35 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qr_scanner/common/app_header.dart';
 import 'package:qr_scanner/core/constants/app_colors.dart';
-import 'package:qr_scanner/core/storage/database_helper.dart';
 import 'package:qr_scanner/features/documents/data/models/document_model.dart';
+import 'package:qr_scanner/features/historique/pages/historique_notifier.dart';
+import 'package:qr_scanner/features/scanner/presentation/pages/document_detail_page.dart';
+import 'package:qr_scanner/features/scanner/presentation/scanner_provider.dart';
 
-class HistoriquePage extends StatefulWidget {
+class HistoriquePage extends ConsumerWidget {
   const HistoriquePage({super.key});
 
   @override
-  State<HistoriquePage> createState() => _HistoriquePageState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final historiqueState = ref.watch(historiqueProvider);
+    final currentFilter = ref.watch(historiqueProvider.notifier).currentFilter;
 
-class _HistoriquePageState extends State<HistoriquePage> {
-  String selectedFilter = 'Today';
-  List<SavedData> factures = [];
-
-  @override
-  void initState() {
-    super.initState();
-    loadData();
-  }
-
-  Future<void> loadData() async {
-    final data = await DatabaseHelper.instance.getAllFactures();
-    setState(() {
-      factures = data;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -54,21 +38,21 @@ class _HistoriquePageState extends State<HistoriquePage> {
                   children: [
                     FilterButton(
                       label: 'Aujourd\'hui',
-                      isSelected: selectedFilter == 'Today',
+                      isSelected: currentFilter == HistoriqueFilter.today,
                       onTap: () {
-                        setState(() {
-                          selectedFilter = 'Today';
-                        });
+                        ref
+                            .read(historiqueProvider.notifier)
+                            .setFilter(HistoriqueFilter.today);
                       },
                     ),
                     const SizedBox(width: 12),
                     FilterButton(
                       label: 'Tout',
-                      isSelected: selectedFilter == 'All',
+                      isSelected: currentFilter == HistoriqueFilter.all,
                       onTap: () {
-                        setState(() {
-                          selectedFilter = 'All';
-                        });
+                        ref
+                            .read(historiqueProvider.notifier)
+                            .setFilter(HistoriqueFilter.all);
                       },
                     ),
                   ],
@@ -76,18 +60,63 @@ class _HistoriquePageState extends State<HistoriquePage> {
               ),
               const SizedBox(height: 20),
               Expanded(
-                child: factures.isEmpty
-                    ? Center(child: Text('Aucun scan enregistré'))
-                    : ListView.builder(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        itemCount: factures.length,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.only(bottom: 12),
-                            child: HistoryCard(file: factures[index]),
+                child: historiqueState.when(
+                  data: (factures) {
+                    return factures == null
+                        ? Center(
+                            child: Text(
+                              currentFilter == HistoriqueFilter.today
+                                  ? 'Aucun scan aujourd\'hui'
+                                  : 'Aucun scan enregistré',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.grey[600],
+                              ),
+                            ),
+                          )
+                        : ListView.builder(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            itemCount: factures.length,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.only(bottom: 12),
+                                child: HistoryCard(file: factures[index]),
+                              );
+                            },
                           );
-                        },
-                      ),
+                  },
+                  loading: () =>
+                      const Center(child: CircularProgressIndicator()),
+                  error: (error, stack) => Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.error_outline,
+                          size: 48,
+                          color: Colors.red[300],
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          'Erreur de chargement',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        TextButton(
+                          onPressed: () {
+                            ref
+                                .read(historiqueProvider.notifier)
+                                .loadHistorique();
+                          },
+                          child: const Text('Réessayer'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
             ],
           ),
@@ -116,8 +145,21 @@ class FilterButton extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
         decoration: BoxDecoration(
-          color: isSelected ? AppColors.primaryColor : Colors.white,
+          color: isSelected
+              ? Theme.of(context).colorScheme.primary
+              : Colors.white,
           borderRadius: BorderRadius.circular(25),
+          boxShadow: isSelected
+              ? [
+                  BoxShadow(
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.primary.withValues(alpha: 0.3),
+                    blurRadius: 8,
+                    offset: const Offset(0, 2),
+                  ),
+                ]
+              : null,
         ),
         child: Text(
           label,
@@ -142,8 +184,15 @@ class HistoryCard extends ConsumerWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.primaryContainer,
         borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.05),
+            blurRadius: 4,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       child: Row(
         children: [
@@ -151,10 +200,14 @@ class HistoryCard extends ConsumerWidget {
             width: 48,
             height: 48,
             decoration: BoxDecoration(
-              color: AppColors.primaryColor.withValues(alpha: 0.1),
+              color: Theme.of(context).colorScheme.primaryContainer,
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Icon(Icons.qr_code, color: AppColors.primaryColor, size: 24),
+            child: Icon(
+              Icons.qr_code,
+              color: Theme.of(context).colorScheme.primary,
+              size: 24,
+            ),
           ),
           const SizedBox(width: 16),
           Expanded(
@@ -163,10 +216,10 @@ class HistoryCard extends ConsumerWidget {
               children: [
                 Text(
                   file.numero,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
-                    color: Colors.black87,
+                    color: Theme.of(context).colorScheme.onSurface,
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -178,22 +231,51 @@ class HistoryCard extends ConsumerWidget {
             ),
           ),
           const SizedBox(width: 12),
-
           IconButton(
             icon: const Icon(Icons.remove_red_eye_outlined),
-            color: Colors.black54,
-            onPressed: () {},
+            color: Theme.of(context).colorScheme.onSurface,
+            onPressed: () async {
+              final notifier = ref.read(scannerNotifierProvider.notifier);
+
+              showDialog(
+                context: context,
+                barrierDismissible: false,
+                builder: (context) =>
+                    const Center(child: CircularProgressIndicator()),
+              );
+
+              final result = await notifier.processQRCode(
+                file.scanUrl,
+                file.typeFacture,
+              );
+
+              if (context.mounted) {
+                Navigator.of(context).pop();
+              }
+
+              result.when(
+                success: (data) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DocumentDetailPage(
+                        document: data,
+                        typeFacture: file.typeFacture,
+                      ),
+                    ),
+                  );
+                },
+                failure: (message, _) {
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text(message)));
+                },
+                loading: () => const Center(child: CircularProgressIndicator()),
+              );
+            },
           ),
         ],
       ),
     );
   }
-}
-
-class HistoryItem {
-  final String name;
-  final String url;
-  final IconData icon;
-
-  HistoryItem({required this.name, required this.url, required this.icon});
 }

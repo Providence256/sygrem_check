@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:qr_scanner/features/documents/data/repository/document_repository.dart';
 
 part 'document_model.freezed.dart';
 part 'document_model.g.dart';
@@ -34,7 +35,7 @@ class QRCodeData with _$QRCodeData {
 @freezed
 class SavedData with _$SavedData {
   const factory SavedData({
-    required String typeRedevance,
+    required TypeFacture typeFacture,
     required String numeroDeclaration,
     required String numero,
     required String navire,

@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:qr_scanner/core/constants/app_colors.dart';
+import 'package:qr_scanner/core/constants/app_constants.dart';
 import 'package:qr_scanner/features/auth/presentation/auth_provider.dart';
 import 'package:qr_scanner/features/auth/presentation/pages/login_page.dart';
 import 'package:qr_scanner/features/documents/data/repository/document_repository.dart';
 import 'package:qr_scanner/features/scanner/presentation/pages/scanner_page.dart';
+import 'package:qr_scanner/utils/provider/theme_notifier.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final authState = ref.watch(userInfoProvider);
-    final userName = authState?.email ?? 'user';
+    final userName = ref.watch(userNameProvider) ?? 'Utilisateur';
 
     return Scaffold(
       body: Container(
@@ -22,8 +22,8 @@ class HomePage extends ConsumerWidget {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              AppColors.primaryColor.withValues(alpha: 0.05),
-              AppColors.secondaryColor.withValues(alpha: 0.05),
+              Theme.of(context).colorScheme.primary.withValues(alpha: 0.05),
+              Theme.of(context).colorScheme.secondary.withValues(alpha: 0.05),
             ],
           ),
         ),
@@ -42,21 +42,16 @@ class HomePage extends ConsumerWidget {
                           duration: 600.ms,
                           curve: Curves.elasticOut,
                         ),
-                        const SizedBox(height: 32),
-                        _buildWelcomeText(context, userName)
-                            .animate()
-                            .fadeIn(duration: 400.ms)
-                            .slideY(begin: -0.2),
-                        const SizedBox(height: 16),
+                        const SizedBox(height: 26),
                         _buildSubtitleText().animate().fadeIn(
                           delay: 200.ms,
                           duration: 400.ms,
                         ),
-                        const SizedBox(height: 48),
+                        const SizedBox(height: 32),
                         _buildScanButton(
                           context: context,
-                          title: 'Scanner déclaration',
-                          color: AppColors.primaryColor,
+                          title: 'Scanner Facture',
+                          color: Theme.of(context).colorScheme.primary,
                           onPressed: () => Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -70,7 +65,7 @@ class HomePage extends ConsumerWidget {
                         _buildScanButton(
                           context: context,
                           title: 'Scanner Attestation',
-                          color: AppColors.secondaryColor,
+                          color: Theme.of(context).colorScheme.secondary,
                           onPressed: () => Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -94,6 +89,7 @@ class HomePage extends ConsumerWidget {
   }
 
   Widget _buildHeader(BuildContext context, WidgetRef ref, String userName) {
+    final isDark = ref.watch(themeModeProvider);
     return Container(
       padding: const EdgeInsets.all(16),
       child: Row(
@@ -102,6 +98,7 @@ class HomePage extends ConsumerWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Text('Bienvenue'),
               Text(
                 userName,
                 maxLines: 1,
@@ -113,58 +110,70 @@ class HomePage extends ConsumerWidget {
               ),
             ],
           ),
-          IconButton(
-            icon: Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.red.withValues(alpha: 0.1),
-                shape: BoxShape.circle,
+          Row(
+            children: [
+              IconButton(
+                onPressed: () {
+                  ref.read(themeModeProvider.notifier).toggleTheme();
+                },
+                icon: Icon(isDark ? Icons.dark_mode : Icons.light_mode),
               ),
-              child: const Icon(Icons.logout, color: Colors.red),
-            ),
-            onPressed: () async {
-              final confirm = await showDialog<bool>(
-                context: context,
-                builder: (context) => AlertDialog(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
+              IconButton(
+                icon: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.red.withValues(alpha: 0.1),
+                    shape: BoxShape.circle,
                   ),
-                  title: const Text('Se Déconnecter'),
-                  content: const Text(
-                    'Êtes-vous sûr de vouloir vous déconnecter ?',
-                  ),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(context, false),
-                      child: const Text('Annuler'),
-                    ),
-                    ElevatedButton(
-                      onPressed: () => Navigator.pop(context, true),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red,
-                      ),
-                      child: const Text(
-                        'Déconnecter',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
+                  child: const Icon(Icons.logout, color: Colors.red),
                 ),
-              );
-
-              if (confirm == true) {
-                await ref.read(authNotifierProvider.notifier).logout();
-                if (context.mounted) {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const LoginPage()),
+                onPressed: () async {
+                  final confirm = await showDialog<bool>(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      title: const Text('Se Déconnecter'),
+                      content: const Text(
+                        'Êtes-vous sûr de vouloir vous déconnecter ?',
+                      ),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, false),
+                          child: const Text('Annuler'),
+                        ),
+                        ElevatedButton(
+                          onPressed: () => Navigator.pop(context, true),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                          ),
+                          child: const Text(
+                            'Déconnecter',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   );
-                }
-              }
-            },
+
+                  if (confirm == true) {
+                    await ref.read(authNotifierProvider.notifier).logout();
+                    if (context.mounted) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginPage(),
+                        ),
+                      );
+                    }
+                  }
+                },
+              ),
+            ],
           ),
         ],
       ),
@@ -173,28 +182,29 @@ class HomePage extends ConsumerWidget {
 
   Widget _buildMainIcon() {
     return Container(
-      padding: const EdgeInsets.all(40),
+      height: 230,
+      width: double.infinity,
       decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: AppColors.primaryColor,
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withValues(alpha: 0.2),
+            blurRadius: 10,
+            spreadRadius: 5,
+          ),
+        ],
       ),
-      child: const Icon(Icons.qr_code_scanner, size: 100, color: Colors.white),
-    );
-  }
-
-  Widget _buildWelcomeText(BuildContext context, String userName) {
-    return Text(
-      'Bienvenue!',
-      style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-        fontWeight: FontWeight.bold,
-        color: AppColors.primaryColor,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: Image.asset(AppConstants.logo, fit: BoxFit.cover),
       ),
     );
   }
 
   Widget _buildSubtitleText() {
     return Text(
-      'Scannez les codes QR pour vérifier les attestations et les déclarations.',
+      'Scannez les codes QR pour vérifier les attestations et les factures.',
       style: TextStyle(fontSize: 16, color: Colors.grey[600]),
       textAlign: TextAlign.center,
     );
@@ -212,14 +222,6 @@ class HomePage extends ConsumerWidget {
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.primaryColor.withValues(alpha: 0.3),
-            blurRadius: 12,
-            spreadRadius: 2,
-            offset: const Offset(0, 4),
-          ),
-        ],
       ),
       child: ElevatedButton(
         onPressed: onPressed,

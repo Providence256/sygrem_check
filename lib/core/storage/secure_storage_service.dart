@@ -29,4 +29,14 @@ class SecureStorageService {
   Future<Map<String, String>> readAll() async {
     return await _storage.readAll();
   }
+
+  Future<void> writeBool(String key, bool value) async {
+    return await _storage.write(key: key, value: value.toString());
+  }
+
+  Future<bool?> readBool(String key) async {
+    final value = await _storage.read(key: key);
+    if (value == null) return null;
+    return value.toLowerCase() == 'true';
+  }
 }

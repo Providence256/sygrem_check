@@ -46,6 +46,26 @@ class DocumentRepository {
     }
   }
 
+  Future<Result<String>> getPdfUrl(String documentId) async {
+    try {
+      if (documentId.isEmpty) {
+        return const Result.failure('Document ID cannot be empty');
+      }
+
+      final pdfUrl =
+          '${AppConstants.baseUrl}${AppConstants.getpdfdocument}/?id=$documentId';
+
+      return Result.success(pdfUrl);
+    } on DioException catch (e) {
+      return Result.failure(
+        e.response?.data['message'] ?? 'Failed to generate PDF URL',
+        code: e.response?.statusCode.toString(),
+      );
+    } catch (e) {
+      return Result.failure('An unexpected error occurred: ${e.toString()}');
+    }
+  }
+
   Future<Result<String>> downloadPDF(
     String id,
     void Function(int, int)? onProgress,
