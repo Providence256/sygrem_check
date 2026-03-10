@@ -5,9 +5,9 @@ part 'auth_response.g.dart';
 @freezed
 class AuthResponse with _$AuthResponse {
   const factory AuthResponse({
-    required String codeJwt,
+    String? codeJwt,
     required bool codeEstEnvoye,
-    required UtilisateurAuthentifie utilisateurAuthentifie,
+    UtilisateurAuthentifie? utilisateurAuthentifie,
     required int indicateur,
   }) = _AuthResponse;
 
@@ -23,11 +23,11 @@ class UtilisateurAuthentifie with _$UtilisateurAuthentifie {
     required Mandataire mandataire,
     Profile? profile,
     required String id,
-    required String nom,
-    required String email,
-    required String telephone,
-    required String dateCreation,
-    required String creeParUtilisateur,
+    String? nom,
+    String? email,
+    String? telephone,
+    String? dateCreation,
+    String? creeParUtilisateur,
     String? dateModification,
     String? modifieParUtilisateur,
     required bool actif,
@@ -44,7 +44,7 @@ class UtilisateurAuthentifie with _$UtilisateurAuthentifie {
 
 @freezed
 class Role with _$Role {
-  const factory Role({required String id, required String nom}) = _Role;
+  const factory Role({required String id, String? nom}) = _Role;
 
   factory Role.fromJson(Map<String, dynamic> json) => _$RoleFromJson(json);
 }
@@ -53,13 +53,13 @@ class Role with _$Role {
 class Pays with _$Pays {
   const factory Pays({
     required String id,
-    required String codeIsoNumero,
-    required String codeIsoAlpha2,
-    required String codeIsoAlpha3,
-    required String nom,
-    required String nationalite,
-    required String dateCreation,
-    required String creeParUtilisateur,
+    String? codeIsoNumero,
+    String? codeIsoAlpha2,
+    String? codeIsoAlpha3,
+    String? nom,
+    String? nationalite,
+    String? dateCreation,
+    String? creeParUtilisateur,
     String? dateModification,
     String? modifieParUtilisateur,
     required bool actif,
@@ -79,12 +79,12 @@ class Mandataire with _$Mandataire {
     String? email,
     String? referenceContrat,
     String? texteBasPage,
-    required String typeMouvement,
+    String? typeMouvement,
     String? nature,
-    required String categorie,
-    required String id,
-    required String creeParUtilisateur,
-    required String dateCreation,
+    String? categorie,
+    String? id,
+    String? creeParUtilisateur,
+    String? dateCreation,
     String? modifieParUtilisateur,
     String? dateModification,
     required bool actif,
@@ -97,12 +97,12 @@ class Mandataire with _$Mandataire {
 @freezed
 class Profile with _$Profile {
   const factory Profile({
-    required String code,
-    required String description,
-    required List<String> accesModules,
-    required String id,
-    required String creeParUtilisateur,
-    required String dateCreation,
+    String? code,
+    String? description,
+    List<String>? accesModules,
+    String? id,
+    String? creeParUtilisateur,
+    String? dateCreation,
     String? modifieParUtilisateur,
     String? dateModification,
     required bool actif,

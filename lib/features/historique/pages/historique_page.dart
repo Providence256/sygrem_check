@@ -62,7 +62,7 @@ class HistoriquePage extends ConsumerWidget {
               Expanded(
                 child: historiqueState.when(
                   data: (factures) {
-                    return factures == null
+                    return factures.isEmpty
                         ? Center(
                             child: Text(
                               currentFilter == HistoriqueFilter.today
@@ -78,6 +78,7 @@ class HistoriquePage extends ConsumerWidget {
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             itemCount: factures.length,
                             itemBuilder: (context, index) {
+                              print(factures.length);
                               return Padding(
                                 padding: const EdgeInsets.only(bottom: 12),
                                 child: HistoryCard(file: factures[index]),

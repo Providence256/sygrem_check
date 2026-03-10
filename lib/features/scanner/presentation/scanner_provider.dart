@@ -30,9 +30,9 @@ class ScannerNotifier extends StateNotifier<AsyncValue<dynamic>> {
       success: (data) async {
         final dataToSave = SavedData(
           typeFacture: typeFacture,
-          numeroDeclaration: data.declarationNumero,
-          numero: data.numeroVoyage,
-          navire: data.navire,
+          numeroDeclaration: data.declarationNumero ?? 'Non disponible',
+          numero: data.numeroVoyage ?? 'Non disponible',
+          navire: data.navire ?? 'Non disponible',
           scanUrl: qrCodeString,
           scanDate: DateTime.now().toIso8601String(),
         );

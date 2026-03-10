@@ -53,17 +53,11 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
     result.when(
       success: (data) {
-        if (data.codeEstEnvoye == true) {
+        if (data.indicateur == 1) {
           setState(() => _isCodeSent = true);
           _showSnackBar(
             'Code envoyé ! Consultez votre boîte mail.',
             isSuccess: true,
-          );
-        } else {
-          _showSnackBar(
-            'Identifiants incorrects. Vérifiez votre email et mot de passe.',
-            isError: true,
-            isWarning: true,
           );
         }
       },

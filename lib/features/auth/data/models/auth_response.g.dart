@@ -8,11 +8,13 @@ part of 'auth_response.dart';
 
 _$AuthResponseImpl _$$AuthResponseImplFromJson(Map<String, dynamic> json) =>
     _$AuthResponseImpl(
-      codeJwt: json['codeJwt'] as String,
+      codeJwt: json['codeJwt'] as String?,
       codeEstEnvoye: json['codeEstEnvoye'] as bool,
-      utilisateurAuthentifie: UtilisateurAuthentifie.fromJson(
-        json['utilisateurAuthentifie'] as Map<String, dynamic>,
-      ),
+      utilisateurAuthentifie: json['utilisateurAuthentifie'] == null
+          ? null
+          : UtilisateurAuthentifie.fromJson(
+              json['utilisateurAuthentifie'] as Map<String, dynamic>,
+            ),
       indicateur: (json['indicateur'] as num).toInt(),
     );
 
@@ -34,11 +36,11 @@ _$UtilisateurAuthentifieImpl _$$UtilisateurAuthentifieImplFromJson(
       ? null
       : Profile.fromJson(json['profile'] as Map<String, dynamic>),
   id: json['id'] as String,
-  nom: json['nom'] as String,
-  email: json['email'] as String,
-  telephone: json['telephone'] as String,
-  dateCreation: json['dateCreation'] as String,
-  creeParUtilisateur: json['creeParUtilisateur'] as String,
+  nom: json['nom'] as String?,
+  email: json['email'] as String?,
+  telephone: json['telephone'] as String?,
+  dateCreation: json['dateCreation'] as String?,
+  creeParUtilisateur: json['creeParUtilisateur'] as String?,
   dateModification: json['dateModification'] as String?,
   modifieParUtilisateur: json['modifieParUtilisateur'] as String?,
   actif: json['actif'] as bool,
@@ -74,20 +76,20 @@ Map<String, dynamic> _$$UtilisateurAuthentifieImplToJson(
 };
 
 _$RoleImpl _$$RoleImplFromJson(Map<String, dynamic> json) =>
-    _$RoleImpl(id: json['id'] as String, nom: json['nom'] as String);
+    _$RoleImpl(id: json['id'] as String, nom: json['nom'] as String?);
 
 Map<String, dynamic> _$$RoleImplToJson(_$RoleImpl instance) =>
     <String, dynamic>{'id': instance.id, 'nom': instance.nom};
 
 _$PaysImpl _$$PaysImplFromJson(Map<String, dynamic> json) => _$PaysImpl(
   id: json['id'] as String,
-  codeIsoNumero: json['codeIsoNumero'] as String,
-  codeIsoAlpha2: json['codeIsoAlpha2'] as String,
-  codeIsoAlpha3: json['codeIsoAlpha3'] as String,
-  nom: json['nom'] as String,
-  nationalite: json['nationalite'] as String,
-  dateCreation: json['dateCreation'] as String,
-  creeParUtilisateur: json['creeParUtilisateur'] as String,
+  codeIsoNumero: json['codeIsoNumero'] as String?,
+  codeIsoAlpha2: json['codeIsoAlpha2'] as String?,
+  codeIsoAlpha3: json['codeIsoAlpha3'] as String?,
+  nom: json['nom'] as String?,
+  nationalite: json['nationalite'] as String?,
+  dateCreation: json['dateCreation'] as String?,
+  creeParUtilisateur: json['creeParUtilisateur'] as String?,
   dateModification: json['dateModification'] as String?,
   modifieParUtilisateur: json['modifieParUtilisateur'] as String?,
   actif: json['actif'] as bool,
@@ -118,12 +120,12 @@ _$MandataireImpl _$$MandataireImplFromJson(Map<String, dynamic> json) =>
       email: json['email'] as String?,
       referenceContrat: json['referenceContrat'] as String?,
       texteBasPage: json['texteBasPage'] as String?,
-      typeMouvement: json['typeMouvement'] as String,
+      typeMouvement: json['typeMouvement'] as String?,
       nature: json['nature'] as String?,
-      categorie: json['categorie'] as String,
-      id: json['id'] as String,
-      creeParUtilisateur: json['creeParUtilisateur'] as String,
-      dateCreation: json['dateCreation'] as String,
+      categorie: json['categorie'] as String?,
+      id: json['id'] as String?,
+      creeParUtilisateur: json['creeParUtilisateur'] as String?,
+      dateCreation: json['dateCreation'] as String?,
       modifieParUtilisateur: json['modifieParUtilisateur'] as String?,
       dateModification: json['dateModification'] as String?,
       actif: json['actif'] as bool,
@@ -152,14 +154,14 @@ Map<String, dynamic> _$$MandataireImplToJson(_$MandataireImpl instance) =>
 
 _$ProfileImpl _$$ProfileImplFromJson(Map<String, dynamic> json) =>
     _$ProfileImpl(
-      code: json['code'] as String,
-      description: json['description'] as String,
-      accesModules: (json['accesModules'] as List<dynamic>)
-          .map((e) => e as String)
+      code: json['code'] as String?,
+      description: json['description'] as String?,
+      accesModules: (json['accesModules'] as List<dynamic>?)
+          ?.map((e) => e as String)
           .toList(),
-      id: json['id'] as String,
-      creeParUtilisateur: json['creeParUtilisateur'] as String,
-      dateCreation: json['dateCreation'] as String,
+      id: json['id'] as String?,
+      creeParUtilisateur: json['creeParUtilisateur'] as String?,
+      dateCreation: json['dateCreation'] as String?,
       modifieParUtilisateur: json['modifieParUtilisateur'] as String?,
       dateModification: json['dateModification'] as String?,
       actif: json['actif'] as bool,

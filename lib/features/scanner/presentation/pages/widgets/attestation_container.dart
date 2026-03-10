@@ -10,7 +10,9 @@ class AttestationContainer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final formattedDate = ref.watch(dateFormatProvider(document.dateEmission));
+    final formattedDate = ref.watch(
+      dateFormatProvider(document.dateEmission ?? 'Non disponible'),
+    );
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10),
       padding: const EdgeInsets.all(20),
@@ -43,36 +45,39 @@ class AttestationContainer extends ConsumerWidget {
 
           DetailRowContainer(
             title: 'Numero: ',
-            subTitle: document.declarationNumero,
+            subTitle: document.declarationNumero ?? 'Non disponible',
           ),
 
           const SizedBox(height: 8),
 
           DetailRowContainer(
             title: 'Agent Maritime: ',
-            subTitle: document.agentMaritime!,
+            subTitle: document.agentMaritime ?? 'Non Disponible',
           ),
 
-          DetailRowContainer(title: 'Navire: ', subTitle: document.navire),
+          DetailRowContainer(
+            title: 'Navire: ',
+            subTitle: document.navire ?? 'non disponible',
+          ),
           const SizedBox(height: 8),
           DetailRowContainer(
             title: 'Numero OMI: ',
-            subTitle: document.numeroOmi,
+            subTitle: document.numeroOmi ?? 'Non Disponible',
           ),
           const SizedBox(height: 8),
           DetailRowContainer(
             title: 'Numero Lot: ',
-            subTitle: document.numeroVoyage,
+            subTitle: document.numeroVoyage ?? 'Non disponible',
           ),
           const SizedBox(height: 8),
           DetailRowContainer(
             title: 'Port Embarquement: ',
-            subTitle: document.portEmbarquement!,
+            subTitle: document.portEmbarquement ?? 'Non Disponible',
           ),
           const SizedBox(height: 8),
           DetailRowContainer(
             title: 'Port Debarquement: ',
-            subTitle: document.portDebarquement!,
+            subTitle: document.portDebarquement ?? 'Non Disponible',
           ),
           const SizedBox(height: 8),
           DetailRowContainer(

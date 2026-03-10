@@ -21,9 +21,9 @@ AuthResponse _$AuthResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AuthResponse {
-  String get codeJwt => throw _privateConstructorUsedError;
+  String? get codeJwt => throw _privateConstructorUsedError;
   bool get codeEstEnvoye => throw _privateConstructorUsedError;
-  UtilisateurAuthentifie get utilisateurAuthentifie =>
+  UtilisateurAuthentifie? get utilisateurAuthentifie =>
       throw _privateConstructorUsedError;
   int get indicateur => throw _privateConstructorUsedError;
 
@@ -45,13 +45,13 @@ abstract class $AuthResponseCopyWith<$Res> {
   ) = _$AuthResponseCopyWithImpl<$Res, AuthResponse>;
   @useResult
   $Res call({
-    String codeJwt,
+    String? codeJwt,
     bool codeEstEnvoye,
-    UtilisateurAuthentifie utilisateurAuthentifie,
+    UtilisateurAuthentifie? utilisateurAuthentifie,
     int indicateur,
   });
 
-  $UtilisateurAuthentifieCopyWith<$Res> get utilisateurAuthentifie;
+  $UtilisateurAuthentifieCopyWith<$Res>? get utilisateurAuthentifie;
 }
 
 /// @nodoc
@@ -69,25 +69,25 @@ class _$AuthResponseCopyWithImpl<$Res, $Val extends AuthResponse>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? codeJwt = null,
+    Object? codeJwt = freezed,
     Object? codeEstEnvoye = null,
-    Object? utilisateurAuthentifie = null,
+    Object? utilisateurAuthentifie = freezed,
     Object? indicateur = null,
   }) {
     return _then(
       _value.copyWith(
-            codeJwt: null == codeJwt
+            codeJwt: freezed == codeJwt
                 ? _value.codeJwt
                 : codeJwt // ignore: cast_nullable_to_non_nullable
-                      as String,
+                      as String?,
             codeEstEnvoye: null == codeEstEnvoye
                 ? _value.codeEstEnvoye
                 : codeEstEnvoye // ignore: cast_nullable_to_non_nullable
                       as bool,
-            utilisateurAuthentifie: null == utilisateurAuthentifie
+            utilisateurAuthentifie: freezed == utilisateurAuthentifie
                 ? _value.utilisateurAuthentifie
                 : utilisateurAuthentifie // ignore: cast_nullable_to_non_nullable
-                      as UtilisateurAuthentifie,
+                      as UtilisateurAuthentifie?,
             indicateur: null == indicateur
                 ? _value.indicateur
                 : indicateur // ignore: cast_nullable_to_non_nullable
@@ -101,9 +101,13 @@ class _$AuthResponseCopyWithImpl<$Res, $Val extends AuthResponse>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $UtilisateurAuthentifieCopyWith<$Res> get utilisateurAuthentifie {
+  $UtilisateurAuthentifieCopyWith<$Res>? get utilisateurAuthentifie {
+    if (_value.utilisateurAuthentifie == null) {
+      return null;
+    }
+
     return $UtilisateurAuthentifieCopyWith<$Res>(
-      _value.utilisateurAuthentifie,
+      _value.utilisateurAuthentifie!,
       (value) {
         return _then(_value.copyWith(utilisateurAuthentifie: value) as $Val);
       },
@@ -121,14 +125,14 @@ abstract class _$$AuthResponseImplCopyWith<$Res>
   @override
   @useResult
   $Res call({
-    String codeJwt,
+    String? codeJwt,
     bool codeEstEnvoye,
-    UtilisateurAuthentifie utilisateurAuthentifie,
+    UtilisateurAuthentifie? utilisateurAuthentifie,
     int indicateur,
   });
 
   @override
-  $UtilisateurAuthentifieCopyWith<$Res> get utilisateurAuthentifie;
+  $UtilisateurAuthentifieCopyWith<$Res>? get utilisateurAuthentifie;
 }
 
 /// @nodoc
@@ -145,25 +149,25 @@ class __$$AuthResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? codeJwt = null,
+    Object? codeJwt = freezed,
     Object? codeEstEnvoye = null,
-    Object? utilisateurAuthentifie = null,
+    Object? utilisateurAuthentifie = freezed,
     Object? indicateur = null,
   }) {
     return _then(
       _$AuthResponseImpl(
-        codeJwt: null == codeJwt
+        codeJwt: freezed == codeJwt
             ? _value.codeJwt
             : codeJwt // ignore: cast_nullable_to_non_nullable
-                  as String,
+                  as String?,
         codeEstEnvoye: null == codeEstEnvoye
             ? _value.codeEstEnvoye
             : codeEstEnvoye // ignore: cast_nullable_to_non_nullable
                   as bool,
-        utilisateurAuthentifie: null == utilisateurAuthentifie
+        utilisateurAuthentifie: freezed == utilisateurAuthentifie
             ? _value.utilisateurAuthentifie
             : utilisateurAuthentifie // ignore: cast_nullable_to_non_nullable
-                  as UtilisateurAuthentifie,
+                  as UtilisateurAuthentifie?,
         indicateur: null == indicateur
             ? _value.indicateur
             : indicateur // ignore: cast_nullable_to_non_nullable
@@ -177,9 +181,9 @@ class __$$AuthResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AuthResponseImpl implements _AuthResponse {
   const _$AuthResponseImpl({
-    required this.codeJwt,
+    this.codeJwt,
     required this.codeEstEnvoye,
-    required this.utilisateurAuthentifie,
+    this.utilisateurAuthentifie,
     required this.indicateur,
   });
 
@@ -187,11 +191,11 @@ class _$AuthResponseImpl implements _AuthResponse {
       _$$AuthResponseImplFromJson(json);
 
   @override
-  final String codeJwt;
+  final String? codeJwt;
   @override
   final bool codeEstEnvoye;
   @override
-  final UtilisateurAuthentifie utilisateurAuthentifie;
+  final UtilisateurAuthentifie? utilisateurAuthentifie;
   @override
   final int indicateur;
 
@@ -240,9 +244,9 @@ class _$AuthResponseImpl implements _AuthResponse {
 
 abstract class _AuthResponse implements AuthResponse {
   const factory _AuthResponse({
-    required final String codeJwt,
+    final String? codeJwt,
     required final bool codeEstEnvoye,
-    required final UtilisateurAuthentifie utilisateurAuthentifie,
+    final UtilisateurAuthentifie? utilisateurAuthentifie,
     required final int indicateur,
   }) = _$AuthResponseImpl;
 
@@ -250,11 +254,11 @@ abstract class _AuthResponse implements AuthResponse {
       _$AuthResponseImpl.fromJson;
 
   @override
-  String get codeJwt;
+  String? get codeJwt;
   @override
   bool get codeEstEnvoye;
   @override
-  UtilisateurAuthentifie get utilisateurAuthentifie;
+  UtilisateurAuthentifie? get utilisateurAuthentifie;
   @override
   int get indicateur;
 
@@ -279,11 +283,11 @@ mixin _$UtilisateurAuthentifie {
   Mandataire get mandataire => throw _privateConstructorUsedError;
   Profile? get profile => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
-  String get nom => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
-  String get telephone => throw _privateConstructorUsedError;
-  String get dateCreation => throw _privateConstructorUsedError;
-  String get creeParUtilisateur => throw _privateConstructorUsedError;
+  String? get nom => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
+  String? get telephone => throw _privateConstructorUsedError;
+  String? get dateCreation => throw _privateConstructorUsedError;
+  String? get creeParUtilisateur => throw _privateConstructorUsedError;
   String? get dateModification => throw _privateConstructorUsedError;
   String? get modifieParUtilisateur => throw _privateConstructorUsedError;
   bool get actif => throw _privateConstructorUsedError;
@@ -317,11 +321,11 @@ abstract class $UtilisateurAuthentifieCopyWith<$Res> {
     Mandataire mandataire,
     Profile? profile,
     String id,
-    String nom,
-    String email,
-    String telephone,
-    String dateCreation,
-    String creeParUtilisateur,
+    String? nom,
+    String? email,
+    String? telephone,
+    String? dateCreation,
+    String? creeParUtilisateur,
     String? dateModification,
     String? modifieParUtilisateur,
     bool actif,
@@ -361,11 +365,11 @@ class _$UtilisateurAuthentifieCopyWithImpl<
     Object? mandataire = null,
     Object? profile = freezed,
     Object? id = null,
-    Object? nom = null,
-    Object? email = null,
-    Object? telephone = null,
-    Object? dateCreation = null,
-    Object? creeParUtilisateur = null,
+    Object? nom = freezed,
+    Object? email = freezed,
+    Object? telephone = freezed,
+    Object? dateCreation = freezed,
+    Object? creeParUtilisateur = freezed,
     Object? dateModification = freezed,
     Object? modifieParUtilisateur = freezed,
     Object? actif = null,
@@ -397,26 +401,26 @@ class _$UtilisateurAuthentifieCopyWithImpl<
                 ? _value.id
                 : id // ignore: cast_nullable_to_non_nullable
                       as String,
-            nom: null == nom
+            nom: freezed == nom
                 ? _value.nom
                 : nom // ignore: cast_nullable_to_non_nullable
-                      as String,
-            email: null == email
+                      as String?,
+            email: freezed == email
                 ? _value.email
                 : email // ignore: cast_nullable_to_non_nullable
-                      as String,
-            telephone: null == telephone
+                      as String?,
+            telephone: freezed == telephone
                 ? _value.telephone
                 : telephone // ignore: cast_nullable_to_non_nullable
-                      as String,
-            dateCreation: null == dateCreation
+                      as String?,
+            dateCreation: freezed == dateCreation
                 ? _value.dateCreation
                 : dateCreation // ignore: cast_nullable_to_non_nullable
-                      as String,
-            creeParUtilisateur: null == creeParUtilisateur
+                      as String?,
+            creeParUtilisateur: freezed == creeParUtilisateur
                 ? _value.creeParUtilisateur
                 : creeParUtilisateur // ignore: cast_nullable_to_non_nullable
-                      as String,
+                      as String?,
             dateModification: freezed == dateModification
                 ? _value.dateModification
                 : dateModification // ignore: cast_nullable_to_non_nullable
@@ -514,11 +518,11 @@ abstract class _$$UtilisateurAuthentifieImplCopyWith<$Res>
     Mandataire mandataire,
     Profile? profile,
     String id,
-    String nom,
-    String email,
-    String telephone,
-    String dateCreation,
-    String creeParUtilisateur,
+    String? nom,
+    String? email,
+    String? telephone,
+    String? dateCreation,
+    String? creeParUtilisateur,
     String? dateModification,
     String? modifieParUtilisateur,
     bool actif,
@@ -559,11 +563,11 @@ class __$$UtilisateurAuthentifieImplCopyWithImpl<$Res>
     Object? mandataire = null,
     Object? profile = freezed,
     Object? id = null,
-    Object? nom = null,
-    Object? email = null,
-    Object? telephone = null,
-    Object? dateCreation = null,
-    Object? creeParUtilisateur = null,
+    Object? nom = freezed,
+    Object? email = freezed,
+    Object? telephone = freezed,
+    Object? dateCreation = freezed,
+    Object? creeParUtilisateur = freezed,
     Object? dateModification = freezed,
     Object? modifieParUtilisateur = freezed,
     Object? actif = null,
@@ -595,26 +599,26 @@ class __$$UtilisateurAuthentifieImplCopyWithImpl<$Res>
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
                   as String,
-        nom: null == nom
+        nom: freezed == nom
             ? _value.nom
             : nom // ignore: cast_nullable_to_non_nullable
-                  as String,
-        email: null == email
+                  as String?,
+        email: freezed == email
             ? _value.email
             : email // ignore: cast_nullable_to_non_nullable
-                  as String,
-        telephone: null == telephone
+                  as String?,
+        telephone: freezed == telephone
             ? _value.telephone
             : telephone // ignore: cast_nullable_to_non_nullable
-                  as String,
-        dateCreation: null == dateCreation
+                  as String?,
+        dateCreation: freezed == dateCreation
             ? _value.dateCreation
             : dateCreation // ignore: cast_nullable_to_non_nullable
-                  as String,
-        creeParUtilisateur: null == creeParUtilisateur
+                  as String?,
+        creeParUtilisateur: freezed == creeParUtilisateur
             ? _value.creeParUtilisateur
             : creeParUtilisateur // ignore: cast_nullable_to_non_nullable
-                  as String,
+                  as String?,
         dateModification: freezed == dateModification
             ? _value.dateModification
             : dateModification // ignore: cast_nullable_to_non_nullable
@@ -661,11 +665,11 @@ class _$UtilisateurAuthentifieImpl implements _UtilisateurAuthentifie {
     required this.mandataire,
     this.profile,
     required this.id,
-    required this.nom,
-    required this.email,
-    required this.telephone,
-    required this.dateCreation,
-    required this.creeParUtilisateur,
+    this.nom,
+    this.email,
+    this.telephone,
+    this.dateCreation,
+    this.creeParUtilisateur,
     this.dateModification,
     this.modifieParUtilisateur,
     required this.actif,
@@ -690,15 +694,15 @@ class _$UtilisateurAuthentifieImpl implements _UtilisateurAuthentifie {
   @override
   final String id;
   @override
-  final String nom;
+  final String? nom;
   @override
-  final String email;
+  final String? email;
   @override
-  final String telephone;
+  final String? telephone;
   @override
-  final String dateCreation;
+  final String? dateCreation;
   @override
-  final String creeParUtilisateur;
+  final String? creeParUtilisateur;
   @override
   final String? dateModification;
   @override
@@ -814,11 +818,11 @@ abstract class _UtilisateurAuthentifie implements UtilisateurAuthentifie {
     required final Mandataire mandataire,
     final Profile? profile,
     required final String id,
-    required final String nom,
-    required final String email,
-    required final String telephone,
-    required final String dateCreation,
-    required final String creeParUtilisateur,
+    final String? nom,
+    final String? email,
+    final String? telephone,
+    final String? dateCreation,
+    final String? creeParUtilisateur,
     final String? dateModification,
     final String? modifieParUtilisateur,
     required final bool actif,
@@ -843,15 +847,15 @@ abstract class _UtilisateurAuthentifie implements UtilisateurAuthentifie {
   @override
   String get id;
   @override
-  String get nom;
+  String? get nom;
   @override
-  String get email;
+  String? get email;
   @override
-  String get telephone;
+  String? get telephone;
   @override
-  String get dateCreation;
+  String? get dateCreation;
   @override
-  String get creeParUtilisateur;
+  String? get creeParUtilisateur;
   @override
   String? get dateModification;
   @override
@@ -884,7 +888,7 @@ Role _$RoleFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Role {
   String get id => throw _privateConstructorUsedError;
-  String get nom => throw _privateConstructorUsedError;
+  String? get nom => throw _privateConstructorUsedError;
 
   /// Serializes this Role to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -900,7 +904,7 @@ abstract class $RoleCopyWith<$Res> {
   factory $RoleCopyWith(Role value, $Res Function(Role) then) =
       _$RoleCopyWithImpl<$Res, Role>;
   @useResult
-  $Res call({String id, String nom});
+  $Res call({String id, String? nom});
 }
 
 /// @nodoc
@@ -917,17 +921,17 @@ class _$RoleCopyWithImpl<$Res, $Val extends Role>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = null, Object? nom = null}) {
+  $Res call({Object? id = null, Object? nom = freezed}) {
     return _then(
       _value.copyWith(
             id: null == id
                 ? _value.id
                 : id // ignore: cast_nullable_to_non_nullable
                       as String,
-            nom: null == nom
+            nom: freezed == nom
                 ? _value.nom
                 : nom // ignore: cast_nullable_to_non_nullable
-                      as String,
+                      as String?,
           )
           as $Val,
     );
@@ -942,7 +946,7 @@ abstract class _$$RoleImplCopyWith<$Res> implements $RoleCopyWith<$Res> {
   ) = __$$RoleImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String nom});
+  $Res call({String id, String? nom});
 }
 
 /// @nodoc
@@ -956,17 +960,17 @@ class __$$RoleImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = null, Object? nom = null}) {
+  $Res call({Object? id = null, Object? nom = freezed}) {
     return _then(
       _$RoleImpl(
         id: null == id
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
                   as String,
-        nom: null == nom
+        nom: freezed == nom
             ? _value.nom
             : nom // ignore: cast_nullable_to_non_nullable
-                  as String,
+                  as String?,
       ),
     );
   }
@@ -975,7 +979,7 @@ class __$$RoleImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$RoleImpl implements _Role {
-  const _$RoleImpl({required this.id, required this.nom});
+  const _$RoleImpl({required this.id, this.nom});
 
   factory _$RoleImpl.fromJson(Map<String, dynamic> json) =>
       _$$RoleImplFromJson(json);
@@ -983,7 +987,7 @@ class _$RoleImpl implements _Role {
   @override
   final String id;
   @override
-  final String nom;
+  final String? nom;
 
   @override
   String toString() {
@@ -1018,7 +1022,7 @@ class _$RoleImpl implements _Role {
 }
 
 abstract class _Role implements Role {
-  const factory _Role({required final String id, required final String nom}) =
+  const factory _Role({required final String id, final String? nom}) =
       _$RoleImpl;
 
   factory _Role.fromJson(Map<String, dynamic> json) = _$RoleImpl.fromJson;
@@ -1026,7 +1030,7 @@ abstract class _Role implements Role {
   @override
   String get id;
   @override
-  String get nom;
+  String? get nom;
 
   /// Create a copy of Role
   /// with the given fields replaced by the non-null parameter values.
@@ -1043,13 +1047,13 @@ Pays _$PaysFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Pays {
   String get id => throw _privateConstructorUsedError;
-  String get codeIsoNumero => throw _privateConstructorUsedError;
-  String get codeIsoAlpha2 => throw _privateConstructorUsedError;
-  String get codeIsoAlpha3 => throw _privateConstructorUsedError;
-  String get nom => throw _privateConstructorUsedError;
-  String get nationalite => throw _privateConstructorUsedError;
-  String get dateCreation => throw _privateConstructorUsedError;
-  String get creeParUtilisateur => throw _privateConstructorUsedError;
+  String? get codeIsoNumero => throw _privateConstructorUsedError;
+  String? get codeIsoAlpha2 => throw _privateConstructorUsedError;
+  String? get codeIsoAlpha3 => throw _privateConstructorUsedError;
+  String? get nom => throw _privateConstructorUsedError;
+  String? get nationalite => throw _privateConstructorUsedError;
+  String? get dateCreation => throw _privateConstructorUsedError;
+  String? get creeParUtilisateur => throw _privateConstructorUsedError;
   String? get dateModification => throw _privateConstructorUsedError;
   String? get modifieParUtilisateur => throw _privateConstructorUsedError;
   bool get actif => throw _privateConstructorUsedError;
@@ -1070,13 +1074,13 @@ abstract class $PaysCopyWith<$Res> {
   @useResult
   $Res call({
     String id,
-    String codeIsoNumero,
-    String codeIsoAlpha2,
-    String codeIsoAlpha3,
-    String nom,
-    String nationalite,
-    String dateCreation,
-    String creeParUtilisateur,
+    String? codeIsoNumero,
+    String? codeIsoAlpha2,
+    String? codeIsoAlpha3,
+    String? nom,
+    String? nationalite,
+    String? dateCreation,
+    String? creeParUtilisateur,
     String? dateModification,
     String? modifieParUtilisateur,
     bool actif,
@@ -1099,13 +1103,13 @@ class _$PaysCopyWithImpl<$Res, $Val extends Pays>
   @override
   $Res call({
     Object? id = null,
-    Object? codeIsoNumero = null,
-    Object? codeIsoAlpha2 = null,
-    Object? codeIsoAlpha3 = null,
-    Object? nom = null,
-    Object? nationalite = null,
-    Object? dateCreation = null,
-    Object? creeParUtilisateur = null,
+    Object? codeIsoNumero = freezed,
+    Object? codeIsoAlpha2 = freezed,
+    Object? codeIsoAlpha3 = freezed,
+    Object? nom = freezed,
+    Object? nationalite = freezed,
+    Object? dateCreation = freezed,
+    Object? creeParUtilisateur = freezed,
     Object? dateModification = freezed,
     Object? modifieParUtilisateur = freezed,
     Object? actif = null,
@@ -1116,34 +1120,34 @@ class _$PaysCopyWithImpl<$Res, $Val extends Pays>
                 ? _value.id
                 : id // ignore: cast_nullable_to_non_nullable
                       as String,
-            codeIsoNumero: null == codeIsoNumero
+            codeIsoNumero: freezed == codeIsoNumero
                 ? _value.codeIsoNumero
                 : codeIsoNumero // ignore: cast_nullable_to_non_nullable
-                      as String,
-            codeIsoAlpha2: null == codeIsoAlpha2
+                      as String?,
+            codeIsoAlpha2: freezed == codeIsoAlpha2
                 ? _value.codeIsoAlpha2
                 : codeIsoAlpha2 // ignore: cast_nullable_to_non_nullable
-                      as String,
-            codeIsoAlpha3: null == codeIsoAlpha3
+                      as String?,
+            codeIsoAlpha3: freezed == codeIsoAlpha3
                 ? _value.codeIsoAlpha3
                 : codeIsoAlpha3 // ignore: cast_nullable_to_non_nullable
-                      as String,
-            nom: null == nom
+                      as String?,
+            nom: freezed == nom
                 ? _value.nom
                 : nom // ignore: cast_nullable_to_non_nullable
-                      as String,
-            nationalite: null == nationalite
+                      as String?,
+            nationalite: freezed == nationalite
                 ? _value.nationalite
                 : nationalite // ignore: cast_nullable_to_non_nullable
-                      as String,
-            dateCreation: null == dateCreation
+                      as String?,
+            dateCreation: freezed == dateCreation
                 ? _value.dateCreation
                 : dateCreation // ignore: cast_nullable_to_non_nullable
-                      as String,
-            creeParUtilisateur: null == creeParUtilisateur
+                      as String?,
+            creeParUtilisateur: freezed == creeParUtilisateur
                 ? _value.creeParUtilisateur
                 : creeParUtilisateur // ignore: cast_nullable_to_non_nullable
-                      as String,
+                      as String?,
             dateModification: freezed == dateModification
                 ? _value.dateModification
                 : dateModification // ignore: cast_nullable_to_non_nullable
@@ -1172,13 +1176,13 @@ abstract class _$$PaysImplCopyWith<$Res> implements $PaysCopyWith<$Res> {
   @useResult
   $Res call({
     String id,
-    String codeIsoNumero,
-    String codeIsoAlpha2,
-    String codeIsoAlpha3,
-    String nom,
-    String nationalite,
-    String dateCreation,
-    String creeParUtilisateur,
+    String? codeIsoNumero,
+    String? codeIsoAlpha2,
+    String? codeIsoAlpha3,
+    String? nom,
+    String? nationalite,
+    String? dateCreation,
+    String? creeParUtilisateur,
     String? dateModification,
     String? modifieParUtilisateur,
     bool actif,
@@ -1198,13 +1202,13 @@ class __$$PaysImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? codeIsoNumero = null,
-    Object? codeIsoAlpha2 = null,
-    Object? codeIsoAlpha3 = null,
-    Object? nom = null,
-    Object? nationalite = null,
-    Object? dateCreation = null,
-    Object? creeParUtilisateur = null,
+    Object? codeIsoNumero = freezed,
+    Object? codeIsoAlpha2 = freezed,
+    Object? codeIsoAlpha3 = freezed,
+    Object? nom = freezed,
+    Object? nationalite = freezed,
+    Object? dateCreation = freezed,
+    Object? creeParUtilisateur = freezed,
     Object? dateModification = freezed,
     Object? modifieParUtilisateur = freezed,
     Object? actif = null,
@@ -1215,34 +1219,34 @@ class __$$PaysImplCopyWithImpl<$Res>
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
                   as String,
-        codeIsoNumero: null == codeIsoNumero
+        codeIsoNumero: freezed == codeIsoNumero
             ? _value.codeIsoNumero
             : codeIsoNumero // ignore: cast_nullable_to_non_nullable
-                  as String,
-        codeIsoAlpha2: null == codeIsoAlpha2
+                  as String?,
+        codeIsoAlpha2: freezed == codeIsoAlpha2
             ? _value.codeIsoAlpha2
             : codeIsoAlpha2 // ignore: cast_nullable_to_non_nullable
-                  as String,
-        codeIsoAlpha3: null == codeIsoAlpha3
+                  as String?,
+        codeIsoAlpha3: freezed == codeIsoAlpha3
             ? _value.codeIsoAlpha3
             : codeIsoAlpha3 // ignore: cast_nullable_to_non_nullable
-                  as String,
-        nom: null == nom
+                  as String?,
+        nom: freezed == nom
             ? _value.nom
             : nom // ignore: cast_nullable_to_non_nullable
-                  as String,
-        nationalite: null == nationalite
+                  as String?,
+        nationalite: freezed == nationalite
             ? _value.nationalite
             : nationalite // ignore: cast_nullable_to_non_nullable
-                  as String,
-        dateCreation: null == dateCreation
+                  as String?,
+        dateCreation: freezed == dateCreation
             ? _value.dateCreation
             : dateCreation // ignore: cast_nullable_to_non_nullable
-                  as String,
-        creeParUtilisateur: null == creeParUtilisateur
+                  as String?,
+        creeParUtilisateur: freezed == creeParUtilisateur
             ? _value.creeParUtilisateur
             : creeParUtilisateur // ignore: cast_nullable_to_non_nullable
-                  as String,
+                  as String?,
         dateModification: freezed == dateModification
             ? _value.dateModification
             : dateModification // ignore: cast_nullable_to_non_nullable
@@ -1265,13 +1269,13 @@ class __$$PaysImplCopyWithImpl<$Res>
 class _$PaysImpl implements _Pays {
   const _$PaysImpl({
     required this.id,
-    required this.codeIsoNumero,
-    required this.codeIsoAlpha2,
-    required this.codeIsoAlpha3,
-    required this.nom,
-    required this.nationalite,
-    required this.dateCreation,
-    required this.creeParUtilisateur,
+    this.codeIsoNumero,
+    this.codeIsoAlpha2,
+    this.codeIsoAlpha3,
+    this.nom,
+    this.nationalite,
+    this.dateCreation,
+    this.creeParUtilisateur,
     this.dateModification,
     this.modifieParUtilisateur,
     required this.actif,
@@ -1283,19 +1287,19 @@ class _$PaysImpl implements _Pays {
   @override
   final String id;
   @override
-  final String codeIsoNumero;
+  final String? codeIsoNumero;
   @override
-  final String codeIsoAlpha2;
+  final String? codeIsoAlpha2;
   @override
-  final String codeIsoAlpha3;
+  final String? codeIsoAlpha3;
   @override
-  final String nom;
+  final String? nom;
   @override
-  final String nationalite;
+  final String? nationalite;
   @override
-  final String dateCreation;
+  final String? dateCreation;
   @override
-  final String creeParUtilisateur;
+  final String? creeParUtilisateur;
   @override
   final String? dateModification;
   @override
@@ -1368,13 +1372,13 @@ class _$PaysImpl implements _Pays {
 abstract class _Pays implements Pays {
   const factory _Pays({
     required final String id,
-    required final String codeIsoNumero,
-    required final String codeIsoAlpha2,
-    required final String codeIsoAlpha3,
-    required final String nom,
-    required final String nationalite,
-    required final String dateCreation,
-    required final String creeParUtilisateur,
+    final String? codeIsoNumero,
+    final String? codeIsoAlpha2,
+    final String? codeIsoAlpha3,
+    final String? nom,
+    final String? nationalite,
+    final String? dateCreation,
+    final String? creeParUtilisateur,
     final String? dateModification,
     final String? modifieParUtilisateur,
     required final bool actif,
@@ -1385,19 +1389,19 @@ abstract class _Pays implements Pays {
   @override
   String get id;
   @override
-  String get codeIsoNumero;
+  String? get codeIsoNumero;
   @override
-  String get codeIsoAlpha2;
+  String? get codeIsoAlpha2;
   @override
-  String get codeIsoAlpha3;
+  String? get codeIsoAlpha3;
   @override
-  String get nom;
+  String? get nom;
   @override
-  String get nationalite;
+  String? get nationalite;
   @override
-  String get dateCreation;
+  String? get dateCreation;
   @override
-  String get creeParUtilisateur;
+  String? get creeParUtilisateur;
   @override
   String? get dateModification;
   @override
@@ -1427,12 +1431,12 @@ mixin _$Mandataire {
   String? get email => throw _privateConstructorUsedError;
   String? get referenceContrat => throw _privateConstructorUsedError;
   String? get texteBasPage => throw _privateConstructorUsedError;
-  String get typeMouvement => throw _privateConstructorUsedError;
+  String? get typeMouvement => throw _privateConstructorUsedError;
   String? get nature => throw _privateConstructorUsedError;
-  String get categorie => throw _privateConstructorUsedError;
-  String get id => throw _privateConstructorUsedError;
-  String get creeParUtilisateur => throw _privateConstructorUsedError;
-  String get dateCreation => throw _privateConstructorUsedError;
+  String? get categorie => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
+  String? get creeParUtilisateur => throw _privateConstructorUsedError;
+  String? get dateCreation => throw _privateConstructorUsedError;
   String? get modifieParUtilisateur => throw _privateConstructorUsedError;
   String? get dateModification => throw _privateConstructorUsedError;
   bool get actif => throw _privateConstructorUsedError;
@@ -1463,12 +1467,12 @@ abstract class $MandataireCopyWith<$Res> {
     String? email,
     String? referenceContrat,
     String? texteBasPage,
-    String typeMouvement,
+    String? typeMouvement,
     String? nature,
-    String categorie,
-    String id,
-    String creeParUtilisateur,
-    String dateCreation,
+    String? categorie,
+    String? id,
+    String? creeParUtilisateur,
+    String? dateCreation,
     String? modifieParUtilisateur,
     String? dateModification,
     bool actif,
@@ -1498,12 +1502,12 @@ class _$MandataireCopyWithImpl<$Res, $Val extends Mandataire>
     Object? email = freezed,
     Object? referenceContrat = freezed,
     Object? texteBasPage = freezed,
-    Object? typeMouvement = null,
+    Object? typeMouvement = freezed,
     Object? nature = freezed,
-    Object? categorie = null,
-    Object? id = null,
-    Object? creeParUtilisateur = null,
-    Object? dateCreation = null,
+    Object? categorie = freezed,
+    Object? id = freezed,
+    Object? creeParUtilisateur = freezed,
+    Object? dateCreation = freezed,
     Object? modifieParUtilisateur = freezed,
     Object? dateModification = freezed,
     Object? actif = null,
@@ -1542,30 +1546,30 @@ class _$MandataireCopyWithImpl<$Res, $Val extends Mandataire>
                 ? _value.texteBasPage
                 : texteBasPage // ignore: cast_nullable_to_non_nullable
                       as String?,
-            typeMouvement: null == typeMouvement
+            typeMouvement: freezed == typeMouvement
                 ? _value.typeMouvement
                 : typeMouvement // ignore: cast_nullable_to_non_nullable
-                      as String,
+                      as String?,
             nature: freezed == nature
                 ? _value.nature
                 : nature // ignore: cast_nullable_to_non_nullable
                       as String?,
-            categorie: null == categorie
+            categorie: freezed == categorie
                 ? _value.categorie
                 : categorie // ignore: cast_nullable_to_non_nullable
-                      as String,
-            id: null == id
+                      as String?,
+            id: freezed == id
                 ? _value.id
                 : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            creeParUtilisateur: null == creeParUtilisateur
+                      as String?,
+            creeParUtilisateur: freezed == creeParUtilisateur
                 ? _value.creeParUtilisateur
                 : creeParUtilisateur // ignore: cast_nullable_to_non_nullable
-                      as String,
-            dateCreation: null == dateCreation
+                      as String?,
+            dateCreation: freezed == dateCreation
                 ? _value.dateCreation
                 : dateCreation // ignore: cast_nullable_to_non_nullable
-                      as String,
+                      as String?,
             modifieParUtilisateur: freezed == modifieParUtilisateur
                 ? _value.modifieParUtilisateur
                 : modifieParUtilisateur // ignore: cast_nullable_to_non_nullable
@@ -1602,12 +1606,12 @@ abstract class _$$MandataireImplCopyWith<$Res>
     String? email,
     String? referenceContrat,
     String? texteBasPage,
-    String typeMouvement,
+    String? typeMouvement,
     String? nature,
-    String categorie,
-    String id,
-    String creeParUtilisateur,
-    String dateCreation,
+    String? categorie,
+    String? id,
+    String? creeParUtilisateur,
+    String? dateCreation,
     String? modifieParUtilisateur,
     String? dateModification,
     bool actif,
@@ -1636,12 +1640,12 @@ class __$$MandataireImplCopyWithImpl<$Res>
     Object? email = freezed,
     Object? referenceContrat = freezed,
     Object? texteBasPage = freezed,
-    Object? typeMouvement = null,
+    Object? typeMouvement = freezed,
     Object? nature = freezed,
-    Object? categorie = null,
-    Object? id = null,
-    Object? creeParUtilisateur = null,
-    Object? dateCreation = null,
+    Object? categorie = freezed,
+    Object? id = freezed,
+    Object? creeParUtilisateur = freezed,
+    Object? dateCreation = freezed,
     Object? modifieParUtilisateur = freezed,
     Object? dateModification = freezed,
     Object? actif = null,
@@ -1680,30 +1684,30 @@ class __$$MandataireImplCopyWithImpl<$Res>
             ? _value.texteBasPage
             : texteBasPage // ignore: cast_nullable_to_non_nullable
                   as String?,
-        typeMouvement: null == typeMouvement
+        typeMouvement: freezed == typeMouvement
             ? _value.typeMouvement
             : typeMouvement // ignore: cast_nullable_to_non_nullable
-                  as String,
+                  as String?,
         nature: freezed == nature
             ? _value.nature
             : nature // ignore: cast_nullable_to_non_nullable
                   as String?,
-        categorie: null == categorie
+        categorie: freezed == categorie
             ? _value.categorie
             : categorie // ignore: cast_nullable_to_non_nullable
-                  as String,
-        id: null == id
+                  as String?,
+        id: freezed == id
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        creeParUtilisateur: null == creeParUtilisateur
+                  as String?,
+        creeParUtilisateur: freezed == creeParUtilisateur
             ? _value.creeParUtilisateur
             : creeParUtilisateur // ignore: cast_nullable_to_non_nullable
-                  as String,
-        dateCreation: null == dateCreation
+                  as String?,
+        dateCreation: freezed == dateCreation
             ? _value.dateCreation
             : dateCreation // ignore: cast_nullable_to_non_nullable
-                  as String,
+                  as String?,
         modifieParUtilisateur: freezed == modifieParUtilisateur
             ? _value.modifieParUtilisateur
             : modifieParUtilisateur // ignore: cast_nullable_to_non_nullable
@@ -1733,12 +1737,12 @@ class _$MandataireImpl implements _Mandataire {
     this.email,
     this.referenceContrat,
     this.texteBasPage,
-    required this.typeMouvement,
+    this.typeMouvement,
     this.nature,
-    required this.categorie,
-    required this.id,
-    required this.creeParUtilisateur,
-    required this.dateCreation,
+    this.categorie,
+    this.id,
+    this.creeParUtilisateur,
+    this.dateCreation,
     this.modifieParUtilisateur,
     this.dateModification,
     required this.actif,
@@ -1764,17 +1768,17 @@ class _$MandataireImpl implements _Mandataire {
   @override
   final String? texteBasPage;
   @override
-  final String typeMouvement;
+  final String? typeMouvement;
   @override
   final String? nature;
   @override
-  final String categorie;
+  final String? categorie;
   @override
-  final String id;
+  final String? id;
   @override
-  final String creeParUtilisateur;
+  final String? creeParUtilisateur;
   @override
-  final String dateCreation;
+  final String? dateCreation;
   @override
   final String? modifieParUtilisateur;
   @override
@@ -1867,12 +1871,12 @@ abstract class _Mandataire implements Mandataire {
     final String? email,
     final String? referenceContrat,
     final String? texteBasPage,
-    required final String typeMouvement,
+    final String? typeMouvement,
     final String? nature,
-    required final String categorie,
-    required final String id,
-    required final String creeParUtilisateur,
-    required final String dateCreation,
+    final String? categorie,
+    final String? id,
+    final String? creeParUtilisateur,
+    final String? dateCreation,
     final String? modifieParUtilisateur,
     final String? dateModification,
     required final bool actif,
@@ -1898,17 +1902,17 @@ abstract class _Mandataire implements Mandataire {
   @override
   String? get texteBasPage;
   @override
-  String get typeMouvement;
+  String? get typeMouvement;
   @override
   String? get nature;
   @override
-  String get categorie;
+  String? get categorie;
   @override
-  String get id;
+  String? get id;
   @override
-  String get creeParUtilisateur;
+  String? get creeParUtilisateur;
   @override
-  String get dateCreation;
+  String? get dateCreation;
   @override
   String? get modifieParUtilisateur;
   @override
@@ -1930,12 +1934,12 @@ Profile _$ProfileFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Profile {
-  String get code => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
-  List<String> get accesModules => throw _privateConstructorUsedError;
-  String get id => throw _privateConstructorUsedError;
-  String get creeParUtilisateur => throw _privateConstructorUsedError;
-  String get dateCreation => throw _privateConstructorUsedError;
+  String? get code => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  List<String>? get accesModules => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
+  String? get creeParUtilisateur => throw _privateConstructorUsedError;
+  String? get dateCreation => throw _privateConstructorUsedError;
   String? get modifieParUtilisateur => throw _privateConstructorUsedError;
   String? get dateModification => throw _privateConstructorUsedError;
   bool get actif => throw _privateConstructorUsedError;
@@ -1955,12 +1959,12 @@ abstract class $ProfileCopyWith<$Res> {
       _$ProfileCopyWithImpl<$Res, Profile>;
   @useResult
   $Res call({
-    String code,
-    String description,
-    List<String> accesModules,
-    String id,
-    String creeParUtilisateur,
-    String dateCreation,
+    String? code,
+    String? description,
+    List<String>? accesModules,
+    String? id,
+    String? creeParUtilisateur,
+    String? dateCreation,
     String? modifieParUtilisateur,
     String? dateModification,
     bool actif,
@@ -1982,42 +1986,42 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? code = null,
-    Object? description = null,
-    Object? accesModules = null,
-    Object? id = null,
-    Object? creeParUtilisateur = null,
-    Object? dateCreation = null,
+    Object? code = freezed,
+    Object? description = freezed,
+    Object? accesModules = freezed,
+    Object? id = freezed,
+    Object? creeParUtilisateur = freezed,
+    Object? dateCreation = freezed,
     Object? modifieParUtilisateur = freezed,
     Object? dateModification = freezed,
     Object? actif = null,
   }) {
     return _then(
       _value.copyWith(
-            code: null == code
+            code: freezed == code
                 ? _value.code
                 : code // ignore: cast_nullable_to_non_nullable
-                      as String,
-            description: null == description
+                      as String?,
+            description: freezed == description
                 ? _value.description
                 : description // ignore: cast_nullable_to_non_nullable
-                      as String,
-            accesModules: null == accesModules
+                      as String?,
+            accesModules: freezed == accesModules
                 ? _value.accesModules
                 : accesModules // ignore: cast_nullable_to_non_nullable
-                      as List<String>,
-            id: null == id
+                      as List<String>?,
+            id: freezed == id
                 ? _value.id
                 : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            creeParUtilisateur: null == creeParUtilisateur
+                      as String?,
+            creeParUtilisateur: freezed == creeParUtilisateur
                 ? _value.creeParUtilisateur
                 : creeParUtilisateur // ignore: cast_nullable_to_non_nullable
-                      as String,
-            dateCreation: null == dateCreation
+                      as String?,
+            dateCreation: freezed == dateCreation
                 ? _value.dateCreation
                 : dateCreation // ignore: cast_nullable_to_non_nullable
-                      as String,
+                      as String?,
             modifieParUtilisateur: freezed == modifieParUtilisateur
                 ? _value.modifieParUtilisateur
                 : modifieParUtilisateur // ignore: cast_nullable_to_non_nullable
@@ -2045,12 +2049,12 @@ abstract class _$$ProfileImplCopyWith<$Res> implements $ProfileCopyWith<$Res> {
   @override
   @useResult
   $Res call({
-    String code,
-    String description,
-    List<String> accesModules,
-    String id,
-    String creeParUtilisateur,
-    String dateCreation,
+    String? code,
+    String? description,
+    List<String>? accesModules,
+    String? id,
+    String? creeParUtilisateur,
+    String? dateCreation,
     String? modifieParUtilisateur,
     String? dateModification,
     bool actif,
@@ -2071,42 +2075,42 @@ class __$$ProfileImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? code = null,
-    Object? description = null,
-    Object? accesModules = null,
-    Object? id = null,
-    Object? creeParUtilisateur = null,
-    Object? dateCreation = null,
+    Object? code = freezed,
+    Object? description = freezed,
+    Object? accesModules = freezed,
+    Object? id = freezed,
+    Object? creeParUtilisateur = freezed,
+    Object? dateCreation = freezed,
     Object? modifieParUtilisateur = freezed,
     Object? dateModification = freezed,
     Object? actif = null,
   }) {
     return _then(
       _$ProfileImpl(
-        code: null == code
+        code: freezed == code
             ? _value.code
             : code // ignore: cast_nullable_to_non_nullable
-                  as String,
-        description: null == description
+                  as String?,
+        description: freezed == description
             ? _value.description
             : description // ignore: cast_nullable_to_non_nullable
-                  as String,
-        accesModules: null == accesModules
+                  as String?,
+        accesModules: freezed == accesModules
             ? _value._accesModules
             : accesModules // ignore: cast_nullable_to_non_nullable
-                  as List<String>,
-        id: null == id
+                  as List<String>?,
+        id: freezed == id
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        creeParUtilisateur: null == creeParUtilisateur
+                  as String?,
+        creeParUtilisateur: freezed == creeParUtilisateur
             ? _value.creeParUtilisateur
             : creeParUtilisateur // ignore: cast_nullable_to_non_nullable
-                  as String,
-        dateCreation: null == dateCreation
+                  as String?,
+        dateCreation: freezed == dateCreation
             ? _value.dateCreation
             : dateCreation // ignore: cast_nullable_to_non_nullable
-                  as String,
+                  as String?,
         modifieParUtilisateur: freezed == modifieParUtilisateur
             ? _value.modifieParUtilisateur
             : modifieParUtilisateur // ignore: cast_nullable_to_non_nullable
@@ -2128,12 +2132,12 @@ class __$$ProfileImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ProfileImpl implements _Profile {
   const _$ProfileImpl({
-    required this.code,
-    required this.description,
-    required final List<String> accesModules,
-    required this.id,
-    required this.creeParUtilisateur,
-    required this.dateCreation,
+    this.code,
+    this.description,
+    final List<String>? accesModules,
+    this.id,
+    this.creeParUtilisateur,
+    this.dateCreation,
     this.modifieParUtilisateur,
     this.dateModification,
     required this.actif,
@@ -2143,23 +2147,25 @@ class _$ProfileImpl implements _Profile {
       _$$ProfileImplFromJson(json);
 
   @override
-  final String code;
+  final String? code;
   @override
-  final String description;
-  final List<String> _accesModules;
+  final String? description;
+  final List<String>? _accesModules;
   @override
-  List<String> get accesModules {
+  List<String>? get accesModules {
+    final value = _accesModules;
+    if (value == null) return null;
     if (_accesModules is EqualUnmodifiableListView) return _accesModules;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_accesModules);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
-  final String id;
+  final String? id;
   @override
-  final String creeParUtilisateur;
+  final String? creeParUtilisateur;
   @override
-  final String dateCreation;
+  final String? dateCreation;
   @override
   final String? modifieParUtilisateur;
   @override
@@ -2227,12 +2233,12 @@ class _$ProfileImpl implements _Profile {
 
 abstract class _Profile implements Profile {
   const factory _Profile({
-    required final String code,
-    required final String description,
-    required final List<String> accesModules,
-    required final String id,
-    required final String creeParUtilisateur,
-    required final String dateCreation,
+    final String? code,
+    final String? description,
+    final List<String>? accesModules,
+    final String? id,
+    final String? creeParUtilisateur,
+    final String? dateCreation,
     final String? modifieParUtilisateur,
     final String? dateModification,
     required final bool actif,
@@ -2241,17 +2247,17 @@ abstract class _Profile implements Profile {
   factory _Profile.fromJson(Map<String, dynamic> json) = _$ProfileImpl.fromJson;
 
   @override
-  String get code;
+  String? get code;
   @override
-  String get description;
+  String? get description;
   @override
-  List<String> get accesModules;
+  List<String>? get accesModules;
   @override
-  String get id;
+  String? get id;
   @override
-  String get creeParUtilisateur;
+  String? get creeParUtilisateur;
   @override
-  String get dateCreation;
+  String? get dateCreation;
   @override
   String? get modifieParUtilisateur;
   @override

@@ -40,29 +40,35 @@ class DeclarationContainer extends StatelessWidget {
 
           DetailRowContainer(
             title: 'Numero Facture:',
-            subTitle: document.numero!,
+            subTitle: document.numero ?? 'Non Disponible',
           ),
 
           const SizedBox(height: 8),
 
           DetailRowContainer(
             title: 'Numero Déclaration:',
-            subTitle: document.declarationNumero,
+            subTitle: document.declarationNumero ?? 'Non disponible',
           ),
 
-          DetailRowContainer(title: 'Navire:', subTitle: document.navire),
+          DetailRowContainer(
+            title: 'Navire:',
+            subTitle: document.navire ?? 'Non disponible',
+          ),
           const SizedBox(height: 8),
           DetailRowContainer(
             title: 'Numero OMI:',
-            subTitle: document.numeroOmi,
+            subTitle: document.numeroOmi ?? 'Non Disponible',
           ),
           const SizedBox(height: 8),
           DetailRowContainer(
             title: 'Numero voyage:',
-            subTitle: document.numeroVoyage,
+            subTitle: document.numeroVoyage ?? 'Non disponible',
           ),
           const SizedBox(height: 8),
-          DetailRowContainer(title: 'Client:', subTitle: document.nomClient),
+          DetailRowContainer(
+            title: 'Client:',
+            subTitle: document.nomClient ?? 'Non disponible',
+          ),
 
           const SizedBox(height: 16),
           Divider(color: Colors.grey.withValues(alpha: 0.5)),

@@ -22,13 +22,13 @@ QRCodeData _$QRCodeDataFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$QRCodeData {
   String get typeRedevance => throw _privateConstructorUsedError;
-  String get declarationNumero => throw _privateConstructorUsedError;
-  String get dateEmission => throw _privateConstructorUsedError;
-  String get navire => throw _privateConstructorUsedError;
-  String get numeroOmi => throw _privateConstructorUsedError;
-  String get numeroVoyage => throw _privateConstructorUsedError;
-  String get nomClient => throw _privateConstructorUsedError;
-  String get nzela => throw _privateConstructorUsedError;
+  String? get declarationNumero => throw _privateConstructorUsedError;
+  String? get dateEmission => throw _privateConstructorUsedError;
+  String? get navire => throw _privateConstructorUsedError;
+  String? get numeroOmi => throw _privateConstructorUsedError;
+  String? get numeroVoyage => throw _privateConstructorUsedError;
+  String? get nomClient => throw _privateConstructorUsedError;
+  String? get nzela => throw _privateConstructorUsedError;
   int get retour => throw _privateConstructorUsedError;
   String? get numero => throw _privateConstructorUsedError;
   int? get montant => throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$QRCodeData {
   String? get refLot => throw _privateConstructorUsedError;
   String? get portEmbarquement => throw _privateConstructorUsedError;
   String? get portDebarquement => throw _privateConstructorUsedError;
-  int? get poidsDeclare => throw _privateConstructorUsedError;
+  double? get poidsDeclare => throw _privateConstructorUsedError;
 
   /// Serializes this QRCodeData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -57,13 +57,13 @@ abstract class $QRCodeDataCopyWith<$Res> {
   @useResult
   $Res call({
     String typeRedevance,
-    String declarationNumero,
-    String dateEmission,
-    String navire,
-    String numeroOmi,
-    String numeroVoyage,
-    String nomClient,
-    String nzela,
+    String? declarationNumero,
+    String? dateEmission,
+    String? navire,
+    String? numeroOmi,
+    String? numeroVoyage,
+    String? nomClient,
+    String? nzela,
     int retour,
     String? numero,
     int? montant,
@@ -71,7 +71,7 @@ abstract class $QRCodeDataCopyWith<$Res> {
     String? refLot,
     String? portEmbarquement,
     String? portDebarquement,
-    int? poidsDeclare,
+    double? poidsDeclare,
   });
 }
 
@@ -91,13 +91,13 @@ class _$QRCodeDataCopyWithImpl<$Res, $Val extends QRCodeData>
   @override
   $Res call({
     Object? typeRedevance = null,
-    Object? declarationNumero = null,
-    Object? dateEmission = null,
-    Object? navire = null,
-    Object? numeroOmi = null,
-    Object? numeroVoyage = null,
-    Object? nomClient = null,
-    Object? nzela = null,
+    Object? declarationNumero = freezed,
+    Object? dateEmission = freezed,
+    Object? navire = freezed,
+    Object? numeroOmi = freezed,
+    Object? numeroVoyage = freezed,
+    Object? nomClient = freezed,
+    Object? nzela = freezed,
     Object? retour = null,
     Object? numero = freezed,
     Object? montant = freezed,
@@ -113,34 +113,34 @@ class _$QRCodeDataCopyWithImpl<$Res, $Val extends QRCodeData>
                 ? _value.typeRedevance
                 : typeRedevance // ignore: cast_nullable_to_non_nullable
                       as String,
-            declarationNumero: null == declarationNumero
+            declarationNumero: freezed == declarationNumero
                 ? _value.declarationNumero
                 : declarationNumero // ignore: cast_nullable_to_non_nullable
-                      as String,
-            dateEmission: null == dateEmission
+                      as String?,
+            dateEmission: freezed == dateEmission
                 ? _value.dateEmission
                 : dateEmission // ignore: cast_nullable_to_non_nullable
-                      as String,
-            navire: null == navire
+                      as String?,
+            navire: freezed == navire
                 ? _value.navire
                 : navire // ignore: cast_nullable_to_non_nullable
-                      as String,
-            numeroOmi: null == numeroOmi
+                      as String?,
+            numeroOmi: freezed == numeroOmi
                 ? _value.numeroOmi
                 : numeroOmi // ignore: cast_nullable_to_non_nullable
-                      as String,
-            numeroVoyage: null == numeroVoyage
+                      as String?,
+            numeroVoyage: freezed == numeroVoyage
                 ? _value.numeroVoyage
                 : numeroVoyage // ignore: cast_nullable_to_non_nullable
-                      as String,
-            nomClient: null == nomClient
+                      as String?,
+            nomClient: freezed == nomClient
                 ? _value.nomClient
                 : nomClient // ignore: cast_nullable_to_non_nullable
-                      as String,
-            nzela: null == nzela
+                      as String?,
+            nzela: freezed == nzela
                 ? _value.nzela
                 : nzela // ignore: cast_nullable_to_non_nullable
-                      as String,
+                      as String?,
             retour: null == retour
                 ? _value.retour
                 : retour // ignore: cast_nullable_to_non_nullable
@@ -172,7 +172,7 @@ class _$QRCodeDataCopyWithImpl<$Res, $Val extends QRCodeData>
             poidsDeclare: freezed == poidsDeclare
                 ? _value.poidsDeclare
                 : poidsDeclare // ignore: cast_nullable_to_non_nullable
-                      as int?,
+                      as double?,
           )
           as $Val,
     );
@@ -190,13 +190,13 @@ abstract class _$$QRCodeDataImplCopyWith<$Res>
   @useResult
   $Res call({
     String typeRedevance,
-    String declarationNumero,
-    String dateEmission,
-    String navire,
-    String numeroOmi,
-    String numeroVoyage,
-    String nomClient,
-    String nzela,
+    String? declarationNumero,
+    String? dateEmission,
+    String? navire,
+    String? numeroOmi,
+    String? numeroVoyage,
+    String? nomClient,
+    String? nzela,
     int retour,
     String? numero,
     int? montant,
@@ -204,7 +204,7 @@ abstract class _$$QRCodeDataImplCopyWith<$Res>
     String? refLot,
     String? portEmbarquement,
     String? portDebarquement,
-    int? poidsDeclare,
+    double? poidsDeclare,
   });
 }
 
@@ -223,13 +223,13 @@ class __$$QRCodeDataImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? typeRedevance = null,
-    Object? declarationNumero = null,
-    Object? dateEmission = null,
-    Object? navire = null,
-    Object? numeroOmi = null,
-    Object? numeroVoyage = null,
-    Object? nomClient = null,
-    Object? nzela = null,
+    Object? declarationNumero = freezed,
+    Object? dateEmission = freezed,
+    Object? navire = freezed,
+    Object? numeroOmi = freezed,
+    Object? numeroVoyage = freezed,
+    Object? nomClient = freezed,
+    Object? nzela = freezed,
     Object? retour = null,
     Object? numero = freezed,
     Object? montant = freezed,
@@ -245,34 +245,34 @@ class __$$QRCodeDataImplCopyWithImpl<$Res>
             ? _value.typeRedevance
             : typeRedevance // ignore: cast_nullable_to_non_nullable
                   as String,
-        declarationNumero: null == declarationNumero
+        declarationNumero: freezed == declarationNumero
             ? _value.declarationNumero
             : declarationNumero // ignore: cast_nullable_to_non_nullable
-                  as String,
-        dateEmission: null == dateEmission
+                  as String?,
+        dateEmission: freezed == dateEmission
             ? _value.dateEmission
             : dateEmission // ignore: cast_nullable_to_non_nullable
-                  as String,
-        navire: null == navire
+                  as String?,
+        navire: freezed == navire
             ? _value.navire
             : navire // ignore: cast_nullable_to_non_nullable
-                  as String,
-        numeroOmi: null == numeroOmi
+                  as String?,
+        numeroOmi: freezed == numeroOmi
             ? _value.numeroOmi
             : numeroOmi // ignore: cast_nullable_to_non_nullable
-                  as String,
-        numeroVoyage: null == numeroVoyage
+                  as String?,
+        numeroVoyage: freezed == numeroVoyage
             ? _value.numeroVoyage
             : numeroVoyage // ignore: cast_nullable_to_non_nullable
-                  as String,
-        nomClient: null == nomClient
+                  as String?,
+        nomClient: freezed == nomClient
             ? _value.nomClient
             : nomClient // ignore: cast_nullable_to_non_nullable
-                  as String,
-        nzela: null == nzela
+                  as String?,
+        nzela: freezed == nzela
             ? _value.nzela
             : nzela // ignore: cast_nullable_to_non_nullable
-                  as String,
+                  as String?,
         retour: null == retour
             ? _value.retour
             : retour // ignore: cast_nullable_to_non_nullable
@@ -304,7 +304,7 @@ class __$$QRCodeDataImplCopyWithImpl<$Res>
         poidsDeclare: freezed == poidsDeclare
             ? _value.poidsDeclare
             : poidsDeclare // ignore: cast_nullable_to_non_nullable
-                  as int?,
+                  as double?,
       ),
     );
   }
@@ -315,13 +315,13 @@ class __$$QRCodeDataImplCopyWithImpl<$Res>
 class _$QRCodeDataImpl implements _QRCodeData {
   const _$QRCodeDataImpl({
     required this.typeRedevance,
-    required this.declarationNumero,
-    required this.dateEmission,
-    required this.navire,
-    required this.numeroOmi,
-    required this.numeroVoyage,
-    required this.nomClient,
-    required this.nzela,
+    this.declarationNumero,
+    this.dateEmission,
+    this.navire,
+    this.numeroOmi,
+    this.numeroVoyage,
+    this.nomClient,
+    this.nzela,
     required this.retour,
     this.numero,
     this.montant,
@@ -338,19 +338,19 @@ class _$QRCodeDataImpl implements _QRCodeData {
   @override
   final String typeRedevance;
   @override
-  final String declarationNumero;
+  final String? declarationNumero;
   @override
-  final String dateEmission;
+  final String? dateEmission;
   @override
-  final String navire;
+  final String? navire;
   @override
-  final String numeroOmi;
+  final String? numeroOmi;
   @override
-  final String numeroVoyage;
+  final String? numeroVoyage;
   @override
-  final String nomClient;
+  final String? nomClient;
   @override
-  final String nzela;
+  final String? nzela;
   @override
   final int retour;
   @override
@@ -366,7 +366,7 @@ class _$QRCodeDataImpl implements _QRCodeData {
   @override
   final String? portDebarquement;
   @override
-  final int? poidsDeclare;
+  final double? poidsDeclare;
 
   @override
   String toString() {
@@ -445,13 +445,13 @@ class _$QRCodeDataImpl implements _QRCodeData {
 abstract class _QRCodeData implements QRCodeData {
   const factory _QRCodeData({
     required final String typeRedevance,
-    required final String declarationNumero,
-    required final String dateEmission,
-    required final String navire,
-    required final String numeroOmi,
-    required final String numeroVoyage,
-    required final String nomClient,
-    required final String nzela,
+    final String? declarationNumero,
+    final String? dateEmission,
+    final String? navire,
+    final String? numeroOmi,
+    final String? numeroVoyage,
+    final String? nomClient,
+    final String? nzela,
     required final int retour,
     final String? numero,
     final int? montant,
@@ -459,7 +459,7 @@ abstract class _QRCodeData implements QRCodeData {
     final String? refLot,
     final String? portEmbarquement,
     final String? portDebarquement,
-    final int? poidsDeclare,
+    final double? poidsDeclare,
   }) = _$QRCodeDataImpl;
 
   factory _QRCodeData.fromJson(Map<String, dynamic> json) =
@@ -468,19 +468,19 @@ abstract class _QRCodeData implements QRCodeData {
   @override
   String get typeRedevance;
   @override
-  String get declarationNumero;
+  String? get declarationNumero;
   @override
-  String get dateEmission;
+  String? get dateEmission;
   @override
-  String get navire;
+  String? get navire;
   @override
-  String get numeroOmi;
+  String? get numeroOmi;
   @override
-  String get numeroVoyage;
+  String? get numeroVoyage;
   @override
-  String get nomClient;
+  String? get nomClient;
   @override
-  String get nzela;
+  String? get nzela;
   @override
   int get retour;
   @override
@@ -496,7 +496,7 @@ abstract class _QRCodeData implements QRCodeData {
   @override
   String? get portDebarquement;
   @override
-  int? get poidsDeclare;
+  double? get poidsDeclare;
 
   /// Create a copy of QRCodeData
   /// with the given fields replaced by the non-null parameter values.

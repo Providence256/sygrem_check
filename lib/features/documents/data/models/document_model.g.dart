@@ -9,13 +9,13 @@ part of 'document_model.dart';
 _$QRCodeDataImpl _$$QRCodeDataImplFromJson(Map<String, dynamic> json) =>
     _$QRCodeDataImpl(
       typeRedevance: json['typeRedevance'] as String,
-      declarationNumero: json['declarationNumero'] as String,
-      dateEmission: json['dateEmission'] as String,
-      navire: json['navire'] as String,
-      numeroOmi: json['numeroOmi'] as String,
-      numeroVoyage: json['numeroVoyage'] as String,
-      nomClient: json['nomClient'] as String,
-      nzela: json['nzela'] as String,
+      declarationNumero: json['declarationNumero'] as String?,
+      dateEmission: json['dateEmission'] as String?,
+      navire: json['navire'] as String?,
+      numeroOmi: json['numeroOmi'] as String?,
+      numeroVoyage: json['numeroVoyage'] as String?,
+      nomClient: json['nomClient'] as String?,
+      nzela: json['nzela'] as String?,
       retour: (json['retour'] as num).toInt(),
       numero: json['numero'] as String?,
       montant: (json['montant'] as num?)?.toInt(),
@@ -23,7 +23,7 @@ _$QRCodeDataImpl _$$QRCodeDataImplFromJson(Map<String, dynamic> json) =>
       refLot: json['refLot'] as String?,
       portEmbarquement: json['portEmbarquement'] as String?,
       portDebarquement: json['portDebarquement'] as String?,
-      poidsDeclare: (json['poidsDeclare'] as num?)?.toInt(),
+      poidsDeclare: (json['poidsDeclare'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$$QRCodeDataImplToJson(_$QRCodeDataImpl instance) =>

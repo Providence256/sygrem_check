@@ -102,7 +102,9 @@ final userInfoProvider = Provider<UserInfo?>((ref) {
     data: (auth) {
       if (auth == null) return null;
 
-      final parts = auth.codeJwt.split('.');
+      if (auth.codeJwt == null) return null;
+
+      final parts = auth.codeJwt!.split('.');
 
       if (parts.length != 3) return null;
 
@@ -125,7 +127,7 @@ final userNameProvider = Provider<String?>((ref) {
 
   return authState.maybeWhen(
     data: (auth) {
-      final fullName = auth?.utilisateurAuthentifie.nom;
+      final fullName = auth?.utilisateurAuthentifie?.nom;
 
       if (fullName == null || fullName.trim().isEmpty) {
         return null;

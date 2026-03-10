@@ -73,7 +73,7 @@ class DocumentDetailPage extends ConsumerWidget {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    document.declarationNumero,
+                    document.declarationNumero ?? 'Non disponible',
                     style: const TextStyle(fontSize: 16, color: Colors.white70),
                   ),
                 ],
@@ -96,8 +96,9 @@ class DocumentDetailPage extends ConsumerWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              PDFViewerPage(documentId: document.nzela),
+                          builder: (context) => PDFViewerPage(
+                            documentId: document.nzela ?? 'Non disponible',
+                          ),
                         ),
                       );
                     },

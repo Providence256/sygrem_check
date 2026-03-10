@@ -8,13 +8,13 @@ part 'document_model.g.dart';
 class QRCodeData with _$QRCodeData {
   const factory QRCodeData({
     required String typeRedevance,
-    required String declarationNumero,
-    required String dateEmission,
-    required String navire,
-    required String numeroOmi,
-    required String numeroVoyage,
-    required String nomClient,
-    required String nzela,
+    String? declarationNumero,
+    String? dateEmission,
+    String? navire,
+    String? numeroOmi,
+    String? numeroVoyage,
+    String? nomClient,
+    String? nzela,
 
     required int retour,
 
@@ -25,7 +25,7 @@ class QRCodeData with _$QRCodeData {
     String? refLot,
     String? portEmbarquement,
     String? portDebarquement,
-    int? poidsDeclare,
+    double? poidsDeclare,
   }) = _QRCodeData;
 
   factory QRCodeData.fromJson(Map<String, dynamic> json) =>

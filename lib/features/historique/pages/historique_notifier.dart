@@ -4,8 +4,8 @@ import 'package:qr_scanner/features/documents/data/models/document_model.dart';
 
 enum HistoriqueFilter { today, all }
 
-class HistoriqueNotifier extends StateNotifier<AsyncValue<List<SavedData>?>> {
-  HistoriqueNotifier() : super(AsyncValue.data(null)) {
+class HistoriqueNotifier extends StateNotifier<AsyncValue<List<SavedData>>> {
+  HistoriqueNotifier() : super(AsyncValue.data([])) {
     loadHistorique();
   }
 
@@ -62,7 +62,7 @@ class HistoriqueNotifier extends StateNotifier<AsyncValue<List<SavedData>?>> {
 final historiqueProvider =
     StateNotifierProvider.autoDispose<
       HistoriqueNotifier,
-      AsyncValue<List<SavedData>?>
+      AsyncValue<List<SavedData>>
     >((ref) {
       return HistoriqueNotifier();
     });

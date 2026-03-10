@@ -55,15 +55,30 @@ class AuthRepository {
         response.data as Map<String, dynamic>,
       );
 
-      // save token and user data
-      await _storage.write(AppConstants.authTokenKey, authResponse.codeJwt);
-      await _storage.write(AppConstants.isLoggedInKey, 'true');
-      await _storage.write(
-        AppConstants.authResponseKey,
-        jsonEncode(authResponse.toJson()),
-      );
+      if (authResponse.indicateur == 2) {
+        return Result.failure('Email ou mot de passe incorrect');
+      }
 
-      return Result.success(authResponse);
+      if (authResponse.indicateur == 1) {
+        return Result.success(authResponse);
+      }
+
+      if (authResponse.indicateur == 3) {
+        // save token and user data
+        await _storage.write(
+          AppConstants.authTokenKey,
+          authResponse.codeJwt ?? '',
+        );
+        await _storage.write(AppConstants.isLoggedInKey, 'true');
+        await _storage.write(
+          AppConstants.authResponseKey,
+          jsonEncode(authResponse.toJson()),
+        );
+
+        return Result.success(authResponse);
+      }
+
+      return Result.failure('Réponse inconnue du serveur');
     } on DioException catch (e) {
       return Result.failure(
         e.response?.data['message'] ?? 'Login failed',
@@ -84,7 +99,10 @@ class AuthRepository {
       final authResponse = AuthResponse.fromJson(response.data['data']);
 
       // Save token and user data
-      await _storage.write(AppConstants.authTokenKey, authResponse.codeJwt);
+      await _storage.write(
+        AppConstants.authTokenKey,
+        authResponse.codeJwt ?? '',
+      );
       await _storage.write(AppConstants.isLoggedInKey, 'true');
 
       return Result.success(authResponse);
